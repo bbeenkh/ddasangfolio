@@ -16,6 +16,8 @@
     "react-native-safe-area-context": "^5.5.2"
   },
   "devDependencies": {
+    "@react-native/gradle-plugin": "0.85.3",
+    "@react-native/codegen": "0.85.3",
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.3",
     "@babel/runtime": "^7.25.0",
