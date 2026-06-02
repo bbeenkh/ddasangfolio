@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   Alert,
-  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
@@ -32,21 +31,21 @@ export function SimpleForm() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>정보 입력</Text>
+    <View className="flex-1 justify-center px-6 bg-white">
+      <Text className="text-2xl font-bold mb-8 text-center">정보 입력</Text>
 
-      <Text style={styles.label}>이름</Text>
+      <Text className="text-sm font-semibold mb-1.5 text-gray-700">이름</Text>
       <TextInput
-        style={styles.input}
+        className="border border-gray-300 rounded-lg px-3 py-2.5 text-base mb-5"
         value={name}
         onChangeText={setName}
         placeholder="이름을 입력하세요"
         autoCapitalize="none"
       />
 
-      <Text style={styles.label}>이메일</Text>
+      <Text className="text-sm font-semibold mb-1.5 text-gray-700">이메일</Text>
       <TextInput
-        style={styles.input}
+        className="border border-gray-300 rounded-lg px-3 py-2.5 text-base mb-5"
         value={email}
         onChangeText={setEmail}
         placeholder="이메일을 입력하세요"
@@ -54,51 +53,9 @@ export function SimpleForm() {
         autoCapitalize="none"
       />
 
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text style={styles.buttonText}>제출</Text>
+      <TouchableOpacity className="bg-[#4A90E2] rounded-lg py-3.5 items-center mt-2" onPress={handleSubmit}>
+        <Text className="text-white text-base font-semibold">제출</Text>
       </TouchableOpacity>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 24,
-    backgroundColor: '#fff',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 32,
-    textAlign: 'center',
-  },
-  label: {
-    fontSize: 14,
-    fontWeight: '600',
-    marginBottom: 6,
-    color: '#333',
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
-    fontSize: 16,
-    marginBottom: 20,
-  },
-  button: {
-    backgroundColor: '#4A90E2',
-    borderRadius: 8,
-    paddingVertical: 14,
-    alignItems: 'center',
-    marginTop: 8,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '600',
-  },
-});
