@@ -4,7 +4,13 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android:local": "APP_ENV=local react-native run-android",
+    "android:dev": "APP_ENV=dev react-native run-android",
+    "android:prod": "APP_ENV=prod react-native run-android",
     "ios": "react-native run-ios",
+    "ios:local": "APP_ENV=local react-native run-ios",
+    "ios:dev": "APP_ENV=dev react-native run-ios",
+    "ios:prod": "APP_ENV=prod react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest"
@@ -14,6 +20,7 @@
     "@react-native/new-app-screen": "0.85.3",
     "react": "19.2.3",
     "react-native": "0.85.3",
+    "react-native-config": "^1.6.1",
     "react-native-gesture-handler": "^3.0.0",
     "react-native-reanimated": "^4.4.0",
     "react-native-safe-area-context": "^5.5.2"
