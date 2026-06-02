@@ -26,6 +26,35 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 3. 테스트를 통과시키는 최소한의 코드 작성
 4. 리팩토링 및 개선
 
+- 폴더 구조: fsd 패턴 사용하여 구조적으로 정리
+규칙
+폴더 구조: 레이어, 슬라이스, 세그먼트로 분류됨
+
+레이어: fsd에서 정의된 폴더 분류
+App: 최상위 app.tsx, provider, router 등 최상위 설정들
+Pages; 개별 페이지 정의, 비즈니스 로직보다는 사용자 인터페이스 관련 로직만 관리
+widgets: 페이지 내 독립적으로 작동하는 기능 관리, 다양한 페이지에서 재사용 가능 (ui): template
+Features: 재사용 가능한 비즈니스 기능 위한 레이어, 재사용 가능한 ui+비즈니스 로직: organisms
+Entities: 데이터 모델, 데이터에 대한 로직, 사용자 정보 관리 store, interface 정의
+Shared: 공용 ui, 유틸 순수함수들-슬라이스 없이 세그먼트만 있음: atoms, molecules
+
+슬라이스: 레이어의 컨텍스트별 폴더, 각 도메인에 대한 폴더명 구성
+- index.ts: 해당 슬라이스에서 사용가능한 모든 기능 리턴, 구체적인 경로 몰라도 import 가능함
+세그먼트: 컨텍스트별 세부 내용, 아래 디렉토리로 구별되나 커스터마이징 가능
+    - Model: 상태관리, 비즈니스로직, 데이터 상태 저장및 관리
+    - Ui: 각 기능에 대한 UI
+    - api: 각 api 요청에 대한 코드 작성 (rq useQuery, useMutation hoook)
+    - Lib: 유틸 순수함수
+    - Types: interface, type
+
+
+레이어는 반드시 자신의 하위요소만 참조해야 함
+각 세그먼트의 폴더명은 컨벤션은 있으나 임의 변경 가능
+
+
+
+
+
 - 중요!: Jsdoc 작성
 - 각 작성한 요소의 스펙에 대해 jsdoc 형식의 간단 문서를 작성해야 한다
 - 한국어로 작성하며, 함수, 변수, 클래스 등의 경우 요소 바로 위에 작성한다
@@ -63,6 +92,8 @@ export enum FETCH_BOOK_SORT {
 - 각 테스트 진행후 PR 
 - AI 가 기본 내용 검토
 - 사용자가 최종 검토
+ 
+ 
 
 
 ## Package Manager & Runtime
