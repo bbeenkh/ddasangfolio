@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import Config from 'react-native-config';
 
 /**
  * # SimpleForm
@@ -33,7 +34,7 @@ export function SimpleForm() {
   return (
     <View className="flex-1 justify-center px-6 bg-white">
       <Text className="text-2xl font-bold mb-8 text-center">정보 입력</Text>
-
+      <Text>cur env: {Config.APP_ENV}</Text>
       <Text className="text-sm font-semibold mb-1.5 text-gray-700">이름</Text>
       <TextInput
         className="border border-gray-300 rounded-lg px-3 py-2.5 text-base mb-5"
