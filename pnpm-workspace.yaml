@@ -3,3 +3,9 @@ packages:
   - "apps/server/*"
   - "apps/mobile/*"
   - "packages/*"
+
+catalog:
+  react: "19.2.3"
+  react-dom: "19.2.3"
+  "@types/react": "19.2.3"
+  "@types/react-dom": "19.2.3"
