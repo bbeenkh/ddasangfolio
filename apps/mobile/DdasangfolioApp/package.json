@@ -1,10 +1,10 @@
 {
-  "name": "DdasangfolioApp",
+  "name": "ddsf-mobile",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "local:a": "react-native run-android",
+    "local:i": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest"

@@ -1,9 +1,12 @@
 {
-  "name": "ddasangfolio",
+  "name": "ddsf",
+  "description": "따상폴리오",
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
+    "local": "turbo run local",
+    "local:a": "pnpm --filter ddsf-mobile local:a",
+    "local:i": "pnpm --filter ddsf-mobile local:i",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types"
