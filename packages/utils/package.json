@@ -1,0 +1,15 @@
+{
+  "name": "@ddsf/utils",
+  "version": "1.0.0",
+  "description": "따상폴리오 유틸 모듈",
+  "main": "index.js",
+  "keywords": [],
+  "exports": {
+    ".": "./index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dayjs": "^1.11.21"
+  }
+}

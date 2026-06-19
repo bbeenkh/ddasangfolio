@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { getCurDate } from '@ddsf/utils';
 
 type ThemeMode = 'light' | 'dark' | 'auto'
 
