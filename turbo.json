@@ -25,7 +25,7 @@
         "^check-types"
       ]
     },
-    "dev": {
+    "local": {
       "cache": false,
       "persistent": true
     }
