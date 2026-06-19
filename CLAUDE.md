@@ -121,19 +121,24 @@ pnpm --filter @repo/ui build
 pnpm --filter web dev
 ```
 
+## Project Summary
+
+**ddasangfolio** — 개인 포트폴리오 프로젝트. Web, Server, Mobile 3개 앱을 포함하는 Turborepo 모노레포.
+
 ## Architecture
 
-This is a **Turborepo monorepo** structured as:
-
 ```
-apps/         # Applications (web, docs, mobile — currently stubs)
-packages/
-  ui/         # @repo/ui — shared React 19 component library
-  eslint-config/   # Shared ESLint configs (base, next, react-internal)
-  typescript-config/  # Shared tsconfig presets (base, nextjs, react-library)
-  api/         # stub
-  shared/      # stub
-  types/       # stub
+ddasangfolio/
+├── apps/
+│   ├── web/ddasangfolio-web/          # TanStack Start + Vite 프론트엔드
+│   ├── server/ddasangfolio-server/    # Hono 백엔드 서버
+│   └── mobile/DdasangfolioApp/        # React Native 모바일 앱
+├── packages/
+│   ├── ui/                            # @repo/ui — 공용 React 컴포넌트 (button, card, code)
+│   ├── typescript-config/             # 공용 tsconfig (base, nextjs, react-library)
+│   └── eslint-config/                 # 공용 ESLint 설정 (base, next, react-internal)
+├── turbo.json                         # 파이프라인 설정
+└── pnpm-workspace.yaml                # 워크스페이스 정의 (apps/web/*, apps/server/*, apps/mobile/*, packages/*)
 ```
 
 **Key patterns:**
@@ -143,6 +148,15 @@ packages/
 
 ## Tech Stack
 
-- **Framework**: Next.js 16 (App Router)
-- **UI**: React 19 + TypeScript 5.9
-- **Styling**: (not yet configured — add when decided)
+| 영역 | 기술 |
+|------|------|
+| **Web 프레임워크** | TanStack Start (React 19 + Vite 8) |
+| **서버 프레임워크** | Hono 4 (Node.js) |
+| **모바일** | React Native 0.85 (React 19) |
+| **스타일링** | Tailwind CSS 4 (@tailwindcss/vite) |
+| **테스트 (Web)** | Vitest + Testing Library |
+| **테스트 (Mobile)** | Jest |
+| **TypeScript** | 5.8 ~ 6.0 (앱별 상이) |
+| **린트/포맷** | ESLint 9 (FlatConfig) + Prettier 3 |
+| **모노레포** | Turborepo 2.9 + pnpm 9.0 |
+| **공용 컴포넌트** | @repo/ui (React 19) |

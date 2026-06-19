@@ -1,159 +1,64 @@
-# Turborepo starter
+# 주식 포트폴리오 관리 사이드 프로젝트
 
-This Turborepo starter is maintained by the Turborepo core team.
+개인 주식 포트폴리오를 관리하기 위한 풀스택 사이드 프로젝트입니다.
+Web, Server, Mobile 3개 앱을 포함하는 **Turborepo 모노레포** 구조로 구성되어 있습니다.
 
-## Using this example
+## 기술스택
 
-Run the following command:
+| 영역 | 기술 |
+|------|------|
+| **Web 프레임워크** | TanStack Start (React 19 + Vite 8) |
+| **서버 프레임워크** | Hono 4 (Node.js) |
+| **모바일** | React Native 0.85 (React 19) |
+| **스타일링** | Tailwind CSS 4 |
+| **테스트** | Vitest (Web), Jest (Mobile) |
+| **TypeScript** | 5.8 ~ 6.0 |
+| **린트 / 포맷** | ESLint 9 (FlatConfig) + Prettier 3 |
+| **모노레포** | Turborepo 2.9 + pnpm 9.0 |
+| **공용 컴포넌트** | @repo/ui (React 19) |
 
-```sh
-npx create-turbo@latest
+## 커맨드 정리
+
+```bash
+# 로컬 개발 서버 실행 (전체 — Web, Server)
+pnpm local
+
+# 모바일 로컬 실행
+pnpm local:a           # Android
+pnpm local:i           # iOS
+
+# 프로덕션 빌드 (전체)
+pnpm build
+
+# 린트
+pnpm lint
+
+# 타입 체크
+pnpm check-types
+
+# 코드 포맷팅
+pnpm format
+
+# 특정 패키지만 실행
+pnpm --filter @repo/ui build
+pnpm --filter ddsf-web local
+pnpm --filter ddsf-server local
 ```
 
-## What's inside?
+## 각 모듈 정의
 
-This Turborepo includes the following packages/apps:
+### apps
 
-### Apps and Packages
+| 앱 | 경로 | 설명 |
+|----|------|------|
+| **Web** | `apps/web/ddasangfolio-web/` | TanStack Start + Vite 기반 프론트엔드. Tailwind CSS로 스타일링하며, Vitest + Testing Library로 테스트 수행 |
+| **Server** | `apps/server/ddasangfolio-server/` | Hono 기반 백엔드 API 서버. tsx로 개발 시 핫 리로드 지원 |
+| **Mobile** | `apps/mobile/DdasangfolioApp/` | React Native 기반 모바일 앱. Android / iOS 동시 지원 |
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+### packages
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo build
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo build
-pnpm dlx turbo build
-pnpm exec turbo build
-```
-
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo build --filter=docs
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo dev
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo dev
-pnpm exec turbo dev
-pnpm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo dev --filter=web
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-pnpm exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-pnpm exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+| 패키지 | 이름 | 설명 |
+|--------|------|------|
+| **ui** | `@repo/ui` | 공용 React 컴포넌트 라이브러리 (button, card, code 등) |
+| **typescript-config** | `@repo/typescript-config` | 공용 tsconfig 프리셋 (base, nextjs, react-library) |
+| **eslint-config** | `@repo/eslint-config` | 공용 ESLint 설정 (base, next, react-internal) |
