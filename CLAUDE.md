@@ -117,7 +117,7 @@ pnpm check-types       # TypeScript type-check across all packages
 pnpm format            # Prettier format (*.ts, *.tsx, *.md)
 
 # Run tasks for a specific package only
-pnpm --filter @repo/ui build
+pnpm --filter @ddsf/ui build
 pnpm --filter web dev
 ```
 
@@ -134,7 +134,7 @@ ddasangfolio/
 │   ├── server/ddasangfolio-server/    # Hono 백엔드 서버
 │   └── mobile/DdasangfolioApp/        # React Native 모바일 앱
 ├── packages/
-│   ├── ui/                            # @repo/ui — 공용 React 컴포넌트 (button, card, code)
+│   ├── ui/                            # @ddsf/ui — 공용 React 컴포넌트 (button, card, code)
 │   ├── typescript-config/             # 공용 tsconfig (base, nextjs, react-library)
 │   └── eslint-config/                 # 공용 ESLint 설정 (base, next, react-internal)
 ├── turbo.json                         # 파이프라인 설정
@@ -142,7 +142,7 @@ ddasangfolio/
 ```
 
 **Key patterns:**
-- Apps consume `@repo/ui` components and extend shared configs from `@repo/eslint-config` and `@repo/typescript-config`
+- Apps consume `@ddsf/ui` components and extend shared configs from `@ddsf/eslint-config` and `@ddsf/typescript-config`
 - TypeScript strict mode + ES2022 target is enforced via `packages/typescript-config/base.json`
 - Turbo task pipeline: `build` depends on upstream `^build`; `dev` runs persistently with no cache
 
@@ -159,4 +159,4 @@ ddasangfolio/
 | **TypeScript** | 5.8 ~ 6.0 (앱별 상이) |
 | **린트/포맷** | ESLint 9 (FlatConfig) + Prettier 3 |
 | **모노레포** | Turborepo 2.9 + pnpm 9.0 |
-| **공용 컴포넌트** | @repo/ui (React 19) |
+| **공용 컴포넌트** | @ddsf/ui (React 19) |
