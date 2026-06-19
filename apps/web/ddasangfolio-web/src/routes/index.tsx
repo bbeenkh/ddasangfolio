@@ -1,10 +1,50 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { useState, useEffect } from 'react'
 
 export const Route = createFileRoute('/')({ component: App })
 
+/**
+ * # useHelloApi
+ * ---
+ * - 간단설명: 서버의 /api/hello 엔드포인트를 호출하여 메시지를 가져오는 훅
+ * ---
+ * @example const { message, loading, error } = useHelloApi()
+ */
+function useHelloApi() {
+  const [message, setMessage] = useState<string | null>(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/hello')
+      .then((res) => res.json())
+      .then((data) => {
+        setMessage(data.message)
+        setLoading(false)
+      })
+      .catch((err) => {
+        setError(err.message)
+        setLoading(false)
+      })
+  }, [])
+
+  return { message, loading, error }
+}
+
 function App() {
+  const { message, loading, error } = useHelloApi()
+
   return (
     <main className="page-wrap px-4 pb-8 pt-14">
+      <section className="island-shell rise-in rounded-2xl p-6 mb-8">
+        <p className="island-kicker mb-2">API 연동 테스트</p>
+        <p className="text-sm text-[var(--sea-ink-soft)]">
+          {loading && '로딩 중...'}
+          {error && `에러: ${error}`}
+          {message && `서버 응답: ${message}`}
+        </p>
+      </section>
+
       <section className="island-shell rise-in relative overflow-hidden rounded-[2rem] px-6 py-10 sm:px-10 sm:py-14">
         <div className="pointer-events-none absolute -left-20 -top-24 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(79,184,178,0.32),transparent_66%)]" />
         <div className="pointer-events-none absolute -bottom-20 -right-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(47,106,74,0.18),transparent_66%)]" />
