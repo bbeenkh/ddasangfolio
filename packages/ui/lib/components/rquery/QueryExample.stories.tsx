@@ -7,9 +7,9 @@ import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query';
-import Card from '@/components/Card';
-import Skeleton from '@/components/Skeleton';
-import Button from '@/components/Button';
+import Card from '../Card';
+import Skeleton from '../Skeleton';
+import Button from '../Button';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 

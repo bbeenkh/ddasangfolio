@@ -1,6 +1,5 @@
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
-import path from 'path';
 
 /** CSS와 SVG 파일을 테스트 환경에서 빈/모의 모듈로 처리하는 플러그인 */
 const mockStaticAssetsPlugin = {
@@ -34,10 +33,5 @@ export default defineConfig({
       '**/dist/**',
       '**/lib/components/original/**',
     ],
-  },
-  resolve: {
-    alias: {
-      '@/': path.resolve(__dirname, 'lib/'),
-    },
   },
 });

@@ -1,26 +1,11 @@
 {
+  "extends": "@ddsf/typescript-config/react-library.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["lib/*"]
-    },
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "allowImportingTsExtensions": true,
-    "incremental": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "types": ["vitest/globals"]
   },
   "include": ["lib"],
-  "exclude": ["node_modules", ".yarn", "lib/components/original"]
+  "exclude": ["node_modules", "lib/components/original", "**/*.test.tsx", "**/*.test.ts", "**/*.stories.tsx"]
 }

@@ -1,10 +1,9 @@
 import type { Preview } from '@storybook/react';
 import React from 'react';
-import '@/index.css';
+import '../lib/index.css';
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { twJoin } from 'tailwind-merge';
-import SpinnerIcon from '@/assets/svgs/spinner-icon.svg?react';
+import SpinnerIcon from '../../assets/svgs/spinner-icon.svg?react';
 
 interface IProps {
   size?: 'xs' | 'sm' | 'lg' | 'xl';

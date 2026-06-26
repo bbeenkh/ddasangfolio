@@ -1,0 +1,118 @@
+/**
+ * ODS 디자인 시스템 Tailwind 4 테마 설정
+ * tailwind.preset.js에서 마이그레이션됨
+ */
+@theme {
+  /* Colors */
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-tertiary: var(--color-tertiary);
+  --color-caption: var(--color-caption);
+  --color-black: var(--color-black);
+  --color-white: var(--color-white);
+  --color-off-white: var(--color-off-white);
+  --color-card: var(--color-card);
+
+  /* Gray Scale */
+  --color-gray-900: var(--color-gray-900);
+  --color-gray-800: var(--color-gray-800);
+  --color-gray-700: var(--color-gray-700);
+  --color-gray-600: var(--color-gray-600);
+  --color-gray-500: var(--color-gray-500);
+  --color-gray-400: var(--color-gray-400);
+  --color-gray-300: var(--color-gray-300);
+  --color-gray-200: var(--color-gray-200);
+  --color-gray-100: var(--color-gray-100);
+  --color-gray-50: var(--color-gray-50);
+
+  /* State Colors */
+  --color-state-danger: var(--color-state-danger);
+  --color-state-warning: var(--color-state-warning);
+  --color-state-success: var(--color-state-success);
+  --color-state-info: var(--color-state-info);
+
+  /* Border Colors */
+  --color-borderActive: var(--color-border-active);
+  --color-borderPrimary: var(--color-border-primary);
+  --color-borderSecondary: var(--color-border-secondary);
+
+  /* Font Sizes */
+  --font-size-xxxl: var(--font-xxxl);
+  --font-size-xxl: var(--font-xxl);
+  --font-size-xl: var(--font-xl);
+  --font-size-lg: var(--font-lg);
+  --font-size-md: var(--font-md);
+  --font-size-sm: var(--font-sm);
+  --font-size-xs: var(--font-xs);
+  --font-size-xxs: var(--font-xxs);
+
+  /* Typography - Heading */
+  --font-size-h1: var(--font-h1-size);
+  --font-size-h2: var(--font-h2-size);
+  --font-size-h3: var(--font-h3-size);
+  --font-size-h4: var(--font-h4-size);
+
+  /* Typography - Title */
+  --font-size-title1: var(--font-title1-size);
+  --font-size-title2: var(--font-title2-size);
+  --font-size-title3: var(--font-title3-size);
+  --font-size-title4: var(--font-title4-size);
+
+  /* Typography - Body */
+  --font-size-body1: var(--font-body1-size);
+  --font-size-body2: var(--font-body2-size);
+  --font-size-body3: var(--font-body3-size);
+
+  /* Font Weights */
+  --font-weight-bold: 700;
+  --font-weight-regular: 400;
+
+  /* Spacing */
+  --spacing-xxxl: var(--space-xxxl);
+  --spacing-xxl: var(--space-xxl);
+  --spacing-xl: var(--space-xl);
+  --spacing-lg: var(--space-lg);
+  --spacing-md: var(--space-md);
+  --spacing-sm: var(--space-sm);
+  --spacing-xs: var(--space-xs);
+  --spacing-xxs: var(--space-xxs);
+  --spacing-xxxs: var(--space-xxxs);
+
+  /* Breakpoints */
+  --breakpoint-mobile: var(--layout-mobile);
+  --breakpoint-tablet: var(--layout-tablet);
+  --breakpoint-desktop: var(--layout-desktop);
+
+  /* Keyframes */
+  --animate-shimmer: shimmer 1.5s linear infinite;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+/* 커스텀 유틸리티 클래스 */
+@utility flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@utility flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
