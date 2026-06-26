@@ -15,7 +15,7 @@ Web, Server, Mobile 3개 앱을 포함하는 **Turborepo 모노레포** 구조�
 | **TypeScript** | 5.8 ~ 6.0 |
 | **린트 / 포맷** | ESLint 9 (FlatConfig) + Prettier 3 |
 | **모노레포** | Turborepo 2.9 + pnpm 9.0 |
-| **공용 컴포넌트** | @ddsf/ui (React 19) |
+| **공용 컴포넌트** | @ddsf/core-ui (React 19) |
 
 ## 커맨드 정리
 
@@ -40,7 +40,7 @@ pnpm check-types
 pnpm format
 
 # 특정 패키지만 실행
-pnpm --filter @ddsf/ui build
+pnpm --filter @ddsf/core-ui build
 pnpm --filter ddsf-web local
 pnpm --filter ddsf-server local
 ```
@@ -59,6 +59,6 @@ pnpm --filter ddsf-server local
 
 | 패키지 | 이름 | 설명 |
 |--------|------|------|
-| **ui** | `@ddsf/ui` | 공용 React 컴포넌트 라이브러리 (button, card, code 등) |
+| **ui** | `@ddsf/core-ui` | 공용 React 컴포넌트 라이브러리 (button, card, code 등) |
 | **typescript-config** | `@ddsf/typescript-config` | 공용 tsconfig 프리셋 (base, nextjs, react-library) |
 | **eslint-config** | `@ddsf/eslint-config` | 공용 ESLint 설정 (base, next, react-internal) |

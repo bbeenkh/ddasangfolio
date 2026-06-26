@@ -1,0 +1,142 @@
+{
+  "name": "@imnotpizza/imnotpizza-libs",
+  "version": "2.4.5",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imnotpizza/imnotpizza-libs.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "sideEffects": true,
+  "author": {
+    "name": "liam-koh"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./preset": {
+      "require": "./dist/preset.js",
+      "import": "./dist/preset.mjs"
+    },
+    "./style": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "description": "imnotpizza lib",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --p ./tsconfig.json && vite build",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "analyze": "npx vite-bundle-visualizer"
+  },
+  "dependencies": {
+    "@lukemorales/query-key-factory": "^1.3.4",
+    "@radix-ui/react-accordion": "^1.2.12",
+    "@radix-ui/react-checkbox": "^1.3.3",
+    "@radix-ui/react-context-menu": "^2.2.16",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-dropdown-menu": "^2.1.16",
+    "@radix-ui/react-popover": "^1.1.15",
+    "@radix-ui/react-radio-group": "^1.3.8",
+    "@radix-ui/react-select": "^2.2.6",
+    "@radix-ui/react-slot": "^1.2.4",
+    "@radix-ui/react-switch": "^1.2.6",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@radix-ui/react-toast": "^1.2.15",
+    "axios": "^1.17.0",
+    "classnames": "^2.5.1",
+    "date-fns": "^3.6.0",
+    "dayjs": "^1.11.11",
+    "framer-motion": "^12.40.0",
+    "lodash-es": "^4.17.21",
+    "react": "^18.2.0",
+    "react-datepicker": "^7.1.0",
+    "react-dom": "^18.2.0",
+    "react-error-boundary": "^4.1.2",
+    "react-intersection-observer": "^9.13.1",
+    "react-modal": "^3.16.3",
+    "react-toastify": "^10.0.4",
+    "styled-components": "^6.1.8",
+    "tailwind-merge": "^2.2.2",
+    "zustand": "^5.0.14"
+  },
+  "resolutions": {
+    "jackspeak": "2.1.1",
+    "polished": "3.7.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@storybook/addon-essentials": "^7.6.10",
+    "@storybook/addon-interactions": "^7.6.10",
+    "@storybook/addon-links": "^7.6.10",
+    "@storybook/addon-onboarding": "^1.0.11",
+    "@storybook/blocks": "^7.6.10",
+    "@storybook/react": "^7.6.10",
+    "@storybook/react-vite": "^7.6.10",
+    "@storybook/test": "^7.6.10",
+    "@tanstack/react-query": "^5.22.2",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/lodash-es": "^4.17.12",
+    "@types/react": "^18.2.43",
+    "@types/react-datepicker": "^6.2.0",
+    "@types/react-dom": "^18.2.17",
+    "@types/react-modal": "^3.16.3",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.17",
+    "chromatic": "^10.6.1",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-jest": "^28.6.0",
+    "eslint-plugin-jest-dom": "^5.4.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.34.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "eslint-plugin-storybook": "^0.6.15",
+    "eslint-plugin-testing-library": "^6.2.2",
+    "jsdom": "^26.0.0",
+    "postcss": "^8.4.33",
+    "prettier": "^3.3.1",
+    "react-hook-form": "^7.51.5",
+    "react-markdown": "8.0.6",
+    "storybook": "^7.6.10",
+    "tailwind-scrollbar-hide": "^1.1.7",
+    "tailwindcss": "^3.4.1",
+    "terser": "^5.31.1",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8",
+    "vite-bundle-visualizer": "^1.2.1",
+    "vite-plugin-dts": "^3.6.4",
+    "vite-plugin-svgr": "^4.2.0",
+    "vitest": "^3.2.4"
+  },
+  "peerDependencies": {
+    "date-fns": "^3.6.0",
+    "react": "^18.2.0",
+    "react-datepicker": "^7.0.0",
+    "react-dom": "^18.2.0"
+  },
+  "volta": {
+    "node": "24.16.0",
+    "yarn": "1.22.22"
+  }
+}

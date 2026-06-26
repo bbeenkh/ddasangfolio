@@ -1,0 +1,14 @@
+/* react-toastify customize css */
+
+.Toastify__toast-container {
+  padding: 0;
+  box-sizing: border-box;
+  background: transparent;
+  width: 21.25em;
+}
+
+.Toastify__toast {
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
