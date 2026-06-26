@@ -3,20 +3,6 @@ import { Button, Card, Input, Tab } from '@ddsf/core-ui'
 import { signup, login, getMe, refreshToken, logout } from '../api/auth-test.api'
 import type { AuthTokens } from '../api/auth-test.api'
 
-const inputStyle = {
-  root: 'rounded-lg border border-gray-300 bg-white',
-  input: 'px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 bg-transparent rounded-lg focus:border-gray-900 focus:outline-none',
-}
-
-const btnPrimary =
-  'rounded-lg px-4 py-2 text-sm font-semibold bg-gray-900 text-white transition hover:-translate-y-0.5 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed'
-
-const btnSecondary =
-  'rounded-lg px-4 py-2 text-sm font-semibold border border-gray-300 bg-white text-gray-900 transition hover:-translate-y-0.5 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'
-
-const tabTriggerStyle =
-  'px-4 py-2 text-sm font-semibold text-gray-400 transition data-[state=active]:text-gray-900 data-[state=active]:border-b-2 data-[state=active]:border-gray-900'
-
 /**
  * # AuthTestPanel
  * ---
@@ -104,13 +90,13 @@ export default function AuthTestPanel() {
       <div className="flex flex-1 flex-col gap-6">
         <Tab.Root defaultValue="auth">
           <Tab.List styleClass={{ root: 'flex gap-1 border-b border-gray-200' }}>
-            <Tab.Trigger value="auth" styleClass={{ root: tabTriggerStyle }}>
+            <Tab.Trigger value="auth">
               인증
             </Tab.Trigger>
-            <Tab.Trigger value="token" styleClass={{ root: tabTriggerStyle }}>
+            <Tab.Trigger value="token">
               토큰 액션
             </Tab.Trigger>
-            <Tab.Trigger value="status" styleClass={{ root: tabTriggerStyle }}>
+            <Tab.Trigger value="status">
               토큰 상태
             </Tab.Trigger>
           </Tab.List>
@@ -127,34 +113,29 @@ export default function AuthTestPanel() {
                   placeholder="이메일"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  styleClass={inputStyle}
                 />
                 <Input
                   type="password"
                   placeholder="비밀번호 (최소 6자)"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  styleClass={inputStyle}
                 />
                 <Input
                   type="text"
                   placeholder="이름 (선택, 회원가입용)"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  styleClass={inputStyle}
                 />
                 <div className="mt-2 flex flex-wrap gap-2">
                   <Button
                     onClick={handleSignup}
                     disabled={loading}
-                    styleClass={{ root: btnPrimary }}
                   >
                     회원가입
                   </Button>
                   <Button
                     onClick={handleLogin}
                     disabled={loading}
-                    styleClass={{ root: btnPrimary }}
                   >
                     로그인
                   </Button>
@@ -174,21 +155,18 @@ export default function AuthTestPanel() {
                   <Button
                     onClick={handleGetMe}
                     disabled={loading}
-                    styleClass={{ root: btnSecondary }}
                   >
                     내 정보 조회 (GET /me)
                   </Button>
                   <Button
                     onClick={handleRefresh}
                     disabled={loading}
-                    styleClass={{ root: btnSecondary }}
                   >
                     토큰 갱신 (POST /refresh)
                   </Button>
                   <Button
                     onClick={handleLogout}
                     disabled={loading}
-                    styleClass={{ root: btnSecondary }}
                   >
                     로그아웃 (POST /logout)
                   </Button>

@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@ddsf/eslint-config": "workspace:*",
+    "eslint": "^9.39.1",
     "@ddsf/typescript-config": "workspace:*",
     "@storybook/addon-links": "catalog:",
     "@storybook/react": "catalog:",
