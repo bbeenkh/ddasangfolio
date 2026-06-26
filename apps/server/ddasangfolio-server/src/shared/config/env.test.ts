@@ -17,7 +17,7 @@ describe('loadEnv', () => {
     expect(env.SUPABASE_URL).toBe('https://test.supabase.co')
     expect(env.SUPABASE_ANON_KEY).toBe('test-anon-key')
     expect(env.SUPABASE_JWT_SECRET).toBe('test-jwt-secret')
-    expect(env.PORT).toBe(3001)
+    expect(env.PORT).toBe(8080)
   })
 
   it('PORT 환경변수가 있으면 해당 값을 사용한다', async () => {
