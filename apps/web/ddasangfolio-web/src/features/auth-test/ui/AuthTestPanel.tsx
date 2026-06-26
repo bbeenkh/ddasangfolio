@@ -4,18 +4,18 @@ import { signup, login, getMe, refreshToken, logout } from '../api/auth-test.api
 import type { AuthTokens } from '../api/auth-test.api'
 
 const inputStyle = {
-  root: 'rounded-lg border border-[var(--line)] bg-[var(--surface-strong)]',
-  input: 'px-3 py-2 text-sm text-[var(--sea-ink)] placeholder:text-[var(--sea-ink-soft)] bg-transparent rounded-lg focus:border-[var(--lagoon)] focus:outline-none',
+  root: 'rounded-lg border border-gray-300 bg-white',
+  input: 'px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 bg-transparent rounded-lg focus:border-gray-900 focus:outline-none',
 }
 
 const btnPrimary =
-  'rounded-lg px-4 py-2 text-sm font-semibold bg-[var(--lagoon)] text-white transition hover:-translate-y-0.5 hover:bg-[var(--lagoon-deep)] disabled:opacity-50 disabled:cursor-not-allowed'
+  'rounded-lg px-4 py-2 text-sm font-semibold bg-gray-900 text-white transition hover:-translate-y-0.5 hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed'
 
 const btnSecondary =
-  'rounded-lg px-4 py-2 text-sm font-semibold border border-[var(--line)] bg-[var(--chip-bg)] text-[var(--sea-ink)] transition hover:-translate-y-0.5 hover:bg-[var(--link-bg-hover)] disabled:opacity-50 disabled:cursor-not-allowed'
+  'rounded-lg px-4 py-2 text-sm font-semibold border border-gray-300 bg-white text-gray-900 transition hover:-translate-y-0.5 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed'
 
 const tabTriggerStyle =
-  'px-4 py-2 text-sm font-semibold text-[var(--sea-ink-soft)] transition data-[state=active]:text-[var(--sea-ink)] data-[state=active]:border-b-2 data-[state=active]:border-[var(--lagoon)]'
+  'px-4 py-2 text-sm font-semibold text-gray-400 transition data-[state=active]:text-gray-900 data-[state=active]:border-b-2 data-[state=active]:border-gray-900'
 
 /**
  * # AuthTestPanel
@@ -103,7 +103,7 @@ export default function AuthTestPanel() {
       {/* 좌측: 입력 및 액션 */}
       <div className="flex flex-1 flex-col gap-6">
         <Tab.Root defaultValue="auth">
-          <Tab.List styleClass={{ root: 'flex gap-1 border-b border-[var(--line)]' }}>
+          <Tab.List styleClass={{ root: 'flex gap-1 border-b border-gray-200' }}>
             <Tab.Trigger value="auth" styleClass={{ root: tabTriggerStyle }}>
               인증
             </Tab.Trigger>
@@ -117,9 +117,9 @@ export default function AuthTestPanel() {
 
           {/* 인증 탭 */}
           <Tab.Content value="auth" styleClass={{ root: 'pt-4' }}>
-            <Card className="border-[var(--line)] bg-[var(--surface-strong)]">
+            <Card className="border-gray-200 bg-white">
               <Card.Header>
-                <Card.Title className="text-base text-[var(--sea-ink)]">인증 정보</Card.Title>
+                <Card.Title className="text-base text-gray-900">인증 정보</Card.Title>
               </Card.Header>
               <Card.Body className="flex-col gap-3">
                 <Input
@@ -165,9 +165,9 @@ export default function AuthTestPanel() {
 
           {/* 토큰 액션 탭 */}
           <Tab.Content value="token" styleClass={{ root: 'pt-4' }}>
-            <Card className="border-[var(--line)] bg-[var(--surface-strong)]">
+            <Card className="border-gray-200 bg-white">
               <Card.Header>
-                <Card.Title className="text-base text-[var(--sea-ink)]">토큰 액션</Card.Title>
+                <Card.Title className="text-base text-gray-900">토큰 액션</Card.Title>
               </Card.Header>
               <Card.Body className="flex-col gap-3">
                 <div className="flex flex-wrap gap-2">
@@ -199,28 +199,28 @@ export default function AuthTestPanel() {
 
           {/* 토큰 상태 탭 */}
           <Tab.Content value="status" styleClass={{ root: 'pt-4' }}>
-            <Card className="border-[var(--line)] bg-[var(--surface-strong)]">
+            <Card className="border-gray-200 bg-white">
               <Card.Header>
-                <Card.Title className="text-base text-[var(--sea-ink)]">현재 토큰</Card.Title>
+                <Card.Title className="text-base text-gray-900">현재 토큰</Card.Title>
               </Card.Header>
               <Card.Body className="flex-col gap-2">
                 {tokens ? (
                   <>
                     <div className="text-xs">
-                      <span className="font-semibold text-[var(--sea-ink)]">Access Token: </span>
+                      <span className="font-semibold text-gray-900">Access Token: </span>
                       <code className="break-all">{tokens.accessToken.slice(0, 40)}...</code>
                     </div>
                     <div className="text-xs">
-                      <span className="font-semibold text-[var(--sea-ink)]">Refresh Token: </span>
+                      <span className="font-semibold text-gray-900">Refresh Token: </span>
                       <code className="break-all">{tokens.refreshToken.slice(0, 40)}...</code>
                     </div>
                     <div className="text-xs">
-                      <span className="font-semibold text-[var(--sea-ink)]">Expires In: </span>
+                      <span className="font-semibold text-gray-900">Expires In: </span>
                       <code>{tokens.expiresIn}초</code>
                     </div>
                   </>
                 ) : (
-                  <p className="m-0 text-sm text-[var(--sea-ink-soft)]">
+                  <p className="m-0 text-sm text-gray-500">
                     토큰 없음 — 로그인 해주세요
                   </p>
                 )}
@@ -232,15 +232,15 @@ export default function AuthTestPanel() {
 
       {/* 우측: 서버 응답 */}
       <div className="flex-1">
-        <Card className="sticky top-20 border-[var(--line)] bg-[var(--surface-strong)]">
+        <Card className="sticky top-20 border-gray-200 bg-white">
           <Card.Header>
-            <Card.Title className="text-base text-[var(--sea-ink)]">서버 응답</Card.Title>
+            <Card.Title className="text-base text-gray-900">서버 응답</Card.Title>
           </Card.Header>
           <Card.Body className="flex-col">
             {loading && (
-              <p className="m-0 text-sm text-[var(--lagoon)]">요청 중...</p>
+              <p className="m-0 text-sm text-blue-600">요청 중...</p>
             )}
-            <pre className="m-0 max-h-[60vh] overflow-auto rounded-lg bg-[var(--sand)] p-4 text-xs leading-relaxed text-[var(--sea-ink)]">
+            <pre className="m-0 max-h-[60vh] overflow-auto rounded-lg bg-gray-50 p-4 text-xs leading-relaxed text-gray-900">
               {response || '아직 요청이 없습니다'}
             </pre>
           </Card.Body>
