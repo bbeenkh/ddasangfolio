@@ -29,8 +29,8 @@ const SwitchButton = React.forwardRef<HTMLButtonElement, Props>(function SwitchB
       ref={ref}
       styleClass={{
         root: twMerge(
-          'bg-[#bcc9cd] data-[state=checked]:bg-[#06b6d4]',
-          'focus-visible:ring-[#06b6d4]',
+          'bg-lf-outline-check data-[state=checked]:bg-lf-primary-container',
+          'focus-visible:ring-lf-primary-container',
           styleClass?.root,
         ),
         thumb: styleClass?.thumb,

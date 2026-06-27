@@ -27,14 +27,14 @@ function ComponentTestPage() {
   const [switchOn, setSwitchOn] = useState(false)
 
   return (
-    <div className="min-h-screen bg-[#f8f9ff] py-8 px-4">
+    <div className="min-h-screen bg-lf-surface py-8 px-4">
       <div className="max-w-[600px] mx-auto space-y-12">
         {/* 페이지 헤더 */}
         <div>
-          <h1 className="text-[32px] font-bold leading-[40px] tracking-[-0.01em] text-[#0f172a] font-[Plus_Jakarta_Sans,ui-sans-serif,system-ui,sans-serif]">
+          <h1 className="text-[32px] font-bold leading-[40px] tracking-[-0.01em] text-lf-on-surface font-[Plus_Jakarta_Sans,ui-sans-serif,system-ui,sans-serif]">
             Component Test
           </h1>
-          <p className="text-[16px] text-[#475569] mt-2">
+          <p className="text-[16px] text-lf-on-surface-variant mt-2">
             Luminous Fintech 디자인 시스템 컴포넌트 프리뷰
           </p>
         </div>
@@ -78,13 +78,13 @@ function ComponentTestPage() {
           <Card>
             <Card.Header>
               <Card.Title>총 자산</Card.Title>
-              <span className="text-sm font-semibold text-[#06b6d4]">+1.8%</span>
+              <span className="text-sm font-semibold text-lf-primary-container">+1.8%</span>
             </Card.Header>
             <Card.Body>
               <div>
-                <p className="text-[28px] font-bold text-[#0f172a]">158,420,000원</p>
-                <p className="text-sm text-[#475569] mt-1">평가 손익</p>
-                <p className="text-lg font-semibold text-[#ef4444]">+2,450,000원</p>
+                <p className="text-[28px] font-bold text-lf-on-surface">158,420,000원</p>
+                <p className="text-sm text-lf-on-surface-variant mt-1">평가 손익</p>
+                <p className="text-lg font-semibold text-lf-profit">+2,450,000원</p>
               </div>
             </Card.Body>
           </Card>
@@ -95,12 +95,12 @@ function ComponentTestPage() {
             </Card.Header>
             <Card.Body>
               <div>
-                <p className="text-sm text-[#475569]">세후 기준 예상 금액</p>
-                <p className="text-[32px] font-bold text-[#0f172a]">1,240,500<span className="text-lg">원</span></p>
+                <p className="text-sm text-lf-on-surface-variant">세후 기준 예상 금액</p>
+                <p className="text-[32px] font-bold text-lf-on-surface">1,240,500<span className="text-lg">원</span></p>
               </div>
             </Card.Body>
             <Card.Footer className="relative p-6">
-              <span className="text-sm text-[#475569]">다음 배당일: 2024.07.15</span>
+              <span className="text-sm text-lf-on-surface-variant">다음 배당일: 2024.07.15</span>
             </Card.Footer>
           </Card>
 
@@ -110,7 +110,7 @@ function ComponentTestPage() {
                 <Card.Title className="text-sm">스노우볼 성장</Card.Title>
               </Card.Header>
               <Card.Body>
-                <div className="h-16 w-full bg-gradient-to-r from-[#06b6d4]/10 to-[#2dd4bf]/10 rounded-lg" />
+                <div className="h-16 w-full bg-gradient-to-r from-lf-primary-container/10 to-lf-primary-gradient-end/10 rounded-lg" />
               </Card.Body>
             </Card>
             <Card className="h-auto">
@@ -119,8 +119,8 @@ function ComponentTestPage() {
               </Card.Header>
               <Card.Body>
                 <div>
-                  <p className="text-2xl font-bold text-[#0f172a]">42.5<span className="text-sm">%</span></p>
-                  <p className="text-xs text-[#475569] mt-1">ISA 한도 활용중</p>
+                  <p className="text-2xl font-bold text-lf-on-surface">42.5<span className="text-sm">%</span></p>
+                  <p className="text-xs text-lf-on-surface-variant mt-1">ISA 한도 활용중</p>
                 </div>
               </Card.Body>
             </Card>
@@ -137,7 +137,7 @@ function ComponentTestPage() {
           <Input variant="white" placeholder="금액을 입력하세요" />
 
           <SubLabel>White with suffix</SubLabel>
-          <Input variant="white" placeholder="0" suffix={<span className="text-[#475569] text-sm font-medium">원</span>} />
+          <Input variant="white" placeholder="0" suffix={<span className="text-lf-on-surface-variant text-sm font-medium">원</span>} />
 
           <SubLabel>Gray</SubLabel>
           <Input variant="gray" placeholder="종목명 또는 티커 검색" />
@@ -193,11 +193,11 @@ function ComponentTestPage() {
 
           <div className="flex items-center gap-4">
             <SwitchButton checked={switchOn} onCheckedChange={setSwitchOn} />
-            <span className="text-sm text-[#475569]">{switchOn ? 'ON' : 'OFF'}</span>
+            <span className="text-sm text-lf-on-surface-variant">{switchOn ? 'ON' : 'OFF'}</span>
           </div>
           <div className="flex items-center gap-4">
             <SwitchButton defaultChecked disabled />
-            <span className="text-sm text-[#475569]">비활성 (ON)</span>
+            <span className="text-sm text-lf-on-surface-variant">비활성 (ON)</span>
           </div>
         </section>
 
@@ -233,12 +233,12 @@ function ComponentTestPage() {
         <section className="space-y-4">
           <SectionTitle>Separator</SectionTitle>
 
-          <div className="bg-white rounded-[16px] p-6 border border-[#f1f5f9]">
-            <p className="text-sm text-[#475569]">항목 A</p>
+          <div className="bg-white rounded-[16px] p-6 border border-lf-outline-variant">
+            <p className="text-sm text-lf-on-surface-variant">항목 A</p>
             <Separator className="my-4" />
-            <p className="text-sm text-[#475569]">항목 B</p>
+            <p className="text-sm text-lf-on-surface-variant">항목 B</p>
             <Separator className="my-4" />
-            <p className="text-sm text-[#475569]">항목 C</p>
+            <p className="text-sm text-lf-on-surface-variant">항목 C</p>
           </div>
         </section>
 
@@ -291,37 +291,37 @@ function ComponentTestPage() {
         <section className="space-y-4">
           <SectionTitle>Typography</SectionTitle>
 
-          <div className="space-y-6 bg-white rounded-[16px] p-6 border border-[#f1f5f9]">
+          <div className="space-y-6 bg-white rounded-[16px] p-6 border border-lf-outline-variant">
             <div>
-              <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Display Large — Plus Jakarta Sans 48/60 Bold</span>
+              <span className="text-xs text-lf-on-surface-muted uppercase tracking-wide">Display Large — Plus Jakarta Sans 48/60 Bold</span>
               <Typo.DL>1,240,500원</Typo.DL>
             </div>
             <div>
-              <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Headline Large — Plus Jakarta Sans 32/40 Bold</span>
+              <span className="text-xs text-lf-on-surface-muted uppercase tracking-wide">Headline Large — Plus Jakarta Sans 32/40 Bold</span>
               <Typo.HL>내 포트폴리오</Typo.HL>
             </div>
             <div>
-              <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Headline Medium — Plus Jakarta Sans 24/32 Semibold</span>
+              <span className="text-xs text-lf-on-surface-muted uppercase tracking-wide">Headline Medium — Plus Jakarta Sans 24/32 Semibold</span>
               <Typo.HM>보유 종목</Typo.HM>
             </div>
             <div>
-              <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Body Large — Inter 18/28 Regular</span>
+              <span className="text-xs text-lf-on-surface-muted uppercase tracking-wide">Body Large — Inter 18/28 Regular</span>
               <Typo.BL>현재 배당금을 전액 재투자할 경우, 5년 뒤 월 배당금은 약 245만원으로 성장합니다.</Typo.BL>
             </div>
             <div>
-              <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Body Medium — Inter 16/24 Regular</span>
+              <span className="text-xs text-lf-on-surface-muted uppercase tracking-wide">Body Medium — Inter 16/24 Regular</span>
               <Typo.BM>추정치이며 투자·세무 자문이 아닙니다. 데이터 지연이 발생할 수 있습니다.</Typo.BM>
             </div>
             <div>
-              <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Body Small — Inter 14/20 Regular</span>
+              <span className="text-xs text-lf-on-surface-muted uppercase tracking-wide">Body Small — Inter 14/20 Regular</span>
               <Typo.BS>1,240주 · 평균단가 10,240원</Typo.BS>
             </div>
             <div>
-              <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Label Medium — Inter 14/20 Semibold</span>
+              <span className="text-xs text-lf-on-surface-muted uppercase tracking-wide">Label Medium — Inter 14/20 Semibold</span>
               <Typo.LM>전체보기</Typo.LM>
             </div>
             <div>
-              <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Label Small — Inter 12/16 Medium</span>
+              <span className="text-xs text-lf-on-surface-muted uppercase tracking-wide">Label Small — Inter 12/16 Medium</span>
               <Typo.LS>ISA 한도 활용중</Typo.LS>
             </div>
           </div>
@@ -336,7 +336,7 @@ function ComponentTestPage() {
 /** 섹션 제목 */
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="text-[24px] font-semibold leading-[32px] font-[Plus_Jakarta_Sans,ui-sans-serif,system-ui,sans-serif] text-[#0f172a]">
+    <h2 className="text-[24px] font-semibold leading-[32px] font-[Plus_Jakarta_Sans,ui-sans-serif,system-ui,sans-serif] text-lf-on-surface">
       {children}
     </h2>
   )
@@ -345,7 +345,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
 /** 소제목 라벨 */
 function SubLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-[12px] font-medium text-[#94a3b8] uppercase tracking-wide mt-2">
+    <p className="text-[12px] font-medium text-lf-on-surface-muted uppercase tracking-wide mt-2">
       {children}
     </p>
   )
@@ -356,11 +356,11 @@ function ColorSwatch({ color, label, border }: { color: string; label: string; b
   return (
     <div className="flex flex-col items-center gap-1">
       <div
-        className={`w-14 h-14 rounded-lg ${border ? 'border border-[#e2e8f0]' : ''}`}
+        className={`w-14 h-14 rounded-lg ${border ? 'border border-lf-outline' : ''}`}
         style={{ backgroundColor: color }}
       />
-      <span className="text-[10px] text-[#475569] text-center leading-tight max-w-[60px]">{label}</span>
-      <span className="text-[10px] text-[#94a3b8] font-mono">{color}</span>
+      <span className="text-[10px] text-lf-on-surface-variant text-center leading-tight max-w-[60px]">{label}</span>
+      <span className="text-[10px] text-lf-on-surface-muted font-mono">{color}</span>
     </div>
   )
 }

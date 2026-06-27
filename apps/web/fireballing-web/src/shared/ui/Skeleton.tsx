@@ -6,7 +6,7 @@ interface StyleClass {
   root?: string
 }
 
-const shimmerBase = 'bg-[#f1f5f9] animate-pulse rounded-[8px]'
+const shimmerBase = 'bg-lf-outline-variant animate-pulse rounded-[8px]'
 
 /**
  * # Skeleton

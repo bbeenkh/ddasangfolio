@@ -21,12 +21,12 @@ interface Props extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'prefi
 
 const variantStyles: Record<InputVariant, { root: string; input: string }> = {
   white: {
-    root: 'bg-white border border-[#e2e8f0] rounded-[16px] focus-within:border-[#06b6d4] focus-within:ring-2 focus-within:ring-[#06b6d4]/20 transition-all duration-150 shadow-[0px_2px_8px_-2px_rgba(15,23,42,0.04)]',
-    input: 'bg-transparent px-6 py-4 text-[#0f172a] placeholder:text-[#94a3b8]',
+    root: 'bg-white border border-lf-outline rounded-[16px] focus-within:border-lf-primary-container focus-within:ring-2 focus-within:ring-lf-primary-container/20 transition-all duration-150 shadow-[0px_2px_8px_-2px_rgba(15,23,42,0.04)]',
+    input: 'bg-transparent px-6 py-4 text-lf-on-surface placeholder:text-lf-on-surface-muted',
   },
   gray: {
-    root: 'bg-[#f8fafc] border border-[#f1f5f9] rounded-[16px] focus-within:border-[#06b6d4] focus-within:ring-2 focus-within:ring-[#06b6d4]/20 transition-all duration-150',
-    input: 'bg-transparent px-6 py-4 text-[#0f172a] placeholder:text-[#94a3b8]',
+    root: 'bg-lf-surface-low border border-lf-outline-variant rounded-[16px] focus-within:border-lf-primary-container focus-within:ring-2 focus-within:ring-lf-primary-container/20 transition-all duration-150',
+    input: 'bg-transparent px-6 py-4 text-lf-on-surface placeholder:text-lf-on-surface-muted',
   },
 }
 
@@ -51,8 +51,8 @@ function Input({ variant, styleClass, prefix, suffix, ...props }: Props) {
       styleClass={{
         root: twMerge(vs?.root, styleClass?.root),
         input: twMerge(vs?.input, 'focus:outline-none', styleClass?.input),
-        prefix: twMerge('!left-0 !top-0 !translate-y-0 h-full w-14 flex items-center justify-center text-[#94a3b8]', styleClass?.prefix),
-        suffix: twMerge('!right-0 !top-0 !translate-y-0 h-full w-14 flex items-center justify-center text-[#94a3b8]', styleClass?.suffix),
+        prefix: twMerge('!left-0 !top-0 !translate-y-0 h-full w-14 flex items-center justify-center text-lf-on-surface-muted', styleClass?.prefix),
+        suffix: twMerge('!right-0 !top-0 !translate-y-0 h-full w-14 flex items-center justify-center text-lf-on-surface-muted', styleClass?.suffix),
       }}
       {...props}
     />

@@ -43,7 +43,7 @@ const HEADING_FONT = "font-['Plus_Jakarta_Sans',ui-sans-serif,system-ui,sans-ser
  * Display Large — Plus Jakarta Sans 48/60 Bold, tracking -0.02em
  */
 const DL = createTypoComponent(
-  `text-[48px] font-bold leading-[60px] tracking-[-0.02em] ${HEADING_FONT} text-[#0f172a]`,
+  `text-[48px] font-bold leading-[60px] tracking-[-0.02em] ${HEADING_FONT} text-lf-on-surface`,
   'Typo.DL',
 )
 
@@ -51,7 +51,7 @@ const DL = createTypoComponent(
  * Headline Large — Plus Jakarta Sans 32/40 Bold, tracking -0.01em
  */
 const HL = createTypoComponent(
-  `text-[32px] font-bold leading-[40px] tracking-[-0.01em] ${HEADING_FONT} text-[#0f172a]`,
+  `text-[32px] font-bold leading-[40px] tracking-[-0.01em] ${HEADING_FONT} text-lf-on-surface`,
   'Typo.HL',
 )
 
@@ -59,7 +59,7 @@ const HL = createTypoComponent(
  * Headline Medium — Plus Jakarta Sans 24/32 Semibold
  */
 const HM = createTypoComponent(
-  `text-[24px] font-semibold leading-[32px] ${HEADING_FONT} text-[#0f172a]`,
+  `text-[24px] font-semibold leading-[32px] ${HEADING_FONT} text-lf-on-surface`,
   'Typo.HM',
 )
 
@@ -67,7 +67,7 @@ const HM = createTypoComponent(
  * Body Large — Inter 18/28 Regular
  */
 const BL = createTypoComponent(
-  'text-[18px] leading-[28px] text-[#475569]',
+  'text-[18px] leading-[28px] text-lf-on-surface-variant',
   'Typo.BL',
 )
 
@@ -75,7 +75,7 @@ const BL = createTypoComponent(
  * Body Medium — Inter 16/24 Regular
  */
 const BM = createTypoComponent(
-  'text-[16px] leading-[24px] text-[#475569]',
+  'text-[16px] leading-[24px] text-lf-on-surface-variant',
   'Typo.BM',
 )
 
@@ -83,7 +83,7 @@ const BM = createTypoComponent(
  * Body Small — Inter 14/20 Regular
  */
 const BS = createTypoComponent(
-  'text-[14px] leading-[20px] text-[#475569]',
+  'text-[14px] leading-[20px] text-lf-on-surface-variant',
   'Typo.BS',
 )
 
@@ -91,7 +91,7 @@ const BS = createTypoComponent(
  * Label Medium — Inter 14/20 Semibold
  */
 const LM = createTypoComponent(
-  'text-[14px] leading-[20px] font-semibold text-[#0f172a]',
+  'text-[14px] leading-[20px] font-semibold text-lf-on-surface',
   'Typo.LM',
 )
 
@@ -99,7 +99,7 @@ const LM = createTypoComponent(
  * Label Small — Inter 12/16 Medium
  */
 const LS = createTypoComponent(
-  'text-[12px] leading-[16px] font-medium text-[#475569]',
+  'text-[12px] leading-[16px] font-medium text-lf-on-surface-variant',
   'Typo.LS',
 )
 

@@ -20,7 +20,7 @@ const Separator = React.forwardRef<HTMLElement, Props>(function Separator(
   return (
     <BaseSeparator
       ref={ref as React.Ref<HTMLElement>}
-      className={twMerge('border-[#f1f5f9]', className)}
+      className={twMerge('border-lf-outline-variant', className)}
       {...props}
     />
   )

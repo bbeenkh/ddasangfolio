@@ -13,7 +13,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: [
-    'bg-gradient-to-r from-[#06b6d4] to-[#2dd4bf] text-white font-semibold',
+    'bg-gradient-to-r from-lf-primary-container to-lf-primary-gradient-end text-white font-semibold',
     'rounded-lg px-6 py-3',
     'shadow-sm not-disabled:hover:shadow-md',
     'transition-all duration-150',
@@ -21,15 +21,15 @@ const variantStyles: Record<ButtonVariant, string> = {
     'not-disabled:hover:opacity-70',
   ].join(' '),
   secondary: [
-    'bg-[#f1f5f9] text-[#0f172a] font-medium',
+    'bg-lf-outline-variant text-lf-on-surface font-medium',
     'rounded-lg px-6 py-3',
-    'not-disabled:hover:bg-[#e2e8f0] not-disabled:hover:opacity-70 transition-colors duration-150',
+    'not-disabled:hover:bg-lf-outline not-disabled:hover:opacity-70 transition-colors duration-150',
     'disabled:opacity-50 disabled:cursor-not-allowed',
   ].join(' '),
   ghost: [
-    'bg-transparent text-[#475569] font-medium',
+    'bg-transparent text-lf-on-surface-variant font-medium',
     'rounded-lg px-6 py-3',
-    'not-disabled:hover:bg-[#f8fafc] not-disabled:hover:opacity-70 transition-colors duration-150',
+    'not-disabled:hover:bg-lf-surface-low not-disabled:hover:opacity-70 transition-colors duration-150',
     'disabled:opacity-50 disabled:cursor-not-allowed',
   ].join(' '),
 }

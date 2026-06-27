@@ -56,11 +56,11 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(function Che
       >
         {disabled ? (
           <svg width="20" height="20" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0.75" width="24" height="24" rx="4" fill="#bcc9cd" />
+            <rect x="0.75" width="24" height="24" rx="4" fill="var(--color-lf-outline-check)" />
           </svg>
         ) : isChecked ? (
           <svg width="20" height="20" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0.75" width="24" height="24" rx="4" fill="#06b6d4" />
+            <rect x="0.75" width="24" height="24" rx="4" fill="var(--color-lf-primary-container)" />
             <path
               d="M10.6134 14.5836L7.83339 11.8036L6.88672 12.7436L10.6134 16.4703L18.6134 8.47027L17.6734 7.53027L10.6134 14.5836Z"
               fill="white"
@@ -68,7 +68,7 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(function Che
           </svg>
         ) : (
           <svg width="20" height="20" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="1.25" y="0.5" width="23" height="23" rx="3.5" stroke="#bcc9cd" />
+            <rect x="1.25" y="0.5" width="23" height="23" rx="3.5" stroke="var(--color-lf-outline-check)" />
           </svg>
         )}
       </button>
@@ -77,7 +77,7 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(function Che
           htmlFor={id}
           className={twMerge(
             'text-sm',
-            disabled ? 'cursor-default text-[#94a3b8]' : 'cursor-pointer text-[#0f172a]',
+            disabled ? 'cursor-default text-lf-on-surface-muted' : 'cursor-pointer text-lf-on-surface',
           )}
         >
           {label}
