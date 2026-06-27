@@ -7,7 +7,6 @@
  */
 export { default as Button } from './Button'
 export { default as Card } from './Card'
-export { CardUI, CardHeader, CardTitle, CardDescription, CardAction, CardContent, CardFooter } from './CardUI'
 export { default as Input } from './Input'
 export { default as Separator } from './Separator'
 export { default as Checkbox } from './Checkbox'

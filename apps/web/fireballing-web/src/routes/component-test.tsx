@@ -3,12 +3,6 @@ import { useState } from 'react'
 import {
   Button,
   Card,
-  CardUI,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
   Input,
   Separator,
   Checkbox,
@@ -76,9 +70,9 @@ function ComponentTestPage() {
 
         <Separator />
 
-        {/* ===== Card (Legacy) ===== */}
+        {/* ===== Card ===== */}
         <section className="space-y-4">
-          <SectionTitle>Card (Legacy)</SectionTitle>
+          <SectionTitle>Card</SectionTitle>
 
           <Card>
             <Card.Header>
@@ -93,45 +87,42 @@ function ComponentTestPage() {
               </div>
             </Card.Body>
           </Card>
-        </section>
 
-        <Separator />
-
-        {/* ===== CardUI (shadcn style) ===== */}
-        <section className="space-y-4">
-          <SectionTitle>CardUI (shadcn style)</SectionTitle>
-
-          <CardUI>
-            <CardHeader>
-              <CardTitle>이번 달 배당금</CardTitle>
-              <CardDescription>세후 기준 예상 금액</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-[32px] font-bold text-[#0f172a]">1,240,500<span className="text-lg">원</span></p>
-            </CardContent>
-            <CardFooter>
+          <Card>
+            <Card.Header>
+              <Card.Title>이번 달 배당금</Card.Title>
+            </Card.Header>
+            <Card.Body>
+              <div>
+                <p className="text-sm text-[#475569]">세후 기준 예상 금액</p>
+                <p className="text-[32px] font-bold text-[#0f172a]">1,240,500<span className="text-lg">원</span></p>
+              </div>
+            </Card.Body>
+            <Card.Footer className="relative p-6">
               <span className="text-sm text-[#475569]">다음 배당일: 2024.07.15</span>
-            </CardFooter>
-          </CardUI>
+            </Card.Footer>
+          </Card>
 
           <div className="grid grid-cols-2 gap-3">
-            <CardUI>
-              <CardHeader>
-                <CardTitle className="text-sm">스노우볼 성장</CardTitle>
-              </CardHeader>
-              <CardContent>
+            <Card className="h-auto">
+              <Card.Header>
+                <Card.Title className="text-sm">스노우볼 성장</Card.Title>
+              </Card.Header>
+              <Card.Body>
                 <div className="h-16 w-full bg-gradient-to-r from-[#06b6d4]/10 to-[#2dd4bf]/10 rounded-lg" />
-              </CardContent>
-            </CardUI>
-            <CardUI>
-              <CardHeader>
-                <CardTitle className="text-sm">절세 혜택</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-2xl font-bold text-[#0f172a]">42.5<span className="text-sm">%</span></p>
-                <p className="text-xs text-[#475569] mt-1">ISA 한도 활용중</p>
-              </CardContent>
-            </CardUI>
+              </Card.Body>
+            </Card>
+            <Card className="h-auto">
+              <Card.Header>
+                <Card.Title className="text-sm">절세 혜택</Card.Title>
+              </Card.Header>
+              <Card.Body>
+                <div>
+                  <p className="text-2xl font-bold text-[#0f172a]">42.5<span className="text-sm">%</span></p>
+                  <p className="text-xs text-[#475569] mt-1">ISA 한도 활용중</p>
+                </div>
+              </Card.Body>
+            </Card>
           </div>
         </section>
 
@@ -212,9 +203,9 @@ function ComponentTestPage() {
         <section className="space-y-4">
           <SectionTitle>Skeleton</SectionTitle>
 
-          <CardUI>
-            <CardContent>
-              <Skeleton.Container styleClass={{ root: 'space-y-4' }}>
+          <Card className="h-auto">
+            <Card.Body>
+              <Skeleton.Container styleClass={{ root: 'space-y-4 w-full' }}>
                 <div className="flex items-center gap-4">
                   <Skeleton.Circle />
                   <div className="flex-1 space-y-2">
@@ -228,8 +219,8 @@ function ComponentTestPage() {
                   <Skeleton.Box styleClass={{ root: 'w-1/3 h-8 rounded-full' }} />
                 </div>
               </Skeleton.Container>
-            </CardContent>
-          </CardUI>
+            </Card.Body>
+          </Card>
         </section>
 
         <Separator />
