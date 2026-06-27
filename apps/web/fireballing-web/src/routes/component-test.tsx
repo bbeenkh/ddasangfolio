@@ -132,15 +132,18 @@ function ComponentTestPage() {
         <section className="space-y-4">
           <SectionTitle>Input</SectionTitle>
 
-          <SubLabel>Default</SubLabel>
-          <Input variant="default" placeholder="금액을 입력하세요" />
+          <SubLabel>White</SubLabel>
+          <Input variant="white" placeholder="금액을 입력하세요" />
 
-          <SubLabel>Default with suffix</SubLabel>
-          <Input variant="default" placeholder="0" suffix={<span className="text-[#475569] text-sm font-medium">원</span>} />
+          <SubLabel>White with suffix</SubLabel>
+          <Input variant="white" placeholder="0" suffix={<span className="text-[#475569] text-sm font-medium">원</span>} />
 
-          <SubLabel>Search</SubLabel>
+          <SubLabel>Gray</SubLabel>
+          <Input variant="gray" placeholder="종목명 또는 티커 검색" />
+
+          <SubLabel>Gray with prefix</SubLabel>
           <Input
-            variant="search"
+            variant="gray"
             placeholder="종목명 또는 티커 검색"
             prefix={
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -151,7 +154,7 @@ function ComponentTestPage() {
           />
 
           <SubLabel>Disabled</SubLabel>
-          <Input variant="default" placeholder="비활성 입력" disabled className="opacity-50 cursor-not-allowed" />
+          <Input variant="white" placeholder="비활성 입력" disabled styleClass={{ root: 'opacity-50 cursor-not-allowed' }} />
         </section>
 
         <Separator />
