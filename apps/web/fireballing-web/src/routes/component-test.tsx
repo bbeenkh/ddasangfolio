@@ -8,6 +8,7 @@ import {
   Checkbox,
   Skeleton,
   SwitchButton,
+  Typo,
 } from '../shared/ui'
 
 export const Route = createFileRoute('/component-test')({
@@ -281,58 +282,47 @@ function ComponentTestPage() {
           </div>
         </section>
 
-        {/* ===== 타이포그래피 ===== */}
+        {/* 
+        ===== 타이포그래피 ===== 
+        
+        
+        
+        */}
         <section className="space-y-4">
           <SectionTitle>Typography</SectionTitle>
 
           <div className="space-y-6 bg-white rounded-[16px] p-6 border border-[#f1f5f9]">
             <div>
               <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Display Large — Plus Jakarta Sans 48/60 Bold</span>
-              <p className="text-[48px] font-bold leading-[60px] tracking-[-0.02em] font-[Plus_Jakarta_Sans,ui-sans-serif,system-ui,sans-serif] text-[#0f172a]">
-                1,240,500원
-              </p>
+              <Typo.DL>1,240,500원</Typo.DL>
             </div>
             <div>
               <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Headline Large — Plus Jakarta Sans 32/40 Bold</span>
-              <p className="text-[32px] font-bold leading-[40px] tracking-[-0.01em] font-[Plus_Jakarta_Sans,ui-sans-serif,system-ui,sans-serif] text-[#0f172a]">
-                내 포트폴리오
-              </p>
+              <Typo.HL>내 포트폴리오</Typo.HL>
             </div>
             <div>
               <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Headline Medium — Plus Jakarta Sans 24/32 Semibold</span>
-              <p className="text-[24px] font-semibold leading-[32px] font-[Plus_Jakarta_Sans,ui-sans-serif,system-ui,sans-serif] text-[#0f172a]">
-                보유 종목
-              </p>
+              <Typo.HM>보유 종목</Typo.HM>
             </div>
             <div>
               <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Body Large — Inter 18/28 Regular</span>
-              <p className="text-[18px] leading-[28px] text-[#475569]">
-                현재 배당금을 전액 재투자할 경우, 5년 뒤 월 배당금은 약 245만원으로 성장합니다.
-              </p>
+              <Typo.BL>현재 배당금을 전액 재투자할 경우, 5년 뒤 월 배당금은 약 245만원으로 성장합니다.</Typo.BL>
             </div>
             <div>
               <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Body Medium — Inter 16/24 Regular</span>
-              <p className="text-[16px] leading-[24px] text-[#475569]">
-                추정치이며 투자·세무 자문이 아닙니다. 데이터 지연이 발생할 수 있습니다.
-              </p>
+              <Typo.BM>추정치이며 투자·세무 자문이 아닙니다. 데이터 지연이 발생할 수 있습니다.</Typo.BM>
             </div>
             <div>
               <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Body Small — Inter 14/20 Regular</span>
-              <p className="text-[14px] leading-[20px] text-[#475569]">
-                1,240주 · 평균단가 10,240원
-              </p>
+              <Typo.BS>1,240주 · 평균단가 10,240원</Typo.BS>
             </div>
             <div>
               <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Label Medium — Inter 14/20 Semibold</span>
-              <p className="text-[14px] leading-[20px] font-semibold text-[#0f172a]">
-                전체보기
-              </p>
+              <Typo.LM>전체보기</Typo.LM>
             </div>
             <div>
               <span className="text-xs text-[#94a3b8] uppercase tracking-wide">Label Small — Inter 12/16 Medium</span>
-              <p className="text-[12px] leading-[16px] font-medium text-[#475569]">
-                ISA 한도 활용중
-              </p>
+              <Typo.LS>ISA 한도 활용중</Typo.LS>
             </div>
           </div>
         </section>
