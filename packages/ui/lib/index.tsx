@@ -16,6 +16,8 @@ export { default as Selectbox } from './components/Selectbox';
 export { default as Spinner } from './components/Spinner';
 export { default as Tab } from './components/Tab';
 export { default as Toast } from './components/Toast';
+export { default as Gutter } from './components/Gutter';
+export type { SpaceToken } from './components/Gutter';
 
 export {
   Accordion,
