@@ -1,7 +1,7 @@
 {
-  "name": "@ddsf/utils",
+  "name": "@fblg/utils",
   "version": "1.0.0",
-  "description": "따상폴리오 유틸 모듈",
+  "description": "파이어볼링 유틸 모듈",
   "main": "index.js",
   "keywords": [],
   "exports": {

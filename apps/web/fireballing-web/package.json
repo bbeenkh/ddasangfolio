@@ -1,5 +1,5 @@
 {
-  "name": "ddsf-web",
+  "name": "fblg-web",
   "private": true,
   "type": "module",
   "imports": {
@@ -17,8 +17,8 @@
     "e2e:ui": "playwright test --ui"
   },
   "dependencies": {
-    "@ddsf/core-ui": "workspace:^",
-    "@ddsf/utils": "workspace:^",
+    "@fblg/core-ui": "workspace:^",
+    "@fblg/utils": "workspace:^",
     "@tailwindcss/vite": "^4.1.18",
     "@tanstack/react-devtools": "latest",
     "@tanstack/react-router": "latest",

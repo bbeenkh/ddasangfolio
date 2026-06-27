@@ -1,89 +1,117 @@
 /**
- * ODS 디자인 시스템 Tailwind 4 테마 설정
- * tailwind.preset.js에서 마이그레이션됨
+ * Luminous Fintech 디자인 시스템 Tailwind 4 테마 설정
+ * DESIGN.md 기반으로 구성
  */
 @theme {
-  /* Colors */
+  /* ===== Surface Colors ===== */
+  --color-surface: var(--color-surface);
+  --color-surface-dim: var(--color-surface-dim);
+  --color-surface-bright: var(--color-surface-bright);
+  --color-surface-container-lowest: var(--color-surface-container-lowest);
+  --color-surface-container-low: var(--color-surface-container-low);
+  --color-surface-container: var(--color-surface-container);
+  --color-surface-container-high: var(--color-surface-container-high);
+  --color-surface-container-highest: var(--color-surface-container-highest);
+  --color-on-surface: var(--color-on-surface);
+  --color-on-surface-variant: var(--color-on-surface-variant);
+  --color-inverse-surface: var(--color-inverse-surface);
+  --color-inverse-on-surface: var(--color-inverse-on-surface);
+  --color-surface-tint: var(--color-surface-tint);
+  --color-surface-variant: var(--color-surface-variant);
+
+  /* ===== Primary Colors ===== */
   --color-primary: var(--color-primary);
+  --color-on-primary: var(--color-on-primary);
+  --color-primary-container: var(--color-primary-container);
+  --color-on-primary-container: var(--color-on-primary-container);
+  --color-inverse-primary: var(--color-inverse-primary);
+  --color-primary-fixed: var(--color-primary-fixed);
+  --color-primary-fixed-dim: var(--color-primary-fixed-dim);
+  --color-on-primary-fixed: var(--color-on-primary-fixed);
+  --color-on-primary-fixed-variant: var(--color-on-primary-fixed-variant);
+
+  /* ===== Secondary Colors ===== */
   --color-secondary: var(--color-secondary);
+  --color-on-secondary: var(--color-on-secondary);
+  --color-secondary-container: var(--color-secondary-container);
+  --color-on-secondary-container: var(--color-on-secondary-container);
+  --color-secondary-fixed: var(--color-secondary-fixed);
+  --color-secondary-fixed-dim: var(--color-secondary-fixed-dim);
+  --color-on-secondary-fixed: var(--color-on-secondary-fixed);
+  --color-on-secondary-fixed-variant: var(--color-on-secondary-fixed-variant);
+
+  /* ===== Tertiary Colors ===== */
   --color-tertiary: var(--color-tertiary);
-  --color-caption: var(--color-caption);
+  --color-on-tertiary: var(--color-on-tertiary);
+  --color-tertiary-container: var(--color-tertiary-container);
+  --color-on-tertiary-container: var(--color-on-tertiary-container);
+  --color-tertiary-fixed: var(--color-tertiary-fixed);
+  --color-tertiary-fixed-dim: var(--color-tertiary-fixed-dim);
+  --color-on-tertiary-fixed: var(--color-on-tertiary-fixed);
+  --color-on-tertiary-fixed-variant: var(--color-on-tertiary-fixed-variant);
+
+  /* ===== Error Colors ===== */
+  --color-error: var(--color-error);
+  --color-on-error: var(--color-on-error);
+  --color-error-container: var(--color-error-container);
+  --color-on-error-container: var(--color-on-error-container);
+
+  /* ===== Outline Colors ===== */
+  --color-outline: var(--color-outline);
+  --color-outline-variant: var(--color-outline-variant);
+
+  /* ===== Background Colors ===== */
+  --color-background: var(--color-background);
+  --color-on-background: var(--color-on-background);
+
+  /* ===== 금융 상태 (한국 시장 규칙) ===== */
+  --color-profit: var(--color-profit);
+  --color-loss: var(--color-loss);
+
+  /* ===== 레거시 호환 ===== */
   --color-black: var(--color-black);
   --color-white: var(--color-white);
-  --color-off-white: var(--color-off-white);
   --color-card: var(--color-card);
 
-  /* Gray Scale */
-  --color-gray-900: var(--color-gray-900);
-  --color-gray-800: var(--color-gray-800);
-  --color-gray-700: var(--color-gray-700);
-  --color-gray-600: var(--color-gray-600);
-  --color-gray-500: var(--color-gray-500);
-  --color-gray-400: var(--color-gray-400);
-  --color-gray-300: var(--color-gray-300);
-  --color-gray-200: var(--color-gray-200);
-  --color-gray-100: var(--color-gray-100);
-  --color-gray-50: var(--color-gray-50);
+  /* ===== Font Family ===== */
+  --font-heading: var(--font-family-heading);
+  --font-body: var(--font-family-body);
 
-  /* State Colors */
-  --color-state-danger: var(--color-state-danger);
-  --color-state-warning: var(--color-state-warning);
-  --color-state-success: var(--color-state-success);
-  --color-state-info: var(--color-state-info);
+  /* ===== Font Size (타이포그래피 스케일) ===== */
+  --font-size-display-lg: var(--font-display-lg-size);
+  --font-size-headline-lg: var(--font-headline-lg-size);
+  --font-size-headline-lg-mobile: var(--font-headline-lg-mobile-size);
+  --font-size-headline-md: var(--font-headline-md-size);
+  --font-size-body-lg: var(--font-body-lg-size);
+  --font-size-body-md: var(--font-body-md-size);
+  --font-size-body-sm: var(--font-body-sm-size);
+  --font-size-label-md: var(--font-label-md-size);
+  --font-size-label-sm: var(--font-label-sm-size);
 
-  /* Border Colors */
-  --color-borderActive: var(--color-border-active);
-  --color-borderPrimary: var(--color-border-primary);
-  --color-borderSecondary: var(--color-border-secondary);
+  /* ===== 라운딩 ===== */
+  --radius-sm: var(--rounded-sm);
+  --radius-default: var(--rounded-default);
+  --radius-md: var(--rounded-md);
+  --radius-lg: var(--rounded-lg);
+  --radius-xl: var(--rounded-xl);
+  --radius-full: var(--rounded-full);
 
-  /* Font Sizes */
-  --font-size-xxxl: var(--font-xxxl);
-  --font-size-xxl: var(--font-xxl);
-  --font-size-xl: var(--font-xl);
-  --font-size-lg: var(--font-lg);
-  --font-size-md: var(--font-md);
-  --font-size-sm: var(--font-sm);
-  --font-size-xs: var(--font-xs);
-  --font-size-xxs: var(--font-xxs);
-
-  /* Typography - Heading */
-  --font-size-h1: var(--font-h1-size);
-  --font-size-h2: var(--font-h2-size);
-  --font-size-h3: var(--font-h3-size);
-  --font-size-h4: var(--font-h4-size);
-
-  /* Typography - Title */
-  --font-size-title1: var(--font-title1-size);
-  --font-size-title2: var(--font-title2-size);
-  --font-size-title3: var(--font-title3-size);
-  --font-size-title4: var(--font-title4-size);
-
-  /* Typography - Body */
-  --font-size-body1: var(--font-body1-size);
-  --font-size-body2: var(--font-body2-size);
-  --font-size-body3: var(--font-body3-size);
-
-  /* Font Weights */
-  --font-weight-bold: 700;
-  --font-weight-regular: 400;
-
-  /* Spacing */
-  --spacing-xxxl: var(--space-xxxl);
-  --spacing-xxl: var(--space-xxl);
-  --spacing-xl: var(--space-xl);
-  --spacing-lg: var(--space-lg);
-  --spacing-md: var(--space-md);
-  --spacing-sm: var(--space-sm);
+  /* ===== 간격 ===== */
+  --spacing-unit: var(--space-unit);
   --spacing-xs: var(--space-xs);
-  --spacing-xxs: var(--space-xxs);
-  --spacing-xxxs: var(--space-xxxs);
+  --spacing-sm: var(--space-sm);
+  --spacing-md: var(--space-md);
+  --spacing-lg: var(--space-lg);
+  --spacing-xl: var(--space-xl);
+  --spacing-2xl: var(--space-2xl);
+  --spacing-gutter: var(--space-gutter);
 
-  /* Breakpoints */
+  /* ===== 브레이크포인트 ===== */
   --breakpoint-mobile: var(--layout-mobile);
   --breakpoint-tablet: var(--layout-tablet);
   --breakpoint-desktop: var(--layout-desktop);
 
-  /* Keyframes */
+  /* ===== 키프레임 ===== */
   --animate-shimmer: shimmer 1.5s linear infinite;
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;

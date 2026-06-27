@@ -1,9 +1,9 @@
 {
-  "name": "@ddsf/core-ui",
+  "name": "@fblg/core-ui",
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "ddsf headless ui",
+  "description": "fblg headless ui",
   "exports": {
     ".": "./lib/index.tsx",
     "./styles.css": "./lib/index.css",
@@ -48,9 +48,9 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
-    "@ddsf/eslint-config": "workspace:*",
+    "@fblg/eslint-config": "workspace:*",
     "eslint": "^9.39.1",
-    "@ddsf/typescript-config": "workspace:*",
+    "@fblg/typescript-config": "workspace:*",
     "@storybook/addon-links": "catalog:",
     "@storybook/react": "catalog:",
     "@storybook/react-vite": "catalog:",

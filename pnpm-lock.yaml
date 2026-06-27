@@ -157,7 +157,7 @@ importers:
         specifier: ^5.8.3
         version: 5.9.2
 
-  apps/server/ddasangfolio-server:
+  apps/server/fireballing-server:
     dependencies:
       '@hono/node-server':
         specifier: ^1.19.14
@@ -185,12 +185,12 @@ importers:
         specifier: ^4.1.5
         version: 4.1.7(@types/node@20.19.41)(jsdom@28.1.0)(vite@8.0.14(@types/node@20.19.41)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.3)(yaml@2.9.0))
 
-  apps/web/ddasangfolio-web:
+  apps/web/fireballing-web:
     dependencies:
-      '@ddsf/core-ui':
+      '@fblg/core-ui':
         specifier: workspace:^
         version: link:../../../packages/ui
-      '@ddsf/utils':
+      '@fblg/utils':
         specifier: workspace:^
         version: link:../../../packages/utils
       '@tailwindcss/vite':
@@ -253,7 +253,7 @@ importers:
         version: 28.1.0
       prettier:
         specifier: ^3.8.1
-        version: 3.8.3
+        version: 3.8.4
       typescript:
         specifier: ^6.0.2
         version: 6.0.3
@@ -386,10 +386,10 @@ importers:
         specifier: ^5.0.14
         version: 5.0.14(@types/react@19.2.3)(react@19.2.3)(use-sync-external-store@1.6.0(react@19.2.3))
     devDependencies:
-      '@ddsf/eslint-config':
+      '@fblg/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@ddsf/typescript-config':
+      '@fblg/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
       '@storybook/addon-links':
@@ -5769,11 +5769,6 @@ packages:
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
-    hasBin: true
-
-  prettier@3.8.3:
-    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
-    engines: {node: '>=14'}
     hasBin: true
 
   prettier@3.8.4:
@@ -13155,8 +13150,6 @@ snapshots:
   prelude-ls@1.2.1: {}
 
   prettier@2.8.8: {}
-
-  prettier@3.8.3: {}
 
   prettier@3.8.4: {}
 

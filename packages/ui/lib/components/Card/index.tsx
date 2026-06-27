@@ -36,7 +36,8 @@ interface ILayoutProps {
 const Card = ({ className, children }: ILayoutProps) => (
   <section
     className={twMerge(
-      'w-full h-full p-6 bg-white border-[#E2E2E2] border flex flex-col relative rounded-lg gap-6',
+      'w-full h-full p-6 bg-white border border-[#f1f5f9] flex flex-col relative rounded-[16px] gap-6',
+      'shadow-[0px_2px_8px_-2px_rgba(15,23,42,0.04)]',
       className,
     )}
   >
@@ -60,7 +61,7 @@ Card.Header = ({ className, children }: ILayoutProps) => (
 Card.Title = ({ className, children }: ILayoutProps) => (
   <p
     className={twMerge(
-      'text-xl font-bold !m-0 flex items-center justify-start text-gray-900',
+      'text-xl font-bold !m-0 flex items-center justify-start text-[#0f172a] font-[Plus_Jakarta_Sans,ui-sans-serif,system-ui,sans-serif]',
       className,
     )}
   >

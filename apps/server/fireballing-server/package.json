@@ -1,5 +1,5 @@
 {
-  "name": "ddsf-server",
+  "name": "fblg-server",
   "type": "module",
   "scripts": {
     "local": "tsx watch src/index.ts",

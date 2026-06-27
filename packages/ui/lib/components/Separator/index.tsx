@@ -37,7 +37,7 @@ const Separator = React.forwardRef<
       decorative={decorative}
       className={twMerge(
         orientation === 'horizontal' ? 'w-full border-t' : 'h-full border-l',
-        'border-gray-200',
+        'border-[#f1f5f9]',
         className,
       )}
       {...props}

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Button, Card, Input, Tab } from '@ddsf/core-ui'
+import { Button, Card, Input, Tab } from '@fblg/core-ui'
 import { signup, login, getMe, refreshToken, logout } from '../api/auth-test.api'
 import type { AuthTokens } from '../api/auth-test.api'
 
@@ -10,7 +10,7 @@ import type { AuthTokens } from '../api/auth-test.api'
  * - 제약사항 및 특이사항:
  *   - 서버가 localhost:8080에서 실행 중이어야 함
  *   - 개발/테스트 전용 UI
- *   - @ddsf/core-ui 컴포넌트 기반
+ *   - @fblg/core-ui 컴포넌트 기반
  * ---
  * @example
  * <AuthTestPanel />

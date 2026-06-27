@@ -117,24 +117,24 @@ pnpm check-types       # TypeScript type-check across all packages
 pnpm format            # Prettier format (*.ts, *.tsx, *.md)
 
 # Run tasks for a specific package only
-pnpm --filter @ddsf/core-ui build
+pnpm --filter @fblg/core-ui build
 pnpm --filter web dev
 ```
 
 ## Project Summary
 
-**ddasangfolio** — 개인 포트폴리오 프로젝트. Web, Server, Mobile 3개 앱을 포함하는 Turborepo 모노레포.
+**fireballing** — 개인 포트폴리오 프로젝트. Web, Server, Mobile 3개 앱을 포함하는 Turborepo 모노레포.
 
 ## Architecture
 
 ```
-ddasangfolio/
+fireballing/
 ├── apps/
-│   ├── web/ddasangfolio-web/          # TanStack Start + Vite 프론트엔드
-│   ├── server/ddasangfolio-server/    # Hono 백엔드 서버
+│   ├── web/fireballing-web/           # TanStack Start + Vite 프론트엔드
+│   ├── server/fireballing-server/     # Hono 백엔드 서버
 │   └── mobile/DdasangfolioApp/        # React Native 모바일 앱
 ├── packages/
-│   ├── ui/                            # @ddsf/core-ui — 공용 React 컴포넌트 (button, card, code)
+│   ├── ui/                            # @fblg/core-ui — 공용 React 컴포넌트 (button, card, code)
 │   ├── typescript-config/             # 공용 tsconfig (base, nextjs, react-library)
 │   └── eslint-config/                 # 공용 ESLint 설정 (base, next, react-internal)
 ├── turbo.json                         # 파이프라인 설정
@@ -142,7 +142,7 @@ ddasangfolio/
 ```
 
 **Key patterns:**
-- Apps consume `@ddsf/core-ui` components and extend shared configs from `@ddsf/eslint-config` and `@ddsf/typescript-config`
+- Apps consume `@fblg/core-ui` components and extend shared configs from `@fblg/eslint-config` and `@fblg/typescript-config`
 - TypeScript strict mode + ES2022 target is enforced via `packages/typescript-config/base.json`
 - Turbo task pipeline: `build` depends on upstream `^build`; `dev` runs persistently with no cache
 
@@ -159,4 +159,4 @@ ddasangfolio/
 | **TypeScript** | 5.8 ~ 6.0 (앱별 상이) |
 | **린트/포맷** | ESLint 9 (FlatConfig) + Prettier 3 |
 | **모노레포** | Turborepo 2.9 + pnpm 9.0 |
-| **공용 컴포넌트** | @ddsf/core-ui (React 19) |
+| **공용 컴포넌트** | @fblg/core-ui (React 19) |

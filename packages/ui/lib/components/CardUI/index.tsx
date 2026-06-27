@@ -28,7 +28,11 @@ function Card({ className, ...props }: React.ComponentProps<'div'>) {
   return (
     <section
       data-slot="card"
-      className={cn('flex flex-col gap-6 rounded-xl bg-card py-6 text-card-foreground', className)}
+      className={cn(
+        'flex flex-col gap-6 rounded-[16px] bg-white py-6 text-[#0f172a]',
+        'border border-[#f1f5f9] shadow-[0px_2px_8px_-2px_rgba(15,23,42,0.04)]',
+        className,
+      )}
       {...props}
     />
   );

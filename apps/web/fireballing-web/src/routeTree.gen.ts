@@ -9,10 +9,16 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ComponentTestRouteImport } from './routes/component-test'
 import { Route as AuthTestRouteImport } from './routes/auth-test'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 
+const ComponentTestRoute = ComponentTestRouteImport.update({
+  id: '/component-test',
+  path: '/component-test',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthTestRoute = AuthTestRouteImport.update({
   id: '/auth-test',
   path: '/auth-test',
@@ -33,46 +39,43 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth-test': typeof AuthTestRoute
+  '/component-test': typeof ComponentTestRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth-test': typeof AuthTestRoute
+  '/component-test': typeof ComponentTestRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/auth-test': typeof AuthTestRoute
+  '/component-test': typeof ComponentTestRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/auth-test'
+  fullPaths: '/' | '/about' | '/auth-test' | '/component-test'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/auth-test'
-  id: '__root__' | '/' | '/about' | '/auth-test'
+  to: '/' | '/about' | '/auth-test' | '/component-test'
+  id: '__root__' | '/' | '/about' | '/auth-test' | '/component-test'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AuthTestRoute: typeof AuthTestRoute
+  ComponentTestRoute: typeof ComponentTestRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
+    '/component-test': {
+      id: '/component-test'
+      path: '/component-test'
+      fullPath: '/component-test'
+      preLoaderRoute: typeof ComponentTestRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth-test': {
@@ -82,6 +85,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthTestRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AuthTestRoute: AuthTestRoute,
+  ComponentTestRoute: ComponentTestRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

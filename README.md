@@ -15,7 +15,7 @@ Web, Server, Mobile 3개 앱을 포함하는 **Turborepo 모노레포** 구조�
 | **TypeScript** | 5.8 ~ 6.0 |
 | **린트 / 포맷** | ESLint 9 (FlatConfig) + Prettier 3 |
 | **모노레포** | Turborepo 2.9 + pnpm 9.0 |
-| **공용 컴포넌트** | @ddsf/core-ui (React 19) |
+| **공용 컴포넌트** | @fblg/core-ui (React 19) |
 
 ## 커맨드 정리
 
@@ -40,9 +40,9 @@ pnpm check-types
 pnpm format
 
 # 특정 패키지만 실행
-pnpm --filter @ddsf/core-ui build
-pnpm --filter ddsf-web local
-pnpm --filter ddsf-server local
+pnpm --filter @fblg/core-ui build
+pnpm --filter fblg-web local
+pnpm --filter fblg-server local
 ```
 
 ## 각 모듈 정의
@@ -51,14 +51,14 @@ pnpm --filter ddsf-server local
 
 | 앱 | 경로 | 설명 |
 |----|------|------|
-| **Web** | `apps/web/ddasangfolio-web/` | TanStack Start + Vite 기반 프론트엔드. Tailwind CSS로 스타일링하며, Vitest + Testing Library로 테스트 수행 |
-| **Server** | `apps/server/ddasangfolio-server/` | Hono 기반 백엔드 API 서버. tsx로 개발 시 핫 리로드 지원 |
+| **Web** | `apps/web/fireballing-web/` | TanStack Start + Vite 기반 프론트엔드. Tailwind CSS로 스타일링하며, Vitest + Testing Library로 테스트 수행 |
+| **Server** | `apps/server/fireballing-server/` | Hono 기반 백엔드 API 서버. tsx로 개발 시 핫 리로드 지원 |
 | **Mobile** | `apps/mobile/DdasangfolioApp/` | React Native 기반 모바일 앱. Android / iOS 동시 지원 |
 
 ### packages
 
 | 패키지 | 이름 | 설명 |
 |--------|------|------|
-| **ui** | `@ddsf/core-ui` | 공용 React 컴포넌트 라이브러리 (button, card, code 등) |
-| **typescript-config** | `@ddsf/typescript-config` | 공용 tsconfig 프리셋 (base, nextjs, react-library) |
-| **eslint-config** | `@ddsf/eslint-config` | 공용 ESLint 설정 (base, next, react-internal) |
+| **ui** | `@fblg/core-ui` | 공용 React 컴포넌트 라이브러리 (button, card, code 등) |
+| **typescript-config** | `@fblg/typescript-config` | 공용 tsconfig 프리셋 (base, nextjs, react-library) |
+| **eslint-config** | `@fblg/eslint-config` | 공용 ESLint 설정 (base, next, react-internal) |

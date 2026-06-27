@@ -1,17 +1,17 @@
 {
-  "name": "ddsf",
-  "description": "따상폴리오",
+  "name": "fblg",
+  "description": "파이어볼링",
   "private": true,
   "scripts": {
     "build": "turbo run build",
     "local": "turbo run local",
-    "local:a": "pnpm --filter ddsf-mobile local:a",
-    "local:i": "pnpm --filter ddsf-mobile local:i",
+    "local:a": "pnpm --filter fblg-mobile local:a",
+    "local:i": "pnpm --filter fblg-mobile local:i",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "storybook": "pnpm --filter @ddsf/core-ui storybook",
-    "build-storybook": "pnpm --filter @ddsf/core-ui build-storybook",
+    "storybook": "pnpm --filter @fblg/core-ui storybook",
+    "build-storybook": "pnpm --filter @fblg/core-ui build-storybook",
     "prepare": "husky"
   },
   "devDependencies": {

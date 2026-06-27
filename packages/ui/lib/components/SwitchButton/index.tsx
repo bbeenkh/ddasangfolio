@@ -53,9 +53,9 @@ const SwitchButton = React.forwardRef<
       className={twMerge(
         'relative inline-flex h-6 w-11 shrink-0 items-center rounded-full',
         'transition-colors duration-200',
-        'bg-gray-200 data-[state=checked]:bg-gray-900',
+        'bg-[#bcc9cd] data-[state=checked]:bg-[#06b6d4]',
         'disabled:cursor-not-allowed disabled:opacity-40',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:ring-offset-2',
+        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#06b6d4] focus-visible:ring-offset-2',
         styleClass?.root,
         className,
       )}

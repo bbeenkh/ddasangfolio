@@ -6,7 +6,7 @@ export default function Header() {
       <nav className="mx-auto flex max-w-5xl items-center gap-x-4 py-3">
         <h2 className="m-0 text-base font-semibold tracking-tight">
           <Link to="/" className="text-gray-900 no-underline">
-            ddasangfolio
+            fireballing
           </Link>
         </h2>
 
