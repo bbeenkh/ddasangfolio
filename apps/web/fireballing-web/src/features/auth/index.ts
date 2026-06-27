@@ -1,3 +1,6 @@
+// API
+export { login, signup } from './api/auth.api'
+
 // Model
 export {
   setTokens,
