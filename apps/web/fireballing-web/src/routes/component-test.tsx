@@ -14,7 +14,7 @@ import {
   Checkbox,
   Skeleton,
   SwitchButton,
-} from '@fblg/core-ui'
+} from '../shared/ui'
 
 export const Route = createFileRoute('/component-test')({
   component: ComponentTestPage,
