@@ -16,20 +16,20 @@ const variantStyles: Record<ButtonVariant, string> = {
     'bg-gradient-to-r from-[#06b6d4] to-[#2dd4bf] text-white font-semibold',
     'rounded-lg px-6 py-3',
     'shadow-sm hover:shadow-md',
-    'active:scale-[0.97] transition-all duration-150',
-    'disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100',
+    'transition-all duration-150',
+    'disabled:opacity-50',
   ].join(' '),
   secondary: [
     'bg-[#f1f5f9] text-[#0f172a] font-medium',
     'rounded-lg px-6 py-3',
     'hover:bg-[#e2e8f0] transition-colors duration-150',
-    'disabled:opacity-50 disabled:cursor-not-allowed',
+    'disabled:opacity-50',
   ].join(' '),
   ghost: [
     'bg-transparent text-[#475569] font-medium',
     'rounded-lg px-6 py-3',
     'hover:bg-[#f8fafc] transition-colors duration-150',
-    'disabled:opacity-50 disabled:cursor-not-allowed',
+    'disabled:opacity-50',
   ].join(' '),
 }
 

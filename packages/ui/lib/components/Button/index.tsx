@@ -1,5 +1,6 @@
 import React from 'react';
 import { Slot } from '@radix-ui/react-slot';
+import { twMerge } from 'tailwind-merge';
 
 interface StyleClass {
   root?: string;
@@ -33,10 +34,10 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
  *   <Link href="/about">About</Link>
  * </Button>
  */
-function Button({ children, type = 'button', styleClass, asChild = false, ...props }: Props) {
+function Button({ children, type = 'button', styleClass, asChild = false, disabled, ...props }: Props) {
   const Comp = asChild ? Slot : 'button';
   return (
-    <Comp type={asChild ? undefined : type} className={styleClass?.root} {...props}>
+    <Comp type={asChild ? undefined : type} className={twMerge(disabled ? 'cursor-not-allowed' : 'cursor-pointer', styleClass?.root)} {...props}>
       {children}
     </Comp>
   );
