@@ -10,6 +10,7 @@ import {
   SwitchButton,
   Typo,
 } from '../shared/ui'
+import { Gutter } from '@fblg/core-ui'
 
 export const Route = createFileRoute('/component-test')({
   component: ComponentTestPage,
@@ -399,6 +400,104 @@ function ComponentTestPage() {
               </span>
               <Typo.LS>ISA 한도 활용중</Typo.LS>
             </div>
+          </div>
+        </section>
+
+        <Separator />
+
+        {/* ===== Gutter ===== */}
+        <section className="space-y-4">
+          <SectionTitle>Gutter</SectionTitle>
+
+          <SubLabel>padding + gap (column)</SubLabel>
+          <div className="border border-dashed border-lf-outline rounded-lg">
+            <Gutter padding="lg" gap="md">
+              <div className="bg-lf-primary-container/20 rounded-lg p-3 text-sm text-lf-on-surface">
+                Item A
+              </div>
+              <div className="bg-lf-primary-container/20 rounded-lg p-3 text-sm text-lf-on-surface">
+                Item B
+              </div>
+              <div className="bg-lf-primary-container/20 rounded-lg p-3 text-sm text-lf-on-surface">
+                Item C
+              </div>
+            </Gutter>
+          </div>
+
+          <SubLabel>direction="row" + gap</SubLabel>
+          <div className="border border-dashed border-lf-outline rounded-lg">
+            <Gutter direction="row" padding="md" gap="sm">
+              <div className="bg-lf-secondary-container/20 rounded-lg p-3 text-sm text-lf-on-surface flex-1 text-center">
+                Col 1
+              </div>
+              <div className="bg-lf-secondary-container/20 rounded-lg p-3 text-sm text-lf-on-surface flex-1 text-center">
+                Col 2
+              </div>
+              <div className="bg-lf-secondary-container/20 rounded-lg p-3 text-sm text-lf-on-surface flex-1 text-center">
+                Col 3
+              </div>
+            </Gutter>
+          </div>
+
+          <SubLabel>paddingX / paddingY 분리</SubLabel>
+          <div className="border border-dashed border-lf-outline rounded-lg">
+            <Gutter paddingX="xl" paddingY="sm" gap="xs">
+              <div className="bg-lf-error-container/30 rounded-lg p-3 text-sm text-lf-on-surface">
+                paddingX=xl, paddingY=sm
+              </div>
+              <div className="bg-lf-error-container/30 rounded-lg p-3 text-sm text-lf-on-surface">
+                좌우 32px, 상하 8px
+              </div>
+            </Gutter>
+          </div>
+
+          <SubLabel>중첩 Gutter</SubLabel>
+          <div className="border border-dashed border-lf-outline rounded-lg">
+            <Gutter padding="lg" gap="md">
+              <Gutter
+                direction="row"
+                gap="sm"
+                className="bg-lf-surface-container-low rounded-lg p-2"
+              >
+                <div className="bg-lf-primary-container/20 rounded p-2 text-xs text-lf-on-surface flex-1 text-center">
+                  A-1
+                </div>
+                <div className="bg-lf-primary-container/20 rounded p-2 text-xs text-lf-on-surface flex-1 text-center">
+                  A-2
+                </div>
+              </Gutter>
+              <Gutter
+                direction="row"
+                gap="sm"
+                className="bg-lf-surface-container-low rounded-lg p-2"
+              >
+                <div className="bg-lf-secondary-container/20 rounded p-2 text-xs text-lf-on-surface flex-1 text-center">
+                  B-1
+                </div>
+                <div className="bg-lf-secondary-container/20 rounded p-2 text-xs text-lf-on-surface flex-1 text-center">
+                  B-2
+                </div>
+                <div className="bg-lf-secondary-container/20 rounded p-2 text-xs text-lf-on-surface flex-1 text-center">
+                  B-3
+                </div>
+              </Gutter>
+            </Gutter>
+          </div>
+
+          <SubLabel>SpaceToken 스케일 비교</SubLabel>
+          <div className="space-y-2">
+            {(['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as const).map((token) => (
+              <div
+                key={token}
+                className="border border-dashed border-lf-outline rounded-lg"
+              >
+                <Gutter padding={token}>
+                  <div className="bg-lf-primary-container/15 rounded text-xs text-lf-on-surface-variant text-center py-1">
+                    padding="{token}"
+                  </div>
+                </Gutter>
+              </div>
+            ))}
           </div>
         </section>
 
