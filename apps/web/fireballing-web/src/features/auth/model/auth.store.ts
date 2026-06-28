@@ -25,7 +25,11 @@ export function setTokens(tokens: AuthTokens): void {
 export function getTokens(): AuthTokens | null {
   const raw = localStorage.getItem(TOKENS_KEY)
   if (!raw) return null
-  return JSON.parse(raw) as AuthTokens
+  try {
+    return JSON.parse(raw) as AuthTokens
+  } catch {
+    return null
+  }
 }
 
 /**
@@ -59,7 +63,11 @@ export function setUser(user: UserProfile): void {
 export function getUser(): UserProfile | null {
   const raw = localStorage.getItem(USER_KEY)
   if (!raw) return null
-  return JSON.parse(raw) as UserProfile
+  try {
+    return JSON.parse(raw) as UserProfile
+  } catch {
+    return null
+  }
 }
 
 /**
