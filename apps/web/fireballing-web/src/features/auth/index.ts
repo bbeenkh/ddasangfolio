@@ -1,3 +1,7 @@
+// UI
+export { default as LoginForm } from './ui/LoginForm'
+export { default as SignupForm } from './ui/SignupForm'
+
 // API
 export { login, signup } from './api/auth.api'
 
