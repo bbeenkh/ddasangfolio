@@ -47,7 +47,7 @@ const variantStyles: Record<InputVariant, { root: string; input: string }> = {
  * <Input variant="white" placeholder="금액 입력" suffix={<span>원</span>} />
  * <Input variant="gray" prefix={<SearchIcon />} placeholder="종목명 검색" />
  */
-function Input({ variant, styleClass, prefix, suffix, ...props }: Props) {
+function Input({ variant = 'white', styleClass, prefix, suffix, ...props }: Props) {
   const vs = variant ? variantStyles[variant] : undefined
   return (
     <BaseInput

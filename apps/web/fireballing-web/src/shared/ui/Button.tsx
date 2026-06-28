@@ -47,7 +47,7 @@ const variantStyles: Record<ButtonVariant, string> = {
  * <Button variant="primary">확인</Button>
  * <Button variant="secondary">취소</Button>
  */
-function Button({ variant, styleClass, ...props }: Props) {
+function Button({ variant = 'primary', styleClass, ...props }: Props) {
   const merged = twMerge(
     variant ? variantStyles[variant] : '',
     styleClass?.root,

@@ -12,6 +12,15 @@ import { cn } from '../../utils/cn';
  */
 export type SpaceToken = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 
+const SPACE_VALUES: Record<SpaceToken, string> = {
+  xs: '4px',
+  sm: '8px',
+  md: '16px',
+  lg: '24px',
+  xl: '32px',
+  '2xl': '48px',
+};
+
 interface GutterProps extends React.HTMLAttributes<HTMLDivElement> {
   /** 상하좌우 동일 padding */
   padding?: SpaceToken;
@@ -31,7 +40,7 @@ interface GutterProps extends React.HTMLAttributes<HTMLDivElement> {
  * ---
  * - 간단설명: 자식 요소를 감싸서 spacing 토큰 기반으로 padding과 gap을 일관 적용하는 래퍼 컴포넌트
  * - 제약사항 및 특이사항:
- *   - CSS 변수(--space-xs ~ --space-2xl) 기반으로 동작
+ *   - 4px 기반 spacing scale(xs~2xl) 사용
  *   - paddingX/paddingY가 padding보다 우선 적용됨
  *   - 반응형은 className을 통해 Tailwind 클래스로 별도 처리
  * ---
@@ -60,23 +69,23 @@ function Gutter({
   style,
   ...rest
 }: GutterProps) {
-  const toVar = (token: SpaceToken) => `var(--space-${token})`;
+  const toValue = (token: SpaceToken) => SPACE_VALUES[token];
 
   const hasPaddingAxis = paddingX || paddingY;
 
   const gutterStyle: React.CSSProperties = {
     display: 'flex',
     flexDirection: direction,
-    ...(padding && !hasPaddingAxis && { padding: toVar(padding) }),
+    ...(padding && !hasPaddingAxis && { padding: toValue(padding) }),
     ...((paddingX || (hasPaddingAxis && padding)) && {
-      paddingLeft: toVar(paddingX ?? padding!),
-      paddingRight: toVar(paddingX ?? padding!),
+      paddingLeft: toValue(paddingX ?? padding!),
+      paddingRight: toValue(paddingX ?? padding!),
     }),
     ...((paddingY || (hasPaddingAxis && padding)) && {
-      paddingTop: toVar(paddingY ?? padding!),
-      paddingBottom: toVar(paddingY ?? padding!),
+      paddingTop: toValue(paddingY ?? padding!),
+      paddingBottom: toValue(paddingY ?? padding!),
     }),
-    ...(gap && { gap: toVar(gap) }),
+    ...(gap && { gap: toValue(gap) }),
     ...style,
   };
 

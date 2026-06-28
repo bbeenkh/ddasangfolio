@@ -1,6 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import Gutter from '.';
 
+const EXPECTED: Record<string, string> = {
+  xs: '4px',
+  sm: '8px',
+  md: '16px',
+  lg: '24px',
+  xl: '32px',
+  '2xl': '48px',
+};
+
 describe('Gutter', () => {
   describe('기본 렌더링', () => {
     it('children을 렌더링한다', () => {
@@ -51,7 +60,7 @@ describe('Gutter', () => {
         </Gutter>,
       );
       const el = screen.getByTestId('gutter');
-      expect(el.style.padding).toBe('var(--space-md)');
+      expect(el.style.padding).toBe('16px');
     });
 
     it('paddingX가 좌우 padding에 적용된다', () => {
@@ -61,8 +70,8 @@ describe('Gutter', () => {
         </Gutter>,
       );
       const el = screen.getByTestId('gutter');
-      expect(el.style.paddingLeft).toBe('var(--space-lg)');
-      expect(el.style.paddingRight).toBe('var(--space-lg)');
+      expect(el.style.paddingLeft).toBe('24px');
+      expect(el.style.paddingRight).toBe('24px');
     });
 
     it('paddingY가 상하 padding에 적용된다', () => {
@@ -72,8 +81,8 @@ describe('Gutter', () => {
         </Gutter>,
       );
       const el = screen.getByTestId('gutter');
-      expect(el.style.paddingTop).toBe('var(--space-sm)');
-      expect(el.style.paddingBottom).toBe('var(--space-sm)');
+      expect(el.style.paddingTop).toBe('8px');
+      expect(el.style.paddingBottom).toBe('8px');
     });
 
     it('paddingX/paddingY가 padding보다 우선 적용된다', () => {
@@ -83,10 +92,10 @@ describe('Gutter', () => {
         </Gutter>,
       );
       const el = screen.getByTestId('gutter');
-      expect(el.style.paddingLeft).toBe('var(--space-xl)');
-      expect(el.style.paddingRight).toBe('var(--space-xl)');
-      expect(el.style.paddingTop).toBe('var(--space-lg)');
-      expect(el.style.paddingBottom).toBe('var(--space-lg)');
+      expect(el.style.paddingLeft).toBe('32px');
+      expect(el.style.paddingRight).toBe('32px');
+      expect(el.style.paddingTop).toBe('24px');
+      expect(el.style.paddingBottom).toBe('24px');
     });
 
     it('paddingX만 지정하면 상하는 padding 값이 적용된다', () => {
@@ -96,10 +105,10 @@ describe('Gutter', () => {
         </Gutter>,
       );
       const el = screen.getByTestId('gutter');
-      expect(el.style.paddingLeft).toBe('var(--space-xl)');
-      expect(el.style.paddingRight).toBe('var(--space-xl)');
-      expect(el.style.paddingTop).toBe('var(--space-sm)');
-      expect(el.style.paddingBottom).toBe('var(--space-sm)');
+      expect(el.style.paddingLeft).toBe('32px');
+      expect(el.style.paddingRight).toBe('32px');
+      expect(el.style.paddingTop).toBe('8px');
+      expect(el.style.paddingBottom).toBe('8px');
     });
   });
 
@@ -112,7 +121,7 @@ describe('Gutter', () => {
         </Gutter>,
       );
       const el = screen.getByTestId('gutter');
-      expect(el.style.gap).toBe('var(--space-md)');
+      expect(el.style.gap).toBe('16px');
     });
 
     it('gap이 없으면 gap 스타일이 설정되지 않는다', () => {
@@ -174,14 +183,14 @@ describe('Gutter', () => {
   describe('모든 SpaceToken 값', () => {
     const tokens = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'] as const;
 
-    it.each(tokens)('padding="%s"가 올바른 CSS 변수로 매핑된다', (token) => {
+    it.each(tokens)('padding="%s"가 올바른 px 값으로 매핑된다', (token) => {
       render(
         <Gutter data-testid="gutter" padding={token}>
           <span>내용</span>
         </Gutter>,
       );
       const el = screen.getByTestId('gutter');
-      expect(el.style.padding).toBe(`var(--space-${token})`);
+      expect(el.style.padding).toBe(EXPECTED[token]);
     });
   });
 });
