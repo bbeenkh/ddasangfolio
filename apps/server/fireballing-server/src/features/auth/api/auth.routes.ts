@@ -3,6 +3,7 @@ import { signupSchema, loginSchema, refreshSchema } from '../types/auth.types.js
 import * as authService from '../model/auth.service.js'
 import { authMiddleware } from '../lib/auth.middleware.js'
 import { HttpError } from '../../../shared/errors/http-error.js'
+import { SupabaseConnectionError } from '../../../shared/errors/supabase-connection-error.js'
 
 /**
  * # authRoutes
@@ -36,6 +37,9 @@ authRoutes.post('/signup', async (c) => {
     const result = await authService.signup(parsed.data)
     return c.json({ success: true, data: result }, 201)
   } catch (e) {
+    if (e instanceof SupabaseConnectionError) {
+      return c.json({ success: false, error: 'supabase connection error' }, 503)
+    }
     const status = e instanceof HttpError ? e.statusCode : 500
     const message = e instanceof Error ? e.message : '회원가입에 실패했습니다'
     return c.json({ success: false, error: message }, status as any)
@@ -59,6 +63,9 @@ authRoutes.post('/login', async (c) => {
     const result = await authService.login(parsed.data)
     return c.json({ success: true, data: result }, 200)
   } catch (e) {
+    if (e instanceof SupabaseConnectionError) {
+      return c.json({ success: false, error: 'supabase connection error' }, 503)
+    }
     const status = e instanceof HttpError ? e.statusCode : 500
     const message = e instanceof Error ? e.message : '로그인에 실패했습니다'
     return c.json({ success: false, error: message }, status as any)
@@ -82,6 +89,9 @@ authRoutes.post('/refresh', async (c) => {
     const tokens = await authService.refreshToken(parsed.data.refreshToken)
     return c.json({ success: true, data: { tokens } }, 200)
   } catch (e) {
+    if (e instanceof SupabaseConnectionError) {
+      return c.json({ success: false, error: 'supabase connection error' }, 503)
+    }
     const status = e instanceof HttpError ? e.statusCode : 500
     const message = e instanceof Error ? e.message : '토큰 갱신에 실패했습니다'
     return c.json({ success: false, error: message }, status as any)
@@ -104,6 +114,9 @@ authRoutes.get('/me', async (c) => {
     const user = await authService.getCurrentUser(token)
     return c.json({ success: true, data: { user } }, 200)
   } catch (e) {
+    if (e instanceof SupabaseConnectionError) {
+      return c.json({ success: false, error: 'supabase connection error' }, 503)
+    }
     const status = e instanceof HttpError ? e.statusCode : 500
     const message = e instanceof Error ? e.message : '유저 정보 조회에 실패했습니다'
     return c.json({ success: false, error: message }, status as any)
@@ -122,6 +135,9 @@ authRoutes.post('/logout', async (c) => {
     await authService.logout(token)
     return c.json({ success: true, message: '로그아웃 되었습니다' }, 200)
   } catch (e) {
+    if (e instanceof SupabaseConnectionError) {
+      return c.json({ success: false, error: 'supabase connection error' }, 503)
+    }
     const status = e instanceof HttpError ? e.statusCode : 500
     const message = e instanceof Error ? e.message : '로그아웃에 실패했습니다'
     return c.json({ success: false, error: message }, status as any)
