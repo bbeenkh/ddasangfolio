@@ -7,7 +7,9 @@ interface StyleClass {
   thumb?: string
 }
 
-interface Props extends React.ComponentPropsWithoutRef<typeof BaseSwitchButton> {
+interface Props extends React.ComponentPropsWithoutRef<
+  typeof BaseSwitchButton
+> {
   styleClass?: StyleClass
 }
 
@@ -20,24 +22,23 @@ interface Props extends React.ComponentPropsWithoutRef<typeof BaseSwitchButton> 
  * @example
  * <SwitchButton checked={isOn} onCheckedChange={setIsOn} />
  */
-const SwitchButton = React.forwardRef<HTMLButtonElement, Props>(function SwitchButton(
-  { styleClass, ...props },
-  ref,
-) {
-  return (
-    <BaseSwitchButton
-      ref={ref}
-      styleClass={{
-        root: twMerge(
-          'bg-lf-outline-check data-[state=checked]:bg-lf-primary-container',
-          'focus-visible:ring-lf-primary-container',
-          styleClass?.root,
-        ),
-        thumb: styleClass?.thumb,
-      }}
-      {...props}
-    />
-  )
-})
+const SwitchButton = React.forwardRef<HTMLButtonElement, Props>(
+  function SwitchButton({ styleClass, ...props }, ref) {
+    return (
+      <BaseSwitchButton
+        ref={ref}
+        styleClass={{
+          root: twMerge(
+            'bg-lf-outline-check data-[state=checked]:bg-lf-primary-container',
+            'focus-visible:ring-lf-primary-container',
+            styleClass?.root,
+          ),
+          thumb: styleClass?.thumb,
+        }}
+        {...props}
+      />
+    )
+  },
+)
 
 export default SwitchButton

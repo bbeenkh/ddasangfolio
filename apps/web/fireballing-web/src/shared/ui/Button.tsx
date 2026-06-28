@@ -48,7 +48,10 @@ const variantStyles: Record<ButtonVariant, string> = {
  * <Button variant="secondary">취소</Button>
  */
 function Button({ variant, styleClass, ...props }: Props) {
-  const merged = twMerge(variant ? variantStyles[variant] : '', styleClass?.root)
+  const merged = twMerge(
+    variant ? variantStyles[variant] : '',
+    styleClass?.root,
+  )
   return <BaseButton styleClass={{ root: merged }} {...props} />
 }
 

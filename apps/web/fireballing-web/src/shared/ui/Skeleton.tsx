@@ -21,15 +21,29 @@ const shimmerBase = 'bg-lf-outline-variant animate-pulse rounded-[8px]'
  * </Skeleton.Container>
  */
 const Box = ({ styleClass }: { styleClass?: StyleClass }) => (
-  <BaseSkeleton.Box styleClass={{ root: twMerge(shimmerBase, 'h-4 w-full', styleClass?.root) }} />
+  <BaseSkeleton.Box
+    styleClass={{ root: twMerge(shimmerBase, 'h-4 w-full', styleClass?.root) }}
+  />
 )
 
 const Circle = ({ styleClass }: { styleClass?: StyleClass }) => (
-  <BaseSkeleton.Circle styleClass={{ root: twMerge(shimmerBase, 'rounded-full w-10 h-10', styleClass?.root) }} />
+  <BaseSkeleton.Circle
+    styleClass={{
+      root: twMerge(shimmerBase, 'rounded-full w-10 h-10', styleClass?.root),
+    }}
+  />
 )
 
-const Container = ({ children, styleClass }: { children: React.ReactNode; styleClass?: StyleClass }) => (
-  <BaseSkeleton.Container styleClass={{ root: twMerge('flex flex-col gap-3', styleClass?.root) }}>
+const Container = ({
+  children,
+  styleClass,
+}: {
+  children: React.ReactNode
+  styleClass?: StyleClass
+}) => (
+  <BaseSkeleton.Container
+    styleClass={{ root: twMerge('flex flex-col gap-3', styleClass?.root) }}
+  >
     {children}
   </BaseSkeleton.Container>
 )

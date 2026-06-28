@@ -21,7 +21,10 @@ interface TypoProps extends React.HTMLAttributes<HTMLParagraphElement> {
 
 function createTypoComponent(defaultClassName: string, displayName: string) {
   const Component = React.forwardRef<HTMLElement, TypoProps>(
-    function TypoVariant({ as: Tag = 'p', className, children, ...props }, ref) {
+    function TypoVariant(
+      { as: Tag = 'p', className, children, ...props },
+      ref,
+    ) {
       return (
         <Tag
           ref={ref}
@@ -37,7 +40,8 @@ function createTypoComponent(defaultClassName: string, displayName: string) {
   return Component
 }
 
-const HEADING_FONT = "font-['Plus_Jakarta_Sans',ui-sans-serif,system-ui,sans-serif]"
+const HEADING_FONT =
+  "font-['Plus_Jakarta_Sans',ui-sans-serif,system-ui,sans-serif]"
 
 /**
  * Display Large — Plus Jakarta Sans 48/60 Bold, tracking -0.02em

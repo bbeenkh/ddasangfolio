@@ -4,7 +4,9 @@ test.describe('JWT 인증 테스트 페이지', () => {
   test('auth-test 페이지 접근 및 기본 UI 렌더링', async ({ page }) => {
     await page.goto('/auth-test')
 
-    await expect(page.getByRole('heading', { name: 'JWT 인증 테스트' })).toBeVisible()
+    await expect(
+      page.getByRole('heading', { name: 'JWT 인증 테스트' }),
+    ).toBeVisible()
     await expect(page.getByPlaceholder('이메일')).toBeVisible()
     await expect(page.getByPlaceholder('비밀번호 (최소 6자)')).toBeVisible()
     await expect(page.getByRole('button', { name: '회원가입' })).toBeVisible()

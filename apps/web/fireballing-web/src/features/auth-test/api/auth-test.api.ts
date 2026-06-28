@@ -59,7 +59,9 @@ async function signup(email: string, password: string, name?: string) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password, name }),
   })
-  return res.json() as Promise<ApiResponse<{ user: UserProfile; tokens: AuthTokens }>>
+  return res.json() as Promise<
+    ApiResponse<{ user: UserProfile; tokens: AuthTokens }>
+  >
 }
 
 /**
@@ -79,7 +81,9 @@ async function login(email: string, password: string) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password }),
   })
-  return res.json() as Promise<ApiResponse<{ user: UserProfile; tokens: AuthTokens }>>
+  return res.json() as Promise<
+    ApiResponse<{ user: UserProfile; tokens: AuthTokens }>
+  >
 }
 
 /**

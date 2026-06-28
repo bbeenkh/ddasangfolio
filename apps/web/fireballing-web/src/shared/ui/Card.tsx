@@ -2,8 +2,10 @@ import React from 'react'
 import { Card as BaseCard } from '@fblg/core-ui'
 import { twMerge } from 'tailwind-merge'
 
-const cardStyle = 'bg-white border-lf-outline-variant rounded-[16px] shadow-[0px_2px_8px_-2px_rgba(15,23,42,0.04)]'
-const titleStyle = 'text-lf-on-surface font-[Plus_Jakarta_Sans,ui-sans-serif,system-ui,sans-serif]'
+const cardStyle =
+  'bg-white border-lf-outline-variant rounded-[16px] shadow-[0px_2px_8px_-2px_rgba(15,23,42,0.04)]'
+const titleStyle =
+  'text-lf-on-surface font-[Plus_Jakarta_Sans,ui-sans-serif,system-ui,sans-serif]'
 
 interface ILayoutProps {
   children: React.ReactNode
@@ -29,7 +31,9 @@ const Card = ({ className, children }: ILayoutProps) => (
 Card.Header = BaseCard.Header
 
 Card.Title = ({ className, children }: ILayoutProps) => (
-  <BaseCard.Title className={twMerge(titleStyle, className)}>{children}</BaseCard.Title>
+  <BaseCard.Title className={twMerge(titleStyle, className)}>
+    {children}
+  </BaseCard.Title>
 )
 
 Card.Body = BaseCard.Body
