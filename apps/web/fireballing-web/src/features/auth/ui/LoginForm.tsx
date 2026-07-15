@@ -1,8 +1,10 @@
+'use client'
+
 import { useState } from 'react'
-import { Link } from '@tanstack/react-router'
+import Link from 'next/link'
 import { login } from '../api/auth.api'
 import { setTokens, setUser } from '../model/auth.store'
-import { Button, Card, Input, Typo } from '#/shared/ui'
+import { Button, Card, Input, Typo } from '@/shared/ui'
 import { Spinner } from '@fblg/core-ui'
 
 /**
@@ -80,7 +82,7 @@ export default function LoginForm() {
         </form>
         <p className="m-0 text-center text-sm text-gray-500">
           계정이 없으신가요?{' '}
-          <Link to="/signup" className="font-medium text-gray-900 underline">
+          <Link href="/signup" className="font-medium text-gray-900 underline">
             회원가입
           </Link>
         </p>

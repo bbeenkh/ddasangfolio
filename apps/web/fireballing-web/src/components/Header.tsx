@@ -1,7 +1,10 @@
-import { Link } from '@tanstack/react-router'
+'use client'
+
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { Button } from '@fblg/core-ui'
-import { isLoggedIn, getUser, logoutAndClear } from '#/features/auth'
+import { isLoggedIn, getUser, logoutAndClear } from '@/features/auth'
 
 /**
  * # Header
@@ -14,44 +17,41 @@ import { isLoggedIn, getUser, logoutAndClear } from '#/features/auth'
  * <Header />
  */
 export default function Header() {
+  const router = useRouter()
   const [loggedIn, setLoggedIn] = useState(false)
   const [userName, setUserName] = useState<string | null>(null)
 
-  // eslint-disable-next-line react-hooks/set-state-in-effect -- TODO Task 3에서 useRouter로 교체 예정
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoggedIn(isLoggedIn())
     const user = getUser()
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (user) setUserName(user.name ?? user.email)
   }, [])
 
   function handleLogout() {
     logoutAndClear()
-    window.location.href = '/'
+    router.push('/')
   }
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white px-4">
       <nav className="mx-auto flex max-w-5xl items-center gap-x-4 py-3">
         <h2 className="m-0 text-base font-semibold tracking-tight">
-          <Link to="/" className="text-gray-900 no-underline">
+          <Link href="/" className="text-gray-900 no-underline">
             fireballing
           </Link>
         </h2>
 
         <div className="flex items-center gap-x-4 text-sm font-medium">
           <Link
-            to="/"
+            href="/"
             className="text-gray-500 no-underline hover:text-gray-900"
-            activeProps={{ className: 'text-gray-900 no-underline' }}
           >
             Home
           </Link>
           <Link
-            to="/about"
+            href="/about"
             className="text-gray-500 no-underline hover:text-gray-900"
-            activeProps={{ className: 'text-gray-900 no-underline' }}
           >
             About
           </Link>
@@ -72,7 +72,7 @@ export default function Header() {
             </>
           ) : (
             <Link
-              to="/login"
+              href="/login"
               className="text-gray-500 no-underline hover:text-gray-900"
             >
               로그인

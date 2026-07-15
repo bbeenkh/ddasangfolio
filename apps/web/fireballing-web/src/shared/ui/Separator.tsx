@@ -13,13 +13,13 @@ type Props = React.ComponentPropsWithoutRef<typeof BaseSeparator>
  * @example
  * <Separator className="my-4" />
  */
-const Separator = React.forwardRef<HTMLElement, Props>(function Separator(
+const Separator = React.forwardRef<HTMLDivElement, Props>(function Separator(
   { className, ...props },
   ref,
 ) {
   return (
     <BaseSeparator
-      ref={ref as React.Ref<HTMLElement>}
+      ref={ref as React.Ref<HTMLDivElement>}
       className={twMerge('border-lf-outline-variant', className)}
       {...props}
     />
