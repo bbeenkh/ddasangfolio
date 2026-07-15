@@ -22,6 +22,7 @@ export default function Header() {
   const [userName, setUserName] = useState<string | null>(null)
 
   useEffect(() => {
+    // localStorage 접근은 클라이언트에서만 가능하므로 useEffect에서 초기화
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoggedIn(isLoggedIn())
     const user = getUser()

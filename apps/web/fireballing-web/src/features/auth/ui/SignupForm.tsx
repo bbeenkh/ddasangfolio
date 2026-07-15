@@ -84,7 +84,7 @@ export default function SignupForm() {
             disabled={loading}
           >
             {loading ? (
-              <div>loading..</div>
+              <Spinner size="lg" />
             ) : '회원가입'}
           </Button>
         </form>
