@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { Button, Card, Input, Tab } from '@fblg/core-ui'
 import {

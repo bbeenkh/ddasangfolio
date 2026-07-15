@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { Input as BaseInput } from '@fblg/core-ui'
 import { twMerge } from 'tailwind-merge'

@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { Separator as BaseSeparator } from '@fblg/core-ui'
 import { twMerge } from 'tailwind-merge'

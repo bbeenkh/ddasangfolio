@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { Skeleton as BaseSkeleton } from '@fblg/core-ui'
 import { twMerge } from 'tailwind-merge'

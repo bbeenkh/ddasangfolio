@@ -14,5 +14,8 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./src/test-setup.ts'],
     exclude: ['**/node_modules/**', '**/dist/**', 'e2e/**'],
+    env: {
+      NEXT_PUBLIC_API_URL: 'http://localhost:8080',
+    },
   },
 })

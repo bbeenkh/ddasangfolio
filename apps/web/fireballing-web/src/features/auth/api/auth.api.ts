@@ -1,6 +1,6 @@
 import type { ApiResponse, AuthTokens, UserProfile } from '../types/auth.types'
 
-const API_BASE = 'http://localhost:8080/api/auth'
+const API_BASE = `${process.env.NEXT_PUBLIC_API_URL}/api/auth`
 
 /**
  * # login

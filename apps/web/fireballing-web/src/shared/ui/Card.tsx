@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { Card as BaseCard } from '@fblg/core-ui'
 import { twMerge } from 'tailwind-merge'
