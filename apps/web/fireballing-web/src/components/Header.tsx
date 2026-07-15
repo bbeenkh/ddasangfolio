@@ -17,9 +17,12 @@ export default function Header() {
   const [loggedIn, setLoggedIn] = useState(false)
   const [userName, setUserName] = useState<string | null>(null)
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- TODO Task 3에서 useRouter로 교체 예정
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setLoggedIn(isLoggedIn())
     const user = getUser()
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (user) setUserName(user.name ?? user.email)
   }, [])
 

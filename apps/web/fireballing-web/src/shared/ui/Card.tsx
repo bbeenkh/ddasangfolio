@@ -30,6 +30,7 @@ const Card = ({ className, children }: ILayoutProps) => (
 
 Card.Header = BaseCard.Header
 
+// eslint-disable-next-line react/display-name
 Card.Title = ({ className, children }: ILayoutProps) => (
   <BaseCard.Title className={twMerge(titleStyle, className)}>
     {children}

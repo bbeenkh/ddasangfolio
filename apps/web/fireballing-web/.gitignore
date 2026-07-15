@@ -11,3 +11,8 @@ dist-ssr
 .vinxi
 __unconfig*
 todos.json
+
+# Next.js
+.next/
+out/
+next-env.d.ts
