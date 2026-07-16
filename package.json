@@ -12,7 +12,8 @@
     "check-types": "turbo run check-types",
     "storybook": "pnpm --filter @fblg/core-ui storybook",
     "build-storybook": "pnpm --filter @fblg/core-ui build-storybook",
-    "prepare": "husky"
+    "prepare": "husky",
+    "test:e2e": "pnpm --filter fblg-web test:e2e"
   },
   "devDependencies": {
     "husky": "^9.1.7",

@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { Button, Card, Input, Typo } from '@/shared/ui'
 import { signup } from '../api/auth.api'
 import { setTokens, setUser } from '../model/auth.store'
-import { Spinner } from '@fblg/core-ui'
 
 /**
  * # SignupForm
@@ -53,7 +52,7 @@ export default function SignupForm() {
     <Card className="w-full max-w-md">
       <Card.Header>
         <Card.Title>
-          <Typo.HM className='font-bold'>회원가입</Typo.HM>
+          <Typo.HM as="span" className='font-bold'>회원가입</Typo.HM>
         </Card.Title>
       </Card.Header>
       <Card.Body className="flex-col gap-4">
@@ -84,7 +83,7 @@ export default function SignupForm() {
             disabled={loading}
           >
             {loading ? (
-              <Spinner size="lg" />
+              <span className="inline-block h-5 w-5 animate-spin rounded-full border-2 border-current border-t-transparent" />
             ) : '회원가입'}
           </Button>
         </form>
