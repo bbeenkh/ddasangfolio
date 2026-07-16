@@ -4,30 +4,22 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import SignupForm from './SignupForm'
 
-vi.mock('@tanstack/react-router', () => ({
-  Link: ({ children, to, ...props }: any) => <a href={to} {...props}>{children}</a>,
+const mockSignup = vi.fn()
+const mockStoreLogin = vi.fn()
+const mockPush = vi.fn()
+
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({ push: mockPush }),
 }))
 
-vi.mock('@fblg/core-ui', async () => {
-  const actual = await vi.importActual('@fblg/core-ui')
-  return { ...actual, Spinner: () => <div data-testid="spinner" /> }
-})
-
-vi.mock('../api/auth.api', () => ({
-  signup: vi.fn(),
+vi.mock('../api/authApi', () => ({
+  signup: (...args: unknown[]) => mockSignup(...args),
 }))
 
-vi.mock('../model/auth.store', () => ({
-  setTokens: vi.fn(),
-  setUser: vi.fn(),
+vi.mock('../model/authStore', () => ({
+  useAuthStore: (selector: (s: Record<string, unknown>) => unknown) =>
+    selector({ login: mockStoreLogin }),
 }))
-
-import { signup } from '../api/auth.api'
-import { setTokens, setUser } from '../model/auth.store'
-
-const mockSignup = vi.mocked(signup)
-const mockSetTokens = vi.mocked(setTokens)
-const mockSetUser = vi.mocked(setUser)
 
 describe('SignupForm', () => {
   beforeEach(() => {
@@ -43,7 +35,7 @@ describe('SignupForm', () => {
     expect(screen.getByRole('button', { name: '회원가입' })).toBeInTheDocument()
   })
 
-  it('회원가입 성공 시 토큰과 유저 정보를 저장한다', async () => {
+  it('회원가입 성공 시 zustand 스토어에 토큰과 유저를 저장하고 홈으로 이동한다', async () => {
     const user = userEvent.setup()
     const mockResponse = {
       success: true,
@@ -62,8 +54,11 @@ describe('SignupForm', () => {
     await user.click(screen.getByRole('button', { name: '회원가입' }))
 
     expect(mockSignup).toHaveBeenCalledWith('test@test.com', 'password123', '홍길동')
-    expect(mockSetTokens).toHaveBeenCalledWith(mockResponse.data.tokens)
-    expect(mockSetUser).toHaveBeenCalledWith(mockResponse.data.user)
+    expect(mockStoreLogin).toHaveBeenCalledWith(
+      mockResponse.data.tokens,
+      mockResponse.data.user,
+    )
+    expect(mockPush).toHaveBeenCalledWith('/')
   })
 
   it('회원가입 실패 시 에러 메시지를 표시한다', async () => {

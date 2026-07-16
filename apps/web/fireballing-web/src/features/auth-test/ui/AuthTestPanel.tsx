@@ -8,8 +8,8 @@ import {
   getMe,
   refreshToken,
   logout,
-} from '../api/auth-test.api'
-import type { AuthTokens } from '../api/auth-test.api'
+} from '../api/authTestApi'
+import type { AuthTokens } from '../api/authTestApi'
 
 /**
  * # AuthTestPanel

@@ -1,21 +1,14 @@
 // UI
 export { default as LoginForm } from './ui/LoginForm'
 export { default as SignupForm } from './ui/SignupForm'
+export { default as AuthHydration } from './ui/AuthHydration'
 
 // API
-export { login, signup } from './api/auth.api'
+export { login, signup } from './api/authApi'
 
 // Model
-export {
-  setTokens,
-  getTokens,
-  clearTokens,
-  setUser,
-  getUser,
-  clearUser,
-  isLoggedIn,
-  logoutAndClear,
-} from './model'
+export { useAuthStore, authManager, AuthManager } from './model'
+export type { Tokens } from './model'
 
 // Types
-export type { AuthTokens, UserProfile, ApiResponse } from './types/auth.types'
+export type { AuthTokens, UserProfile, ApiResponse } from './types/authTypes'

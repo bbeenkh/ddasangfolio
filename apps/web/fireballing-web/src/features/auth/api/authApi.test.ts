@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { login, signup } from './auth.api'
+import { login, signup } from './authApi'
 
 const mockSuccessResponse = {
   success: true,

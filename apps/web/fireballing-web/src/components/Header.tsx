@@ -2,37 +2,33 @@
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useState, useEffect } from 'react'
 import { Button } from '@fblg/core-ui'
-import { isLoggedIn, getUser, logoutAndClear } from '@/features/auth'
+import { useAuthStore } from '@/features/auth'
 
 /**
  * # Header
  * ---
  * - 간단설명: 전역 네비게이션 헤더
  * - 제약사항 및 특이사항:
- *   - 로그인 상태에 따라 로그인 링크 또는 유저 이름 + 로그아웃 버튼 표시
+ *   - zustand 스토어로 로그인 상태 구독 (리액티브)
+ *   - _isHydrated false 동안 로그인 영역 미렌더링 (SSR 대응)
  * ---
  * @example
  * <Header />
  */
 export default function Header() {
   const router = useRouter()
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [userName, setUserName] = useState<string | null>(null)
-
-  useEffect(() => {
-    // localStorage 접근은 클라이언트에서만 가능하므로 useEffect에서 초기화
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setLoggedIn(isLoggedIn())
-    const user = getUser()
-    if (user) setUserName(user.name ?? user.email)
-  }, [])
+  const isLoggedIn = useAuthStore((s) => s.isLoggedIn)
+  const user = useAuthStore((s) => s.user)
+  const isHydrated = useAuthStore((s) => s._isHydrated)
+  const logout = useAuthStore((s) => s.logout)
 
   function handleLogout() {
-    logoutAndClear()
+    logout()
     router.push('/')
   }
+
+  const userName = user?.name ?? user?.email
 
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white px-4">
@@ -59,26 +55,28 @@ export default function Header() {
         </div>
 
         <div className="ml-auto flex items-center gap-x-3 text-sm">
-          {loggedIn ? (
-            <>
-              <span className="text-gray-700">{userName}</span>
-              <Button
-                onClick={handleLogout}
-                styleClass={{
-                  root: 'text-gray-500 hover:text-gray-900 text-sm',
-                }}
+          {isHydrated ? (
+            isLoggedIn ? (
+              <>
+                <span className="text-gray-700">{userName}</span>
+                <Button
+                  onClick={handleLogout}
+                  styleClass={{
+                    root: 'text-gray-500 hover:text-gray-900 text-sm',
+                  }}
+                >
+                  로그아웃
+                </Button>
+              </>
+            ) : (
+              <Link
+                href="/login"
+                className="text-gray-500 no-underline hover:text-gray-900"
               >
-                로그아웃
-              </Button>
-            </>
-          ) : (
-            <Link
-              href="/login"
-              className="text-gray-500 no-underline hover:text-gray-900"
-            >
-              로그인
-            </Link>
-          )}
+                로그인
+              </Link>
+            )
+          ) : null}
         </div>
       </nav>
     </header>

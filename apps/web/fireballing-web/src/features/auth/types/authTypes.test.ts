@@ -1,5 +1,5 @@
 import { describe, it, expectTypeOf } from 'vitest'
-import type { AuthTokens, UserProfile, ApiResponse } from './auth.types'
+import type { AuthTokens, UserProfile, ApiResponse } from './authTypes'
 
 describe('auth types', () => {
   it('AuthTokens는 accessToken, refreshToken, expiresIn을 가진다', () => {

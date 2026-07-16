@@ -11,18 +11,22 @@ interface IAuthManager {
   }>;
 }
 
-type Tokens = Pick<IAuthManager, 'accessToken' | 'refreshToken'>;
+export type Tokens = Pick<IAuthManager, 'accessToken' | 'refreshToken'>;
 
 /**
- * 인증 처리 class
- *
- * 역할
- * - Access / Refresh Token 관리
- * - 로그인 여부 관리
- * - 동시 Refresh 요청 Queue 관리
- * - Storage/API에는 의존하지 않음
+ * # AuthManager
+ * ---
+ * - 간단설명: 인증 상태를 추상화하는 클래스 (Storage/API 비의존)
+ * - 제약사항 및 특이사항:
+ *   - Access/Refresh Token 인메모리 관리
+ *   - 동시 Refresh 요청 큐 관리
+ *   - zustand 스토어에서 싱글턴으로 사용
+ * ---
+ * @example
+ * const manager = new AuthManager({ accessToken: null, refreshToken: null })
+ * manager.setTokens({ accessToken: '...', refreshToken: '...' })
  */
-class AuthManager implements IAuthManager {
+export default class AuthManager implements IAuthManager {
   private _accessToken: string | null;
   private _refreshToken: string | null;
 

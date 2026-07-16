@@ -2,17 +2,17 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { Button, Card, Input, Typo } from '@/shared/ui'
-import { signup } from '../api/auth.api'
-import { setTokens, setUser } from '../model/auth.store'
+import { signup } from '../api/authApi'
+import { useAuthStore } from '../model/authStore'
 
 /**
  * # SignupForm
  * ---
  * - 간단설명: 이메일/비밀번호/이름 회원가입 폼 컴포넌트
  * - 제약사항 및 특이사항:
- *   - @fblg/core-ui 컴포넌트만 사용
- *   - 회원가입 성공 시 토큰/유저 저장 후 홈으로 이동
+ *   - 회원가입 성공 시 zustand 스토어에 토큰/유저 저장 후 홈으로 이동
  *   - 비밀번호 최소 6자
  *   - 이름은 선택 입력
  * ---
@@ -20,6 +20,8 @@ import { setTokens, setUser } from '../model/auth.store'
  * <SignupForm />
  */
 export default function SignupForm() {
+  const router = useRouter()
+  const storeLogin = useAuthStore((s) => s.login)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
@@ -35,9 +37,8 @@ export default function SignupForm() {
       const result = await signup(email, password, name || undefined)
 
       if (result.success && result.data) {
-        setTokens(result.data.tokens)
-        setUser(result.data.user)
-        window.location.href = '/'
+        storeLogin(result.data.tokens, result.data.user)
+        router.push('/')
       } else {
         setError(result.error ?? '회원가입에 실패했습니다')
       }

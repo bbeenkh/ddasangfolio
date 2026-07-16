@@ -1,1 +1,1 @@
-export type { AuthTokens, UserProfile, ApiResponse } from './auth.types'
+export type { AuthTokens, UserProfile, ApiResponse } from './authTypes'

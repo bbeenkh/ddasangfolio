@@ -1,4 +1,4 @@
-import type { ApiResponse, AuthTokens, UserProfile } from '../types/auth.types'
+import type { ApiResponse, AuthTokens, UserProfile } from '../types/authTypes'
 
 const API_BASE = `${process.env.NEXT_PUBLIC_API_URL}/api/auth`
 

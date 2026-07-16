@@ -4,30 +4,22 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import LoginForm from './LoginForm'
 
-vi.mock('@tanstack/react-router', () => ({
-  Link: ({ children, to, ...props }: any) => <a href={to} {...props}>{children}</a>,
+const mockLogin = vi.fn()
+const mockStoreLogin = vi.fn()
+const mockPush = vi.fn()
+
+vi.mock('next/navigation', () => ({
+  useRouter: () => ({ push: mockPush }),
 }))
 
-vi.mock('@fblg/core-ui', async () => {
-  const actual = await vi.importActual('@fblg/core-ui')
-  return { ...actual, Spinner: () => <div data-testid="spinner" /> }
-})
-
-vi.mock('../api/auth.api', () => ({
-  login: vi.fn(),
+vi.mock('../api/authApi', () => ({
+  login: (...args: unknown[]) => mockLogin(...args),
 }))
 
-vi.mock('../model/auth.store', () => ({
-  setTokens: vi.fn(),
-  setUser: vi.fn(),
+vi.mock('../model/authStore', () => ({
+  useAuthStore: (selector: (s: Record<string, unknown>) => unknown) =>
+    selector({ login: mockStoreLogin }),
 }))
-
-import { login } from '../api/auth.api'
-import { setTokens, setUser } from '../model/auth.store'
-
-const mockLogin = vi.mocked(login)
-const mockSetTokens = vi.mocked(setTokens)
-const mockSetUser = vi.mocked(setUser)
 
 describe('LoginForm', () => {
   beforeEach(() => {
@@ -42,7 +34,7 @@ describe('LoginForm', () => {
     expect(screen.getByRole('button', { name: '로그인' })).toBeInTheDocument()
   })
 
-  it('로그인 성공 시 토큰과 유저 정보를 저장한다', async () => {
+  it('로그인 성공 시 zustand 스토어에 토큰과 유저를 저장하고 홈으로 이동한다', async () => {
     const user = userEvent.setup()
     const mockResponse = {
       success: true,
@@ -60,8 +52,11 @@ describe('LoginForm', () => {
     await user.click(screen.getByRole('button', { name: '로그인' }))
 
     expect(mockLogin).toHaveBeenCalledWith('test@test.com', 'password123')
-    expect(mockSetTokens).toHaveBeenCalledWith(mockResponse.data.tokens)
-    expect(mockSetUser).toHaveBeenCalledWith(mockResponse.data.user)
+    expect(mockStoreLogin).toHaveBeenCalledWith(
+      mockResponse.data.tokens,
+      mockResponse.data.user,
+    )
+    expect(mockPush).toHaveBeenCalledWith('/')
   })
 
   it('로그인 실패 시 에러 메시지를 표시한다', async () => {

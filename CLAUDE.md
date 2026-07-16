@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+# 케이스
+- storybook: xxx.stories.tsx
+- test: xxx.test.ts / xxx.spec.ts
+- compoent: PascalCase
+- others: camelCase
+
 # 작업 순서: 신규 작업 시, 반드시 다음 플로우를 준수하여 작업 진행할 것
 1. 기획&요구사항 정리
 - atlassian mcp 사용해 Jira 접근하여 기획 확인

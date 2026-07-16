@@ -2,8 +2,9 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { login } from '../api/auth.api'
-import { setTokens, setUser } from '../model/auth.store'
+import { useRouter } from 'next/navigation'
+import { login } from '../api/authApi'
+import { useAuthStore } from '../model/authStore'
 import { Button, Card, Input, Typo } from '@/shared/ui'
 
 /**
@@ -11,14 +12,15 @@ import { Button, Card, Input, Typo } from '@/shared/ui'
  * ---
  * - 간단설명: 이메일/비밀번호 로그인 폼 컴포넌트
  * - 제약사항 및 특이사항:
- *   - @fblg/core-ui 컴포넌트만 사용
- *   - 로그인 성공 시 토큰/유저 저장 후 홈으로 이동
+ *   - 로그인 성공 시 zustand 스토어에 토큰/유저 저장 후 홈으로 이동
  *   - 서버(localhost:8080) 실행 필요
  * ---
  * @example
  * <LoginForm />
  */
 export default function LoginForm() {
+  const router = useRouter()
+  const storeLogin = useAuthStore((s) => s.login)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -33,9 +35,8 @@ export default function LoginForm() {
       const result = await login(email, password)
 
       if (result.success && result.data) {
-        setTokens(result.data.tokens)
-        setUser(result.data.user)
-        window.location.href = '/'
+        storeLogin(result.data.tokens, result.data.user)
+        router.push('/')
       } else {
         setError(result.error ?? '로그인에 실패했습니다')
       }
