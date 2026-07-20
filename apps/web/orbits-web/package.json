@@ -1,0 +1,41 @@
+{
+  "name": "orbits-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "local": "vite --port 3001",
+    "build": "vite build",
+    "check-types": "tsc --noEmit",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "test": "vitest run --passWithNoTests"
+  },
+  "dependencies": {
+    "@fblg/core-ui": "workspace:^",
+    "@fblg/utils": "workspace:^",
+    "lucide-react": "^0.545.0",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "tailwind-merge": "catalog:",
+    "tailwindcss": "catalog:",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "catalog:",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "catalog:",
+    "@testing-library/react": "catalog:",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^22.10.2",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "eslint": "^9.20.0",
+    "@fblg/eslint-config": "workspace:^",
+    "jsdom": "catalog:",
+    "prettier": "^3.8.1",
+    "typescript": "^6.0.2",
+    "vite": "catalog:",
+    "vitest": "catalog:"
+  }
+}
