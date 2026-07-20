@@ -1,13 +1,4 @@
-'use client'
-
-import React from 'react'
-import { twMerge } from 'tailwind-merge'
-
-interface TypoProps extends React.HTMLAttributes<HTMLParagraphElement> {
-  children: React.ReactNode
-  as?: React.ElementType
-  className?: string
-}
+import { createTypoComponent } from '@fblg/typo'
 
 /**
  * # Typo
@@ -21,35 +12,11 @@ interface TypoProps extends React.HTMLAttributes<HTMLParagraphElement> {
  * <Typo.BM>본문 텍스트</Typo.BM>
  */
 
-function createTypoComponent(defaultClassName: string, displayName: string) {
-  const Component = React.forwardRef<HTMLElement, TypoProps>(
-    function TypoVariant(
-      { as: Tag = 'p', className, children, ...props },
-      ref,
-    ) {
-      return (
-        <Tag
-          ref={ref}
-          className={twMerge(defaultClassName, className)}
-          {...props}
-        >
-          {children}
-        </Tag>
-      )
-    },
-  )
-  Component.displayName = displayName
-  return Component
-}
-
-const HEADING_FONT =
-  "font-['Plus_Jakarta_Sans',ui-sans-serif,system-ui,sans-serif]"
-
 /**
  * Display Large — Plus Jakarta Sans 48/60 Bold, tracking -0.02em
  */
 const DL = createTypoComponent(
-  `text-[48px] font-bold leading-[60px] tracking-[-0.02em] ${HEADING_FONT} text-lf-on-surface`,
+  `text-[48px] font-bold leading-[60px] tracking-[-0.02em]`,
   'Typo.DL',
 )
 
@@ -57,7 +24,7 @@ const DL = createTypoComponent(
  * Headline Large — Plus Jakarta Sans 32/40 Bold, tracking -0.01em
  */
 const HL = createTypoComponent(
-  `text-[32px] font-bold leading-[40px] tracking-[-0.01em] ${HEADING_FONT} text-lf-on-surface`,
+  `text-[32px] font-bold leading-[40px] tracking-[-0.01em]`,
   'Typo.HL',
 )
 
@@ -65,7 +32,7 @@ const HL = createTypoComponent(
  * Headline Medium — Plus Jakarta Sans 24/32 Semibold
  */
 const HM = createTypoComponent(
-  `text-[24px] font-semibold leading-[32px] ${HEADING_FONT} text-lf-on-surface`,
+  `text-[24px] font-semibold leading-[32px]`,
   'Typo.HM',
 )
 
