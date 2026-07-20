@@ -8,7 +8,9 @@
     "check-types": "tsc --noEmit",
     "preview": "vite preview",
     "lint": "eslint .",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --passWithNoTests",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@fblg/core-ui": "workspace:^",
@@ -21,6 +23,10 @@
     "zustand": "^5.0.14"
   },
   "devDependencies": {
+    "@fblg/eslint-config": "workspace:^",
+    "@storybook/addon-essentials": "^8",
+    "@storybook/react": "^8",
+    "@storybook/react-vite": "^8",
     "@tailwindcss/vite": "catalog:",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "catalog:",
@@ -31,9 +37,9 @@
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "eslint": "^9.20.0",
-    "@fblg/eslint-config": "workspace:^",
     "jsdom": "catalog:",
     "prettier": "^3.8.1",
+    "storybook": "^8",
     "typescript": "^6.0.2",
     "vite": "catalog:",
     "vitest": "catalog:"
