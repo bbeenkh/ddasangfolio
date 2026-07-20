@@ -1,0 +1,8 @@
+{
+  "extends": "@fblg/typescript-config/base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "outDir": "dist"
+  },
+  "include": ["*.ts", "*.tsx"]
+}

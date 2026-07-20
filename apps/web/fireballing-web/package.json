@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@fblg/core-ui": "workspace:^",
+    "@fblg/typo": "workspace:^",
     "@fblg/utils": "workspace:^",
     "lucide-react": "^0.545.0",
     "next": "canary",

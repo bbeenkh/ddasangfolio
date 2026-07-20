@@ -1,0 +1,20 @@
+{
+  "name": "@fblg/typo",
+  "version": "1.0.0",
+  "description": "타이포그래피 팩토리 유틸",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.tsx"
+  },
+  "dependencies": {
+    "tailwind-merge": "catalog:"
+  },
+  "devDependencies": {
+    "@types/react": "catalog:",
+    "@fblg/typescript-config": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": "catalog:"
+  }
+}

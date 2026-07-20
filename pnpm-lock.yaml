@@ -190,6 +190,9 @@ importers:
       '@fblg/core-ui':
         specifier: workspace:^
         version: link:../../../packages/ui
+      '@fblg/typo':
+        specifier: workspace:^
+        version: link:../../../packages/typo
       '@fblg/utils':
         specifier: workspace:^
         version: link:../../../packages/utils
@@ -392,6 +395,22 @@ importers:
         version: 8.50.0(eslint@9.39.1(jiti@2.7.0))(typescript@5.9.2)
 
   packages/typescript-config: {}
+
+  packages/typo:
+    dependencies:
+      react:
+        specifier: 'catalog:'
+        version: 19.2.3
+      tailwind-merge:
+        specifier: 'catalog:'
+        version: 3.6.0
+    devDependencies:
+      '@fblg/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      '@types/react':
+        specifier: 'catalog:'
+        version: 19.2.3
 
   packages/ui:
     dependencies:
