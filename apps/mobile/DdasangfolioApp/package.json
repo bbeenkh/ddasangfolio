@@ -10,14 +10,12 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native/new-app-screen": "0.85.3",
     "react": "catalog:",
     "react-native": "0.85.3",
-    "@react-native/new-app-screen": "0.85.3",
     "react-native-safe-area-context": "^5.5.2"
   },
   "devDependencies": {
-    "@react-native/gradle-plugin": "0.85.3",
-    "@react-native/codegen": "0.85.3",
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.3",
     "@babel/runtime": "^7.25.0",
@@ -25,7 +23,9 @@
     "@react-native-community/cli-platform-android": "20.1.0",
     "@react-native-community/cli-platform-ios": "20.1.0",
     "@react-native/babel-preset": "0.85.3",
+    "@react-native/codegen": "0.85.3",
     "@react-native/eslint-config": "0.85.3",
+    "@react-native/gradle-plugin": "0.85.3",
     "@react-native/jest-preset": "0.85.3",
     "@react-native/metro-config": "0.85.3",
     "@react-native/typescript-config": "0.85.3",
@@ -33,6 +33,7 @@
     "@types/react": "catalog:",
     "@types/react-test-renderer": "^19.1.0",
     "eslint": "^8.19.0",
+    "eslint-plugin-jest": "^29.15.5",
     "jest": "^29.6.3",
     "prettier": "2.8.8",
     "react-test-renderer": "19.2.3",
