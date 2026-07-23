@@ -1,12 +1,12 @@
 import { Button } from '@/shared/ui'
-import React from 'react'
+import useGoogleLoginMutation from './useGoogleLoginMutation'
 
 export default function GoogleLoginButton() {
-  const 
+  const { mutate } = useGoogleLoginMutation();
   return (
     <Button
       variant="secondary"
-      onClick={() => signIn('google', { callbackUrl: '/' })}
+      onClick={() => mutate()}
       styleClass={{ root: 'flex items-center justify-center gap-3 w-full' }}
     >
       <GoogleIcon />
