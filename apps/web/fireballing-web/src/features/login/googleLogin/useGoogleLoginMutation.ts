@@ -12,12 +12,9 @@ export default function useGoogleLoginMutation() {
   return useMutation({
     mutationFn: async () => {
       // 구글 signin
-      const res = await signIn("google", {
-        redirect: false,
+      await signIn("google", {
+        callbackUrl: '/'
       });
-
-      console.log('login success', res);
-      router.push('/');
     },
     onSuccess: (res) => {
       console.log(res);
