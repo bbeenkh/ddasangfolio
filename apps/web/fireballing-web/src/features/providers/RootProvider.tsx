@@ -1,4 +1,7 @@
-import QueryProvider from '@/shared/lib/QueryProvider'
+'use client'
+
+import queryClient from '@/shared/lib/queryClient'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { SessionProvider } from 'next-auth/react'
 import React from 'react'
 
@@ -8,10 +11,10 @@ import React from 'react'
 export default function RootProvider({ children }: { children: React.ReactNode }) {
   return (
     <>
-      <SessionProvider>
-        <QueryProvider>
+      <SessionProvider refetchInterval={0} refetchOnWindowFocus={true}>
+        <QueryClientProvider client={queryClient}>
           {children}
-        </QueryProvider>
+        </QueryClientProvider>
       </SessionProvider>
     </>
   )
