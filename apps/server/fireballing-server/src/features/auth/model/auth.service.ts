@@ -1,7 +1,7 @@
 import type { User } from '@supabase/supabase-js'
 import type { UserProfile } from '../../../entities/user/index.js'
 import type { SignupRequest, LoginRequest, AuthTokens } from '../types/auth.types.js'
-import { getSupabaseClient, createSupabaseClientWithToken, createSupabaseClientWithCodeVerifier } from '../../../shared/lib/supabase.js'
+import { getSupabaseClient, createSupabaseClientWithToken } from '../../../shared/lib/supabase.js'
 import { HttpError } from '../../../shared/errors/http-error.js'
 import { SupabaseConnectionError } from '../../../shared/errors/supabase-connection-error.js'
 
@@ -179,84 +179,6 @@ export async function refreshToken(token: string): Promise<AuthTokens> {
  * ---
  * @param user Supabase Auth User 객체
  */
-/**
- * # getGoogleOAuthUrl
- * ---
- * - 간단설명: Google OAuth 로그인 URL과 PKCE code_verifier를 생성하여 반환
- * - 제약사항: Supabase 대시보드에서 Google OAuth 프로바이더가 활성화되어 있어야 함
- * ---
- * @param redirectTo OAuth 인증 후 리다이렉트될 콜백 URL
- * ---
- * @example
- * const { url, codeVerifier } = await getGoogleOAuthUrl('http://localhost:8080/api/auth/oauth/callback')
- */
-export async function getGoogleOAuthUrl(redirectTo: string): Promise<{ url: string; codeVerifier: string }> {
-  const supabase = getSupabaseClient()
-
-  let data, error
-  try {
-    ({ data, error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo,
-        skipBrowserRedirect: true,
-      },
-    }))
-  } catch (e) {
-    if (SupabaseConnectionError.isConnectionError(e)) throw new SupabaseConnectionError(e)
-    throw e
-  }
-
-  if (error) {
-    if (SupabaseConnectionError.isConnectionError(error)) throw new SupabaseConnectionError(error)
-    throw new HttpError(400, error.message)
-  }
-  if (!data.url) throw new HttpError(500, 'OAuth URL 생성에 실패했습니다')
-
-  return {
-    url: data.url,
-    codeVerifier: (data as any).codeVerifier ?? '',
-  }
-}
-
-/**
- * # exchangeOAuthCode
- * ---
- * - 간단설명: OAuth 인가 코드를 세션 토큰으로 교환하여 유저 정보와 토큰을 반환
- * ---
- * @param code OAuth 인가 코드
- * @param codeVerifier PKCE code_verifier
- * ---
- * @example
- * const { user, tokens } = await exchangeOAuthCode('auth-code', 'verifier')
- */
-export async function exchangeOAuthCode(code: string, codeVerifier: string): Promise<{ user: UserProfile; tokens: AuthTokens }> {
-  const supabase = createSupabaseClientWithCodeVerifier(codeVerifier)
-
-  let data, error
-  try {
-    ({ data, error } = await supabase.auth.exchangeCodeForSession(code))
-  } catch (e) {
-    if (SupabaseConnectionError.isConnectionError(e)) throw new SupabaseConnectionError(e)
-    throw e
-  }
-
-  if (error) {
-    if (SupabaseConnectionError.isConnectionError(error)) throw new SupabaseConnectionError(error)
-    throw new HttpError(401, error.message)
-  }
-  if (!data.user || !data.session) throw new HttpError(401, 'OAuth 인증에 실패했습니다')
-
-  return {
-    user: mapToUserProfile(data.user),
-    tokens: {
-      accessToken: data.session.access_token,
-      refreshToken: data.session.refresh_token,
-      expiresIn: data.session.expires_in,
-    },
-  }
-}
-
 export function mapToUserProfile(user: User): UserProfile {
   return {
     id: user.id,

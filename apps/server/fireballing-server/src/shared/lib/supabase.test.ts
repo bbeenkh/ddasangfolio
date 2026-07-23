@@ -9,7 +9,6 @@ vi.mock('../config/env.js', () => ({
     SUPABASE_URL: 'https://test.supabase.co',
     SUPABASE_ANON_KEY: 'test-anon-key',
     SUPABASE_JWT_SECRET: 'test-jwt-secret',
-    WEB_BASE_URL: 'http://localhost:3000',
     PORT: 3001,
   }),
 }))
@@ -19,7 +18,7 @@ describe('Supabase 클라이언트', () => {
     vi.clearAllMocks()
   })
 
-  it('getSupabaseClient는 anon key와 PKCE flowType으로 생성된 클라이언트를 반환한다', async () => {
+  it('getSupabaseClient는 anon key로 생성된 클라이언트를 반환한다', async () => {
     const { createClient } = await import('@supabase/supabase-js')
     const { getSupabaseClient } = await import('./supabase.js')
 
@@ -28,7 +27,6 @@ describe('Supabase 클라이언트', () => {
     expect(createClient).toHaveBeenCalledWith(
       'https://test.supabase.co',
       'test-anon-key',
-      { auth: { flowType: 'pkce' } },
     )
     expect(client).toBeDefined()
   })
@@ -49,33 +47,5 @@ describe('Supabase 클라이언트', () => {
       },
     )
     expect(client).toBeDefined()
-  })
-
-  it('createSupabaseClientWithCodeVerifier는 PKCE code_verifier를 storage에 주입한 클라이언트를 생성한다', async () => {
-    const { createClient } = await import('@supabase/supabase-js')
-    const { createSupabaseClientWithCodeVerifier } = await import('./supabase.js')
-
-    const client = createSupabaseClientWithCodeVerifier('test-verifier')
-
-    expect(createClient).toHaveBeenCalledWith(
-      'https://test.supabase.co',
-      'test-anon-key',
-      expect.objectContaining({
-        auth: expect.objectContaining({
-          flowType: 'pkce',
-          storage: expect.objectContaining({
-            getItem: expect.any(Function),
-            setItem: expect.any(Function),
-            removeItem: expect.any(Function),
-          }),
-        }),
-      }),
-    )
-    expect(client).toBeDefined()
-
-    // storage.getItem이 code_verifier 키에 대해 올바른 값을 반환하는지 확인
-    const storageArg = (createClient as any).mock.calls.at(-1)[2].auth.storage
-    expect(storageArg.getItem('some-key-code_verifier')).toBe('test-verifier')
-    expect(storageArg.getItem('other-key')).toBeNull()
   })
 })

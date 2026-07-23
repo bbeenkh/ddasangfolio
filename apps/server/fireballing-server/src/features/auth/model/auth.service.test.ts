@@ -3,18 +3,15 @@ import type { UserProfile } from '../../../entities/user/index.js'
 
 const mockSignUp = vi.fn()
 const mockSignInWithPassword = vi.fn()
-const mockSignInWithOAuth = vi.fn()
 const mockSignOut = vi.fn()
 const mockGetUser = vi.fn()
 const mockRefreshSession = vi.fn()
-const mockExchangeCodeForSession = vi.fn()
 
 vi.mock('../../../shared/lib/supabase.js', () => ({
   getSupabaseClient: () => ({
     auth: {
       signUp: mockSignUp,
       signInWithPassword: mockSignInWithPassword,
-      signInWithOAuth: mockSignInWithOAuth,
       refreshSession: mockRefreshSession,
     },
   }),
@@ -22,11 +19,6 @@ vi.mock('../../../shared/lib/supabase.js', () => ({
     auth: {
       signOut: mockSignOut,
       getUser: mockGetUser,
-    },
-  }),
-  createSupabaseClientWithCodeVerifier: () => ({
-    auth: {
-      exchangeCodeForSession: mockExchangeCodeForSession,
     },
   }),
 }))
@@ -38,8 +30,6 @@ import {
   getCurrentUser,
   refreshToken,
   mapToUserProfile,
-  getGoogleOAuthUrl,
-  exchangeOAuthCode,
 } from './auth.service.js'
 
 describe('auth.service', () => {
@@ -221,103 +211,6 @@ describe('auth.service', () => {
 
       expect(profile.name).toBeNull()
       expect(profile.profileImage).toBeNull()
-    })
-  })
-
-  describe('getGoogleOAuthUrl', () => {
-    it('Google OAuth URL과 codeVerifier를 반환한다', async () => {
-      mockSignInWithOAuth.mockResolvedValue({
-        data: {
-          url: 'https://accounts.google.com/o/oauth2/auth?...',
-          provider: 'google',
-        },
-        error: null,
-      })
-
-      const result = await getGoogleOAuthUrl('http://localhost:8080/api/auth/oauth/callback')
-
-      expect(result.url).toBe('https://accounts.google.com/o/oauth2/auth?...')
-      expect(result.codeVerifier).toBeDefined()
-      expect(mockSignInWithOAuth).toHaveBeenCalledWith({
-        provider: 'google',
-        options: {
-          redirectTo: 'http://localhost:8080/api/auth/oauth/callback',
-          skipBrowserRedirect: true,
-        },
-      })
-    })
-
-    it('Supabase 에러 시 에러를 던진다', async () => {
-      mockSignInWithOAuth.mockResolvedValue({
-        data: { url: null, provider: 'google' },
-        error: { message: 'OAuth provider not enabled' },
-      })
-
-      await expect(
-        getGoogleOAuthUrl('http://localhost:8080/api/auth/oauth/callback'),
-      ).rejects.toThrow('OAuth provider not enabled')
-    })
-
-    it('URL이 반환되지 않으면 에러를 던진다', async () => {
-      mockSignInWithOAuth.mockResolvedValue({
-        data: { url: null, provider: 'google' },
-        error: null,
-      })
-
-      await expect(
-        getGoogleOAuthUrl('http://localhost:8080/api/auth/oauth/callback'),
-      ).rejects.toThrow()
-    })
-  })
-
-  describe('exchangeOAuthCode', () => {
-    it('인가 코드를 토큰으로 교환하고 유저와 토큰을 반환한다', async () => {
-      mockExchangeCodeForSession.mockResolvedValue({
-        data: {
-          user: {
-            id: 'google-user-1',
-            email: 'google@gmail.com',
-            user_metadata: { name: '구글유저', avatar_url: 'https://lh3.google.com/photo.jpg' },
-          },
-          session: {
-            access_token: 'google-access-token',
-            refresh_token: 'google-refresh-token',
-            expires_in: 3600,
-          },
-        },
-        error: null,
-      })
-
-      const result = await exchangeOAuthCode('auth-code-123', 'code-verifier-456')
-
-      expect(result.user.email).toBe('google@gmail.com')
-      expect(result.user.name).toBe('구글유저')
-      expect(result.user.profileImage).toBe('https://lh3.google.com/photo.jpg')
-      expect(result.tokens.accessToken).toBe('google-access-token')
-      expect(result.tokens.refreshToken).toBe('google-refresh-token')
-      expect(mockExchangeCodeForSession).toHaveBeenCalledWith('auth-code-123')
-    })
-
-    it('Supabase 에러 시 에러를 던진다', async () => {
-      mockExchangeCodeForSession.mockResolvedValue({
-        data: { user: null, session: null },
-        error: { message: 'Invalid code' },
-      })
-
-      await expect(
-        exchangeOAuthCode('invalid-code', 'verifier'),
-      ).rejects.toThrow('Invalid code')
-    })
-
-    it('세션이 없으면 에러를 던진다', async () => {
-      mockExchangeCodeForSession.mockResolvedValue({
-        data: { user: null, session: null },
-        error: null,
-      })
-
-      await expect(
-        exchangeOAuthCode('code', 'verifier'),
-      ).rejects.toThrow()
     })
   })
 })
