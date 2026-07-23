@@ -12,7 +12,9 @@ import { loadEnv } from '../config/env.js'
  */
 export function getSupabaseClient() {
   const env = loadEnv()
-  return createClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY)
+  return createClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY, {
+    auth: { flowType: 'pkce' },
+  })
 }
 
 /**
@@ -32,6 +34,32 @@ export function createSupabaseClientWithToken(accessToken: string) {
   return createClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY, {
     global: {
       headers: { Authorization: `Bearer ${accessToken}` },
+    },
+  })
+}
+
+/**
+ * # createSupabaseClientWithCodeVerifier
+ * ---
+ * - 간단설명: PKCE code_verifier를 주입한 Supabase 클라이언트 생성 (OAuth 콜백용)
+ * - 제약사항: exchangeCodeForSession 호출 시에만 사용
+ * ---
+ * @param codeVerifier PKCE code_verifier 문자열
+ * ---
+ * @example
+ * const supabase = createSupabaseClientWithCodeVerifier(verifier)
+ * await supabase.auth.exchangeCodeForSession(code)
+ */
+export function createSupabaseClientWithCodeVerifier(codeVerifier: string) {
+  const env = loadEnv()
+  return createClient(env.SUPABASE_URL, env.SUPABASE_ANON_KEY, {
+    auth: {
+      flowType: 'pkce',
+      storage: {
+        getItem: (key: string) => key.endsWith('code_verifier') ? codeVerifier : null,
+        setItem: () => {},
+        removeItem: () => {},
+      },
     },
   })
 }

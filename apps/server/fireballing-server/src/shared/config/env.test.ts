@@ -10,6 +10,7 @@ describe('loadEnv', () => {
     vi.stubEnv('SUPABASE_URL', 'https://test.supabase.co')
     vi.stubEnv('SUPABASE_ANON_KEY', 'test-anon-key')
     vi.stubEnv('SUPABASE_JWT_SECRET', 'test-jwt-secret')
+    vi.stubEnv('WEB_BASE_URL', 'http://localhost:3000')
 
     const { loadEnv } = await import('./env.js')
     const env = loadEnv()
@@ -17,6 +18,7 @@ describe('loadEnv', () => {
     expect(env.SUPABASE_URL).toBe('https://test.supabase.co')
     expect(env.SUPABASE_ANON_KEY).toBe('test-anon-key')
     expect(env.SUPABASE_JWT_SECRET).toBe('test-jwt-secret')
+    expect(env.WEB_BASE_URL).toBe('http://localhost:3000')
     expect(env.PORT).toBe(8080)
   })
 
@@ -24,6 +26,7 @@ describe('loadEnv', () => {
     vi.stubEnv('SUPABASE_URL', 'https://test.supabase.co')
     vi.stubEnv('SUPABASE_ANON_KEY', 'test-anon-key')
     vi.stubEnv('SUPABASE_JWT_SECRET', 'test-jwt-secret')
+    vi.stubEnv('WEB_BASE_URL', 'http://localhost:3000')
     vi.stubEnv('PORT', '4000')
 
     const { loadEnv } = await import('./env.js')

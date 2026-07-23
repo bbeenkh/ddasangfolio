@@ -11,6 +11,8 @@ const envSchema = z.object({
   SUPABASE_URL: z.string().url(),
   SUPABASE_ANON_KEY: z.string().min(1),
   SUPABASE_JWT_SECRET: z.string().min(1),
+  /** OAuth 콜백 후 리다이렉트할 웹 앱 URL (예: http://localhost:3000) */
+  WEB_BASE_URL: z.string().url(),
   PORT: z.coerce.number().default(8080),
 })
 
