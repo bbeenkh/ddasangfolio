@@ -200,6 +200,9 @@ importers:
       '@fblg/utils':
         specifier: workspace:^
         version: link:../../../packages/utils
+      '@tanstack/react-query':
+        specifier: ^5.22.2
+        version: 5.101.1(react@19.2.3)
       lucide-react:
         specifier: ^0.545.0
         version: 0.545.0(react@19.2.3)
