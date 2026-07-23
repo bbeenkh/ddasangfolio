@@ -173,6 +173,47 @@ export async function refreshToken(token: string): Promise<AuthTokens> {
 }
 
 /**
+ * # googleLogin
+ * ---
+ * - 간단설명: Google ID 토큰으로 Supabase에 로그인하여 유저 정보와 토큰을 반환
+ * - 제약사항: Supabase 대시보드에서 Google OAuth 프로바이더가 활성화되어 있어야 함
+ * ---
+ * @param idToken Google OAuth에서 발급받은 ID 토큰
+ * ---
+ * @example
+ * const { user, tokens } = await googleLogin('eyJ...')
+ */
+export async function googleLogin(idToken: string): Promise<{ user: UserProfile; tokens: AuthTokens }> {
+  const supabase = getSupabaseClient()
+
+  let data, error
+  try {
+    ({ data, error } = await supabase.auth.signInWithIdToken({
+      provider: 'google',
+      token: idToken,
+    }))
+  } catch (e) {
+    if (SupabaseConnectionError.isConnectionError(e)) throw new SupabaseConnectionError(e)
+    throw e
+  }
+
+  if (error) {
+    if (SupabaseConnectionError.isConnectionError(error)) throw new SupabaseConnectionError(error)
+    throw new HttpError(401, error.message)
+  }
+  if (!data.user || !data.session) throw new HttpError(401, 'Google 로그인에 실패했습니다')
+
+  return {
+    user: mapToUserProfile(data.user),
+    tokens: {
+      accessToken: data.session.access_token,
+      refreshToken: data.session.refresh_token,
+      expiresIn: data.session.expires_in,
+    },
+  }
+}
+
+/**
  * # mapToUserProfile
  * ---
  * - 간단설명: Supabase User 객체를 UserProfile 인터페이스로 변환

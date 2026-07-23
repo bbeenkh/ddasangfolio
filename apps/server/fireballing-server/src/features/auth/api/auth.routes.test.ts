@@ -3,6 +3,7 @@ import { Hono } from 'hono'
 
 const mockSignUp = vi.fn()
 const mockSignInWithPassword = vi.fn()
+const mockSignInWithIdToken = vi.fn()
 const mockSignOut = vi.fn()
 const mockGetUser = vi.fn()
 const mockRefreshSession = vi.fn()
@@ -12,6 +13,7 @@ vi.mock('../../../shared/lib/supabase.js', () => ({
     auth: {
       signUp: mockSignUp,
       signInWithPassword: mockSignInWithPassword,
+      signInWithIdToken: mockSignInWithIdToken,
       refreshSession: mockRefreshSession,
     },
   }),
@@ -223,6 +225,62 @@ describe('auth.routes', () => {
       })
 
       expect(res.status).toBe(400)
+    })
+  })
+
+  describe('POST /api/auth/oauth/google', () => {
+    it('Google ID 토큰으로 로그인하면 200과 유저/토큰을 반환한다', async () => {
+      mockSignInWithIdToken.mockResolvedValue({
+        data: {
+          user: {
+            id: 'google-user-1',
+            email: 'google@gmail.com',
+            user_metadata: { name: '구글유저', avatar_url: 'https://photo.jpg' },
+          },
+          session: validSession,
+        },
+        error: null,
+      })
+
+      const app = createTestApp()
+      const res = await app.request('/api/auth/oauth/google', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ idToken: 'google-id-token-123' }),
+      })
+
+      expect(res.status).toBe(200)
+      const body = await res.json()
+      expect(body.success).toBe(true)
+      expect(body.data.user.email).toBe('google@gmail.com')
+      expect(body.data.tokens.accessToken).toBe('access-token')
+    })
+
+    it('idToken이 없으면 400을 반환한다', async () => {
+      const app = createTestApp()
+      const res = await app.request('/api/auth/oauth/google', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({}),
+      })
+
+      expect(res.status).toBe(400)
+    })
+
+    it('잘못된 ID 토큰이면 401을 반환한다', async () => {
+      mockSignInWithIdToken.mockResolvedValue({
+        data: { user: null, session: null },
+        error: { message: 'Invalid ID token' },
+      })
+
+      const app = createTestApp()
+      const res = await app.request('/api/auth/oauth/google', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ idToken: 'invalid' }),
+      })
+
+      expect(res.status).toBe(401)
     })
   })
 })

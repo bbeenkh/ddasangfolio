@@ -143,3 +143,29 @@ authRoutes.post('/logout', async (c) => {
     return c.json({ success: false, error: message }, status as any)
   }
 })
+
+/**
+ * # POST /oauth/google
+ * ---
+ * - 간단설명: Google ID 토큰으로 Supabase 로그인 후 유저와 토큰 반환
+ */
+authRoutes.post('/oauth/google', async (c) => {
+  const body = await c.req.json()
+  const idToken = body?.idToken
+
+  if (!idToken || typeof idToken !== 'string') {
+    return c.json({ success: false, error: 'idToken이 필요합니다' }, 400)
+  }
+
+  try {
+    const result = await authService.googleLogin(idToken)
+    return c.json({ success: true, data: result }, 200)
+  } catch (e) {
+    if (e instanceof SupabaseConnectionError) {
+      return c.json({ success: false, error: 'supabase connection error' }, 503)
+    }
+    const status = e instanceof HttpError ? e.statusCode : 500
+    const message = e instanceof Error ? e.message : 'Google 로그인에 실패했습니다'
+    return c.json({ success: false, error: message }, status as any)
+  }
+})

@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import QueryProvider from '@/shared/lib/QueryProvider'
 import './globals.css'
 import RootProvider from '@/features/providers/RootProvider'
 
