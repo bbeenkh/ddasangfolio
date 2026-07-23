@@ -14,8 +14,10 @@
   "dependencies": {
     "@fblg/core-ui": "workspace:^",
     "@fblg/utils": "workspace:^",
+    "@tanstack/react-query": "^5.22.2",
     "lucide-react": "^0.545.0",
     "next": "canary",
+    "next-auth": "^4.24.15",
     "react": "catalog:",
     "react-dom": "catalog:",
     "tailwind-merge": "^3.6.0",

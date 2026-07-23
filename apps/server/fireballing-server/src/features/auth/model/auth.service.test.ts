@@ -3,6 +3,7 @@ import type { UserProfile } from '../../../entities/user/index.js'
 
 const mockSignUp = vi.fn()
 const mockSignInWithPassword = vi.fn()
+const mockSignInWithIdToken = vi.fn()
 const mockSignOut = vi.fn()
 const mockGetUser = vi.fn()
 const mockRefreshSession = vi.fn()
@@ -12,6 +13,7 @@ vi.mock('../../../shared/lib/supabase.js', () => ({
     auth: {
       signUp: mockSignUp,
       signInWithPassword: mockSignInWithPassword,
+      signInWithIdToken: mockSignInWithIdToken,
       refreshSession: mockRefreshSession,
     },
   }),
@@ -26,6 +28,7 @@ vi.mock('../../../shared/lib/supabase.js', () => ({
 import {
   signup,
   login,
+  googleLogin,
   logout,
   getCurrentUser,
   refreshToken,
@@ -211,6 +214,55 @@ describe('auth.service', () => {
 
       expect(profile.name).toBeNull()
       expect(profile.profileImage).toBeNull()
+    })
+  })
+
+  describe('googleLogin', () => {
+    it('Google ID 토큰으로 로그인하고 유저와 토큰을 반환한다', async () => {
+      mockSignInWithIdToken.mockResolvedValue({
+        data: {
+          user: {
+            id: 'google-user-1',
+            email: 'google@gmail.com',
+            user_metadata: { name: '구글유저', avatar_url: 'https://lh3.google.com/photo.jpg' },
+          },
+          session: {
+            access_token: 'google-access-token',
+            refresh_token: 'google-refresh-token',
+            expires_in: 3600,
+          },
+        },
+        error: null,
+      })
+
+      const result = await googleLogin('google-id-token-123')
+
+      expect(result.user.email).toBe('google@gmail.com')
+      expect(result.user.name).toBe('구글유저')
+      expect(result.user.profileImage).toBe('https://lh3.google.com/photo.jpg')
+      expect(result.tokens.accessToken).toBe('google-access-token')
+      expect(mockSignInWithIdToken).toHaveBeenCalledWith({
+        provider: 'google',
+        token: 'google-id-token-123',
+      })
+    })
+
+    it('Supabase 에러 시 에러를 던진다', async () => {
+      mockSignInWithIdToken.mockResolvedValue({
+        data: { user: null, session: null },
+        error: { message: 'Invalid ID token' },
+      })
+
+      await expect(googleLogin('invalid-token')).rejects.toThrow('Invalid ID token')
+    })
+
+    it('세션이 없으면 에러를 던진다', async () => {
+      mockSignInWithIdToken.mockResolvedValue({
+        data: { user: null, session: null },
+        error: null,
+      })
+
+      await expect(googleLogin('token')).rejects.toThrow()
     })
   })
 })

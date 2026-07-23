@@ -1,24 +1,32 @@
-import type { Metadata } from 'next'
-import { LoginForm } from '@/features/auth'
+'use client'
 
-export const metadata: Metadata = {
-  title: '로그인',
-}
+import { Card, Typo } from '@/shared/ui'
+import GoogleLoginButton from '@/features/login/googleLogin/GoogleLoginButton'
 
 /**
  * # LoginPage
  * ---
- * - 간단설명: 로그인 페이지
- * - 제약사항 및 특이사항:
- *   - 화면 중앙에 카드형 로그인 폼 배치
+ * - 간단설명: 로그인 페이지 — Google OAuth 로그인 버튼 제공
  * ---
  * @example
- * // /login 경로에서 접근
+ * // /login 경로로 접근
  */
 export default function LoginPage() {
   return (
-    <main className="flex min-h-[calc(100vh-120px)] items-center justify-center px-4">
-      <LoginForm />
+    <main className="flex min-h-[calc(100vh-57px)] items-center justify-center px-4">
+      <Card className="w-full max-w-md">
+        <Card.Header>
+          <Card.Title>
+            <Typo.HM as="span" className="font-bold">로그인</Typo.HM>
+          </Card.Title>
+        </Card.Header>
+        <Card.Body className="flex-col gap-4">
+          <GoogleLoginButton />
+        </Card.Body>
+      </Card>
     </main>
   )
 }
+
+/** Google 로고 SVG 아이콘 */
+

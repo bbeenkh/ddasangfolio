@@ -1,6 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import * as Dialog from '@radix-ui/react-dialog';
 import Modal from '.';
 import Button from '../Button';
 
@@ -74,7 +73,7 @@ export const LargeSize: Story = {
         <Modal.Title>넓은 모달</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <p className="text-sm text-gray-700">size="lg"로 지정된 모달입니다 (900px).</p>
+        <p className="text-sm text-gray-700">size=&quot;lg&quot;로 지정된 모달입니다 (900px).</p>
       </Modal.Body>
     </Modal>
   ),
@@ -83,31 +82,35 @@ export const LargeSize: Story = {
 
 /** 닫기 버튼 숨김 — 푸터 버튼으로만 닫기 */
 export const HideCloseButton: Story = {
-  render: (args) => (
-    <Modal
-      {...args}
-      triggerUI={
-        <Button styleClass={{ root: 'px-4 py-2 bg-gray-900 text-white rounded-lg text-sm' }}>
+  render: () => {
+    const [open, setOpen] = useState(false);
+    return (
+      <>
+        <Button
+          styleClass={{ root: 'px-4 py-2 bg-gray-900 text-white rounded-lg text-sm' }}
+          onClick={() => setOpen(true)}
+        >
           열기
         </Button>
-      }
-    >
-      <Modal.Header>
-        <Modal.Title>닫기 버튼 없음</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p className="text-sm text-gray-700">푸터의 버튼으로만 닫을 수 있습니다.</p>
-      </Modal.Body>
-      <Modal.Footer>
-        <Dialog.Close asChild>
-          <Button styleClass={{ root: 'px-4 py-2 bg-gray-900 text-white rounded-lg text-sm' }}>
-            닫기
-          </Button>
-        </Dialog.Close>
-      </Modal.Footer>
-    </Modal>
-  ),
-  args: { hideCloseButton: true },
+        <Modal open={open} onOpenChange={setOpen} hideCloseButton>
+          <Modal.Header>
+            <Modal.Title>닫기 버튼 없음</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p className="text-sm text-gray-700">푸터의 버튼으로만 닫을 수 있습니다.</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              styleClass={{ root: 'px-4 py-2 bg-gray-900 text-white rounded-lg text-sm' }}
+              onClick={() => setOpen(false)}
+            >
+              닫기
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      </>
+    );
+  },
 };
 
 /** 외부 클릭 닫힘 방지 */

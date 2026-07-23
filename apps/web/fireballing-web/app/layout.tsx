@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { AuthHydration } from '@/features/auth'
 import './globals.css'
+import RootProvider from '@/features/providers/RootProvider'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-plus-jakarta' })
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: 'Fireballing',
     template: '%s | Fireballing',
   },
-  description: '개인 포트폴리오 사이트',
+  description: '파이어볼링, 배당성장 특화 포트폴리오',
 }
 
 /**
@@ -36,10 +36,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${inter.variable} ${plusJakartaSans.variable}`}>
-        <AuthHydration />
-        <Header />
-        {children}
-        <Footer />
+        <RootProvider>
+          <Header />
+          {children}
+          <Footer />
+        </RootProvider>
       </body>
     </html>
   )
