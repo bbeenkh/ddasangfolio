@@ -1,5 +1,6 @@
 {
   "name": "fblg-server",
+  "private": true,
   "type": "module",
   "scripts": {
     "local": "tsx watch --env-file=.env.development src/index.ts",

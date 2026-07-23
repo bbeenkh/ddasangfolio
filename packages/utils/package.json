@@ -1,5 +1,6 @@
 {
   "name": "@fblg/utils",
+  "private": true,
   "version": "1.1.0",
   "description": "파이어볼링 유틸 모듈",
   "main": "index.js",
