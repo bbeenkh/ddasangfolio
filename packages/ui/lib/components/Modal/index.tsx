@@ -1,40 +1,49 @@
-import React, { useRef, useCallback, Suspense } from 'react';
-import * as Dialog from '@radix-ui/react-dialog';
+import React, { Suspense, useState, useCallback } from 'react';
+import ReactModal from 'react-modal';
 import { twMerge } from 'tailwind-merge';
 import { ErrorBoundary } from 'react-error-boundary';
 import type { FallbackProps } from 'react-error-boundary';
 
-export interface IModalProps extends React.ComponentProps<typeof Dialog.Root> {
+const SIZE_MAP = {
+  md: '37.5rem',
+  lg: '56.25rem',
+  xl: '75rem',
+} as const;
+
+export interface IModalProps {
+  children?: React.ReactNode;
+  /** 트리거 요소 (클릭 시 모달 열림, 비제어 모드) */
   triggerUI?: React.ReactNode;
   className?: string;
+  /** true 시 우상단 닫기 버튼 숨김 */
   hideCloseButton?: boolean;
   overlayClassName?: string;
-  /** overlay z-index (CSS 우선순위 문제로 인해 style로 직접 적용) */
+  /** overlay z-index */
   overlayZIndex?: number;
   /**
    * 모달 사이즈
-   * md: width: 600px
-   * lg: width: 900px
-   * xl: width: 1200px
+   * md: 600px, lg: 900px, xl: 1200px
    */
   size?: 'md' | 'lg' | 'xl';
-  /** true 시 외부(overlay) 클릭으로 모달이 닫히지 않음 */
+  /** true 시 외부 클릭으로 모달이 닫히지 않음 */
   preventOutsideClose?: boolean;
+  /** 제어 모드: 열림 여부 */
+  open?: boolean;
+  /** 제어 모드: 열림/닫힘 콜백 */
+  onOpenChange?: (open: boolean) => void;
 }
 
 /**
  * # Modal UI
  * ---
- * - 간단설명: Radix Dialog 기반 모달 컴포넌트
+ * - 간단설명: react-modal 기반 모달 컴포넌트
  * - `triggerUI`로 트리거 요소를 주입하거나, `open`/`onOpenChange`로 제어 모드로 사용
- * - 중첩 Dialog 내부 이벤트에 의한 의도치 않은 닫힘을 `userCloseIntentRef`로 방지
  * - `preventOutsideClose=true` 시 overlay 클릭, Escape 키로 닫히지 않음
  * ---
- * @param triggerUI 트리거로 사용할 ReactNode (생략 시 비제어 모드)
+ * @param triggerUI 트리거로 사용할 ReactNode (생략 시 제어 모드)
  * @param size 모달 너비 `'md'`(600px) | `'lg'`(900px) | `'xl'`(1200px), 기본값 `'md'`
  * @param hideCloseButton true 시 우상단 닫기 버튼 숨김
- * @param overlayClassName overlay에 추가할 className
- * @param overlayZIndex overlay/content z-index (inline style로 적용)
+ * @param overlayZIndex overlay z-index (기본값 50)
  * @param preventOutsideClose true 시 외부 클릭·Escape로 닫히지 않음, 기본값 `false`
  * @example
  * <Modal triggerUI={<Button>열기</Button>} size="lg">
@@ -53,76 +62,92 @@ export default function Modal({
   className,
   hideCloseButton,
   overlayClassName,
-  overlayZIndex,
+  overlayZIndex = 50,
   size = 'md',
   preventOutsideClose = false,
-  ...props
+  open: controlledOpen,
+  onOpenChange,
 }: IModalProps) {
-  /**
-   * 사용자가 직접 닫기를 시도했는지 추적
-   * - overlay 클릭, X 버튼 클릭, Escape 키 시에만 true
-   * - 중첩 Dialog 내부 이벤트로 인한 onOpenChange(false) 호출을 차단
-   */
-  const userCloseIntentRef = useRef(false);
+  const [internalOpen, setInternalOpen] = useState(false);
+  const isControlled = controlledOpen !== undefined;
+  const isOpen = isControlled ? controlledOpen : internalOpen;
 
-  const handleOpenChange = useCallback(
-    (open: boolean) => {
-      if (!open) {
-        if (!userCloseIntentRef.current) return;
-        userCloseIntentRef.current = false;
-      }
-      props.onOpenChange?.(open);
-    },
-    [props.onOpenChange],
-  );
+  const handleClose = useCallback(() => {
+    if (isControlled) {
+      onOpenChange?.(false);
+    } else {
+      setInternalOpen(false);
+    }
+  }, [isControlled, onOpenChange]);
 
-  const markCloseIntent = useCallback(() => {
-    userCloseIntentRef.current = true;
-  }, []);
+  const handleOpen = useCallback(() => {
+    if (isControlled) {
+      onOpenChange?.(true);
+    } else {
+      setInternalOpen(true);
+    }
+  }, [isControlled, onOpenChange]);
 
   return (
-    <Dialog.Root {...props} onOpenChange={handleOpenChange}>
-      {triggerUI && <Dialog.Trigger asChild>{triggerUI}</Dialog.Trigger>}
-      <Dialog.Portal>
-        <Dialog.Overlay
-          className={twMerge('DialogOverlay', overlayClassName)}
-          style={overlayZIndex ? { zIndex: overlayZIndex } : undefined}
-          onPointerDown={preventOutsideClose ? undefined : markCloseIntent}
-        />
-        <Dialog.Content
-          onEscapeKeyDown={preventOutsideClose ? undefined : markCloseIntent}
-          onPointerDownOutside={(e) => {
-            if (preventOutsideClose) {
-              e.preventDefault();
-            } else {
-              markCloseIntent();
-            }
-          }}
+    <>
+      {triggerUI && (
+        <span onClick={handleOpen} style={{ cursor: 'pointer' }}>
+          {triggerUI}
+        </span>
+      )}
+      <ReactModal
+        isOpen={isOpen}
+        onRequestClose={preventOutsideClose ? undefined : handleClose}
+        shouldCloseOnOverlayClick={!preventOutsideClose}
+        shouldCloseOnEsc={!preventOutsideClose}
+        ariaHideApp={false}
+        style={{
+          overlay: {
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: overlayZIndex,
+          },
+          content: {
+            position: 'relative',
+            inset: 'unset',
+            width: SIZE_MAP[size],
+            maxWidth: '96vw',
+            maxHeight: '85vh',
+            overflow: 'hidden',
+            borderRadius: '0.5rem',
+            border: 'none',
+            padding: 0,
+            backgroundColor: 'transparent',
+          },
+        }}
+        overlayClassName={overlayClassName}
+      >
+        <div
           className={twMerge(
-            'DialogContent relative flex flex-col gap-4 bg-white p-6',
-            'sm:w-[96vw] sm:max-w-[96vw] sm:h-[96vh] sm:max-h-[96vh] sm:p-4 sm:rounded-lg',
-            size === 'md' && 'w-[37.5rem] max-w-[37.5rem]',
-            size === 'lg' && 'w-[56.25rem] max-w-[56.25rem]',
-            size === 'xl' && 'w-[75rem] max-w-[80rem]',
+            'relative flex flex-col gap-4 bg-white p-6 rounded-lg',
             className,
           )}
-          style={overlayZIndex ? { zIndex: overlayZIndex } : undefined}
         >
-          {!hideCloseButton && <CloseButton onPointerDown={markCloseIntent} />}
+          {!hideCloseButton && <CloseButton onClick={handleClose} />}
           <ErrorBoundary FallbackComponent={ErrorFallback}>
             <Suspense>{children}</Suspense>
           </ErrorBoundary>
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+        </div>
+      </ReactModal>
+    </>
   );
 }
 
-function CloseButton({ onPointerDown }: { onPointerDown?: () => void }) {
+function CloseButton({ onClick }: { onClick: () => void }) {
   return (
-    <Dialog.Close
-      className="absolute right-6 top-6 hover:opacity-70"
-      onPointerDown={onPointerDown}
+    <button
+      type="button"
+      className="absolute right-6 top-6 hover:opacity-70 cursor-pointer bg-transparent border-none p-0"
+      onClick={onClick}
     >
       <svg
         width="24"
@@ -137,7 +162,7 @@ function CloseButton({ onPointerDown }: { onPointerDown?: () => void }) {
         <line x1="18" y1="6" x2="6" y2="18" />
         <line x1="6" y1="6" x2="18" y2="18" />
       </svg>
-    </Dialog.Close>
+    </button>
   );
 }
 
@@ -151,7 +176,7 @@ function Header({ children, className }: { children: React.ReactNode; className?
 
 function Footer({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <div className={twMerge('flex items-center justify-end gap-2 bg-white w-full pt-2', className)}>
+    <div className={twMerge('flex items-center justify-end gap-2 w-full pt-2', className)}>
       {children}
     </div>
   );
@@ -161,7 +186,7 @@ function Body({ children, className }: { children: React.ReactNode; className?: 
   return (
     <div
       className={twMerge(
-        'scrollbar-hide flex w-full flex-1 flex-col items-start justify-start gap-2 self-stretch overflow-y-scroll p-px',
+        'scrollbar-hide flex w-full flex-1 flex-col items-start justify-start gap-2 self-stretch overflow-y-auto p-px',
         className,
       )}
     >
@@ -172,17 +197,17 @@ function Body({ children, className }: { children: React.ReactNode; className?: 
 
 function Title({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <Dialog.Title className={twMerge('text-xl font-bold text-primary', className)}>
+    <h2 className={twMerge('text-xl font-bold text-primary', className)}>
       {children}
-    </Dialog.Title>
+    </h2>
   );
 }
 
 function Description({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <Dialog.Description className={twMerge('text-sm font-normal text-secondary', className)}>
+    <p className={twMerge('text-sm font-normal text-secondary', className)}>
       {children}
-    </Dialog.Description>
+    </p>
   );
 }
 

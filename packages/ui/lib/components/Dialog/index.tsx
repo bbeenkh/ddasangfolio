@@ -114,33 +114,26 @@ export default function Dialog() {
     okFn,
     okClassName,
     cancelFn,
-    openDialog: _openDialog, // eslint-disable-line @typescript-eslint/no-unused-vars
     closeDialog,
   } = useStore(useConfirmDialog);
 
   const handleOk = useCallback(() => {
     if (okFn) {
       okFn();
-      if (autoClose) {
-        closeDialog();
-      }
+      if (autoClose) closeDialog();
     } else {
       closeDialog();
     }
-
     useConfirmDialog.getState().reset();
   }, [okFn, autoClose, closeDialog]);
 
   const handleCancel = useCallback(() => {
     if (cancelFn) {
       cancelFn();
-      if (autoClose) {
-        closeDialog();
-      }
+      if (autoClose) closeDialog();
     } else {
       closeDialog();
     }
-
     useConfirmDialog.getState().reset();
   }, [cancelFn, autoClose, closeDialog]);
 
@@ -149,55 +142,44 @@ export default function Dialog() {
       if (event.key === 'Enter') {
         event.preventDefault();
         handleOk();
-      } else if (event.key === 'Escape') {
-        event.preventDefault();
-        closeDialog();
       }
     };
 
     if (isOpenDialog) {
       document.addEventListener('keydown', handleKeyDown);
-      return () => {
-        document.removeEventListener('keydown', handleKeyDown);
-      };
+      return () => document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [isOpenDialog, handleOk, closeDialog]);
+  }, [isOpenDialog, handleOk]);
 
   return (
     <Modal
       open={isOpenDialog}
-      onOpenChange={closeDialog}
+      onOpenChange={(open) => { if (!open) closeDialog(); }}
       hideCloseButton
       overlayZIndex={9999}
-      className="w-fit max-w-[600px] sm:w-[90vw] sm:max-w-[600px] !h-auto sm:!h-auto sm:!max-h-[90vh] overflow-hidden"
+      size="md"
     >
-      <Modal.Body className="overflow-y-auto scrollbar-hide">
-        <Modal.Header>
-          {title && <p className="text-xl font-bold">{title}</p>}
-        </Modal.Header>
-        {message && <div className="mb-2 text-sm text-ods-secondary w-full">{message}</div>}
-        {!message && <div className="pt-2" />}
-        <Modal.Footer>
-          <div className="w-full flex justify-end gap-2">
-            {type === 'confirm' && (
-              <Button
-                styleClass={{ root: 'px-4 py-2 rounded text-sm hover:opacity-80' }}
-                onClick={handleCancel}
-                type="button"
-              >
-                {cancelLabel || '취소'}
-              </Button>
-            )}
-            <Button
-              onClick={handleOk}
-              type="button"
-              styleClass={{ root: okClassName || 'bg-blue-500 text-white px-4 py-2 rounded text-sm hover:opacity-80' }}
-            >
-              {okLabel || '확인'}
-            </Button>
-          </div>
-        </Modal.Footer>
-      </Modal.Body>
+      {title && <p className="text-xl font-bold">{title}</p>}
+      {message && <div className="text-sm text-ods-secondary overflow-y-auto scrollbar-hide max-h-[60vh]">{message}</div>}
+      {!message && <div className="pt-2" />}
+      <div className="flex w-full justify-end gap-2">
+        {type === 'confirm' && (
+          <Button
+            styleClass={{ root: 'px-4 py-2 rounded text-sm hover:opacity-80' }}
+            onClick={handleCancel}
+            type="button"
+          >
+            {cancelLabel || '취소'}
+          </Button>
+        )}
+        <Button
+          onClick={handleOk}
+          type="button"
+          styleClass={{ root: okClassName || 'bg-blue-500 text-white px-4 py-2 rounded text-sm hover:opacity-80' }}
+        >
+          {okLabel || '확인'}
+        </Button>
+      </div>
     </Modal>
   );
 }
