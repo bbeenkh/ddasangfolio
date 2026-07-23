@@ -16,6 +16,7 @@
     "@fblg/utils": "workspace:^",
     "lucide-react": "^0.545.0",
     "next": "canary",
+    "next-auth": "^4.24.15",
     "react": "catalog:",
     "react-dom": "catalog:",
     "tailwind-merge": "^3.6.0",
