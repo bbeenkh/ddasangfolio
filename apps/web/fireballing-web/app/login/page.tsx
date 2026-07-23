@@ -1,7 +1,6 @@
 'use client'
 
-import { signIn, useSession } from 'next-auth/react'
-import { Card, Button, Typo } from '@/shared/ui'
+import { Card, Typo } from '@/shared/ui'
 import GoogleLoginButton from '@/features/login/googleLogin/GoogleLoginButton'
 
 /**
@@ -13,8 +12,6 @@ import GoogleLoginButton from '@/features/login/googleLogin/GoogleLoginButton'
  * // /login 경로로 접근
  */
 export default function LoginPage() {
-  const session = useSession();
-  console.log('####### session', session)
   return (
     <main className="flex min-h-[calc(100vh-57px)] items-center justify-center px-4">
       <Card className="w-full max-w-md">
