@@ -19,7 +19,7 @@ export default function LogoutButton() {
       variant="ghost"
       onClick={() => mutate()}
       disabled={isPending}
-      styleClass={{ root: 'text-sm px-3 py-1' }}
+      styleClass={{ root: 'text-[15px] font-semibold text-fb-error px-3 py-1' }}
     >
       {isPending ? '로그아웃 중...' : '로그아웃'}
     </Button>

@@ -48,8 +48,10 @@ body {
   font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-fb-background);
-  color: var(--color-fb-on-surface);
+  background-color: #ffffff;
+  color: var(--color-fb-on-primary);
+  /* ponytail: pb로 하단 네비게이션 겹침 방지 */
+  padding-bottom: 80px;
 }
 
 h1,

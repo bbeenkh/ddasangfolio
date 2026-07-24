@@ -39,7 +39,9 @@ export default function RootLayout({
       <body className={`${outfit.variable} ${geistMono.variable}`}>
         <RootProvider>
           <Header />
-          {children}
+          <div className="px-5">
+            {children}
+          </div>
           <Footer />
           <DevFab />
         </RootProvider>
