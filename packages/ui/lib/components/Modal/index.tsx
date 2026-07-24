@@ -118,7 +118,7 @@ export default function Modal({
             maxWidth: '96vw',
             maxHeight: '85vh',
             overflow: 'hidden',
-            borderRadius: '0.5rem',
+            borderRadius: 0,
             border: 'none',
             padding: 0,
             backgroundColor: 'transparent',
@@ -128,7 +128,7 @@ export default function Modal({
       >
         <div
           className={twMerge(
-            'relative flex flex-col gap-4 bg-white p-6 rounded-lg',
+            'relative flex flex-col gap-4 bg-white p-6',
             className,
           )}
         >
