@@ -69,8 +69,8 @@ export const WithCallbacks: Story = {
           title: '저장',
           message: '변경 사항을 저장하시겠습니까?',
           okLabel: '저장',
-          okFn: () => console.log('저장 완료'),
-          cancelFn: () => console.log('취소됨'),
+          okFn: () => alert('저장 완료'),
+          cancelFn: () => alert('취소됨'),
         })
       }
     >

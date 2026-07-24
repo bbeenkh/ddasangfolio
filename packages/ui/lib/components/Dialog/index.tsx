@@ -160,12 +160,11 @@ export default function Dialog() {
       size="md"
     >
       {title && <p className="text-xl font-bold">{title}</p>}
-      {message && <div className="text-sm text-ods-secondary overflow-y-auto scrollbar-hide max-h-[60vh]">{message}</div>}
+      {message && <div className="text-sm text-ods-secondary overflow-y-auto scrollbar-hide">{message}</div>}
       {!message && <div className="pt-2" />}
       <div className="flex w-full justify-end gap-2">
         {type === 'confirm' && (
           <Button
-            styleClass={{ root: 'px-4 py-2 rounded text-sm hover:opacity-80' }}
             onClick={handleCancel}
             type="button"
           >
@@ -175,7 +174,6 @@ export default function Dialog() {
         <Button
           onClick={handleOk}
           type="button"
-          styleClass={{ root: okClassName || 'bg-blue-500 text-white px-4 py-2 rounded text-sm hover:opacity-80' }}
         >
           {okLabel || '확인'}
         </Button>
