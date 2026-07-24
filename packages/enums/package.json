@@ -1,7 +1,7 @@
 {
   "name": "@fblg/enums",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "파이어볼링 공통 열거형 모듈",
   "scripts": {
     "check-types": "tsc --noEmit"
