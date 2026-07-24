@@ -1,6 +1,6 @@
+import type { UserProfile } from '@fblg/types'
 import NextAuth from 'next-auth'
 import type { NextAuthOptions } from 'next-auth'
-import type { JWT } from 'next-auth/jwt'
 import GoogleProvider from 'next-auth/providers/google'
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL
@@ -53,12 +53,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       session.accessToken = token.accessToken as string
       if (token.backendUser) {
-        session.backendUser = token.backendUser as {
-          id: string
-          email: string
-          name: string | null
-          profileImage: string | null
-        }
+        session.backendUser = token.backendUser as UserProfile
       }
       return session
     },
