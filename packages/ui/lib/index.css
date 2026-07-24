@@ -24,120 +24,86 @@
     /* 레이아웃의 width 속성, body 컨텐츠의 min-width, max-width는 여기서 지정 */
     --min-width: 13.12rem;
 
-    /* ===== Luminous Fintech 컬러팔레트 (DESIGN.md 기반) ===== */
+    /* ===== Fireballing 컬러팔레트 (Figma 디자인 스펙 기반) ===== */
 
-    /* Surface */
-    --color-surface: #f8f9ff;
-    --color-surface-dim: #ccdbf3;
-    --color-surface-bright: #f8f9ff;
-    --color-surface-container-lowest: #ffffff;
-    --color-surface-container-low: #eff4ff;
-    --color-surface-container: #e6eeff;
-    --color-surface-container-high: #dce9ff;
-    --color-surface-container-highest: #d5e3fc;
-    --color-on-surface: #0d1c2e;
-    --color-on-surface-variant: #3d494c;
-    --color-inverse-surface: #233144;
-    --color-inverse-on-surface: #eaf1ff;
-    --color-surface-tint: #00687a;
-    --color-surface-variant: #d5e3fc;
+    /* Primary Hot Core */
+    --color-primary: #ff5a26;
+    --color-primary-deep: #ff2e00;
+    --color-primary-amber: #ff9f1c;
+    --color-on-primary: #0d0b0a;
 
-    /* Primary */
-    --color-primary: #00687a;
-    --color-on-primary: #ffffff;
-    --color-primary-container: #06b6d4;
-    --color-on-primary-container: #00424f;
-    --color-inverse-primary: #4cd7f6;
-    --color-primary-fixed: #acedff;
-    --color-primary-fixed-dim: #4cd7f6;
-    --color-on-primary-fixed: #001f26;
-    --color-on-primary-fixed-variant: #004e5c;
+    /* Primary Gradient */
+    --color-primary-gradient-start: #ff2e00;
+    --color-primary-gradient-end: #ff9f1c;
 
-    /* Secondary */
-    --color-secondary: #006b5f;
-    --color-on-secondary: #ffffff;
-    --color-secondary-container: #62fae3;
-    --color-on-secondary-container: #007165;
-    --color-secondary-fixed: #62fae3;
-    --color-secondary-fixed-dim: #3cddc7;
-    --color-on-secondary-fixed: #00201c;
-    --color-on-secondary-fixed-variant: #005047;
+    /* Surface (Ember Charcoal & Neutrals) */
+    --color-background: #0d0b0a;
+    --color-surface: #171311;
+    --color-surface-dim: #0d0b0a;
+    --color-on-surface: #f4efef;
+    --color-on-surface-variant: #9e928e;
 
-    /* Tertiary */
-    --color-tertiary: #565e74;
-    --color-on-tertiary: #ffffff;
-    --color-tertiary-container: #9ea6bf;
-    --color-on-tertiary-container: #343c50;
-    --color-tertiary-fixed: #dae2fd;
-    --color-tertiary-fixed-dim: #bec6e0;
-    --color-on-tertiary-fixed: #131b2e;
-    --color-on-tertiary-fixed-variant: #3f465c;
+    /* Border */
+    --color-outline: #261e1c;
+    --color-outline-variant: #261e1c;
+
+    /* Neutral Tones */
+    --color-white-smoke: #f4efef;
+    --color-cream-soft: #faf8f5;
+    --color-cool-charcoal: #9e928e;
+
+    /* Yield Semantics (금융 상태) */
+    --color-profit: #00e676;
+    --color-loss: #ff1744;
+    --color-info: #2979ff;
 
     /* Error */
-    --color-error: #ba1a1a;
+    --color-error: #ff1744;
     --color-on-error: #ffffff;
-    --color-error-container: #ffdad6;
-    --color-on-error-container: #93000a;
-
-    /* Outline */
-    --color-outline: #6d797d;
-    --color-outline-variant: #bcc9cd;
-
-    /* Background */
-    --color-background: #f8f9ff;
-    --color-on-background: #0d1c2e;
-
-    /* 금융 상태 컬러 (한국 시장 규칙: 빨강=상승, 파랑=하락) */
-    --color-profit: #ef4444;
-    --color-loss: #3b82f6;
 
     /* 레거시 호환 매핑 */
-    --color-black: #000000;
-    --color-white: #ffffff;
-    --color-card: #ffffff;
+    --color-black: #0d0b0a;
+    --color-white: #f4efef;
+    --color-card: #171311;
 
-    /* ===== 타이포그래피 (DESIGN.md 기반) ===== */
+    /* ===== 타이포그래피 (Figma 디자인 스펙 기반) ===== */
 
     /* 폰트 패밀리 */
-    --font-family-heading: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
-    --font-family-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-family-heading: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+    --font-family-body: 'Outfit', ui-sans-serif, system-ui, sans-serif;
+    --font-family-mono: 'Geist Mono', ui-monospace, monospace;
 
-    /* Display Large */
-    --font-display-lg-size: 48px;
-    --font-display-lg-weight: 700;
-    --font-display-lg-line: 60px;
-    --font-display-lg-spacing: -0.02em;
+    /* Heading 1 */
+    --font-h1-size: 48px;
+    --font-h1-weight: 800;
+    --font-h1-line: 110%;
+    --font-h1-spacing: -0.02em;
 
-    /* Headline Large */
-    --font-headline-lg-size: 32px;
-    --font-headline-lg-weight: 700;
-    --font-headline-lg-line: 40px;
-    --font-headline-lg-spacing: -0.01em;
+    /* Heading 2 */
+    --font-h2-size: 32px;
+    --font-h2-weight: 700;
+    --font-h2-line: 120%;
+    --font-h2-spacing: -0.01em;
 
-    /* Headline Large (Mobile) */
-    --font-headline-lg-mobile-size: 24px;
-    --font-headline-lg-mobile-weight: 700;
-    --font-headline-lg-mobile-line: 32px;
+    /* Heading 3 */
+    --font-h3-size: 20px;
+    --font-h3-weight: 600;
+    --font-h3-line: 130%;
 
-    /* Headline Medium */
-    --font-headline-md-size: 24px;
-    --font-headline-md-weight: 600;
-    --font-headline-md-line: 32px;
+    /* Body Copy */
+    --font-body-size: 15px;
+    --font-body-weight: 400;
+    --font-body-line: 150%;
 
-    /* Body Large */
-    --font-body-lg-size: 18px;
-    --font-body-lg-weight: 400;
-    --font-body-lg-line: 28px;
+    /* Meta Caption */
+    --font-caption-size: 11px;
+    --font-caption-weight: 600;
+    --font-caption-line: 140%;
 
-    /* Body Medium */
-    --font-body-md-size: 16px;
-    --font-body-md-weight: 400;
-    --font-body-md-line: 24px;
-
-    /* Body Small */
-    --font-body-sm-size: 14px;
-    --font-body-sm-weight: 400;
-    --font-body-sm-line: 20px;
+    /* Monospace Numbers */
+    --font-mono-size: 28px;
+    --font-mono-weight: 700;
+    --font-mono-line: 110%;
 
     /* Label Medium */
     --font-label-md-size: 14px;
@@ -190,7 +156,7 @@
   }
 
   .DialogContent {
-    background-color: white;
+    background-color: var(--color-surface);
     border-radius: 0.5rem;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
     position: fixed;

@@ -1,42 +1,37 @@
 @import 'tailwindcss';
 
 @theme {
-  /* ===== Primary ===== */
-  --color-lf-primary: #00687a;
-  --color-lf-primary-container: #06b6d4;
-  --color-lf-primary-gradient-end: #2dd4bf;
-  --color-lf-inverse-primary: #4cd7f6;
-  --color-lf-primary-fixed: #acedff;
+  /* ===== Primary Hot Core ===== */
+  --color-fb-primary: #ff5a26;
+  --color-fb-primary-deep: #ff2e00;
+  --color-fb-primary-amber: #ff9f1c;
+  --color-fb-on-primary: #0d0b0a;
 
-  /* ===== Secondary ===== */
-  --color-lf-secondary: #006b5f;
-  --color-lf-secondary-container: #62fae3;
-  --color-lf-secondary-fixed-dim: #3cddc7;
-
-  /* ===== Surface ===== */
-  --color-lf-surface: #f8f9ff;
-  --color-lf-surface-low: #f8fafc;
-  --color-lf-surface-container-lowest: #ffffff;
-  --color-lf-surface-container: #e6eeff;
-  --color-lf-surface-container-highest: #d5e3fc;
-
-  /* ===== Financial Status (한국 시장: 빨강=상승, 파랑=하락) ===== */
-  --color-lf-profit: #ef4444;
-  --color-lf-loss: #3b82f6;
-
-  /* ===== Error ===== */
-  --color-lf-error: #ba1a1a;
-  --color-lf-error-container: #ffdad6;
+  /* ===== Surface (Ember Charcoal & Neutrals) ===== */
+  --color-fb-background: #0d0b0a;
+  --color-fb-surface: #171311;
+  --color-fb-surface-dim: #0d0b0a;
 
   /* ===== Text ===== */
-  --color-lf-on-surface: #0f172a;
-  --color-lf-on-surface-variant: #475569;
-  --color-lf-on-surface-muted: #94a3b8;
+  --color-fb-on-surface: #f4efef;
+  --color-fb-on-surface-variant: #9e928e;
+
+  /* ===== Neutral Tones ===== */
+  --color-fb-white-smoke: #f4efef;
+  --color-fb-cream-soft: #faf8f5;
+  --color-fb-cool-charcoal: #9e928e;
 
   /* ===== Border ===== */
-  --color-lf-outline: #e2e8f0;
-  --color-lf-outline-variant: #f1f5f9;
-  --color-lf-outline-check: #bcc9cd;
+  --color-fb-outline: #261e1c;
+  --color-fb-outline-variant: #261e1c;
+
+  /* ===== Yield Semantics (금융 상태: 녹색=상승, 빨강=하락) ===== */
+  --color-fb-profit: #00e676;
+  --color-fb-loss: #ff1744;
+  --color-fb-info: #2979ff;
+
+  /* ===== Error ===== */
+  --color-fb-error: #ff1744;
 }
 
 * {
@@ -50,11 +45,13 @@ body {
 
 body {
   margin: 0;
-  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-lf-surface);
-  color: var(--color-lf-on-surface);
+  background-color: #ffffff;
+  color: var(--color-fb-on-primary);
+  /* ponytail: pb로 하단 네비게이션 겹침 방지 */
+  padding-bottom: 80px;
 }
 
 h1,
@@ -63,7 +60,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-outfit), ui-sans-serif, system-ui, sans-serif;
 }
 
 /** flex 중앙정렬 */

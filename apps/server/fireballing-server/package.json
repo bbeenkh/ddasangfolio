@@ -1,7 +1,7 @@
 {
   "name": "fblg-server",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "local": "tsx watch --env-file=.env.development src/index.ts",
@@ -11,6 +11,8 @@
     "test:watch": "vitest"
   },
   "dependencies": {
+    "@fblg/schemas": "workspace:^",
+    "@fblg/types": "workspace:^",
     "@hono/node-server": "^1.19.14",
     "@supabase/supabase-js": "^2.108.2",
     "hono": "^4.12.23",

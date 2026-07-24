@@ -1,9 +1,7 @@
+import type { UserProfile } from '@fblg/types'
 import NextAuth from 'next-auth'
 import type { NextAuthOptions } from 'next-auth'
-import type { JWT } from 'next-auth/jwt'
 import GoogleProvider from 'next-auth/providers/google'
-
-const API_BASE = process.env.NEXT_PUBLIC_API_URL
 
 /**
  * # authOptions
@@ -18,6 +16,9 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.NEXT_PUBLIC_GOOGLE_OAUTH_CLIENT_SECRET!,
     }),
   ],
+  pages: {
+    signIn: '/login'
+  },
   session: {
     strategy: 'jwt',
   },
@@ -28,7 +29,7 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, account }) {
       if (account?.id_token) {
         try {
-          const res = await fetch(`${API_BASE}/api/auth/oauth/google`, {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/oauth/google`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ idToken: account.id_token }),
@@ -53,12 +54,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       session.accessToken = token.accessToken as string
       if (token.backendUser) {
-        session.backendUser = token.backendUser as {
-          id: string
-          email: string
-          name: string | null
-          profileImage: string | null
-        }
+        session.backendUser = token.backendUser as UserProfile
       }
       return session
     },

@@ -1,7 +1,7 @@
 {
   "name": "fblg-web",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "local": "next dev --turbopack --port 3000",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@fblg/core-ui": "workspace:^",
+    "@fblg/types": "workspace:^",
     "@fblg/utils": "workspace:^",
     "@tanstack/react-query": "^5.22.2",
     "lucide-react": "^0.545.0",

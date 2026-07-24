@@ -1,0 +1,7 @@
+{
+  "extends": "@fblg/typescript-config/base.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": ["."]
+}

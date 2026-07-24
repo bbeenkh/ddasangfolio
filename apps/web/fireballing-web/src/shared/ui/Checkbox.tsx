@@ -78,7 +78,7 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
                 width="24"
                 height="24"
                 rx="4"
-                fill="var(--color-lf-outline-check)"
+                fill="var(--color-fb-outline)"
               />
             </svg>
           ) : isChecked ? (
@@ -94,7 +94,7 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
                 width="24"
                 height="24"
                 rx="4"
-                fill="var(--color-lf-primary-container)"
+                fill="var(--color-fb-primary)"
               />
               <path
                 d="M10.6134 14.5836L7.83339 11.8036L6.88672 12.7436L10.6134 16.4703L18.6134 8.47027L17.6734 7.53027L10.6134 14.5836Z"
@@ -115,7 +115,7 @@ const Checkbox = React.forwardRef<HTMLButtonElement, CheckboxProps>(
                 width="23"
                 height="23"
                 rx="3.5"
-                stroke="var(--color-lf-outline-check)"
+                stroke="var(--color-fb-outline)"
               />
             </svg>
           )}

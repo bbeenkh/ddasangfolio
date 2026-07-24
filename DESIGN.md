@@ -1,98 +1,66 @@
 ---
-name: Luminous Fintech
+name: Fireballing
 colors:
-  surface: '#f8f9ff'
-  surface-dim: '#ccdbf3'
-  surface-bright: '#f8f9ff'
-  surface-container-lowest: '#ffffff'
-  surface-container-low: '#eff4ff'
-  surface-container: '#e6eeff'
-  surface-container-high: '#dce9ff'
-  surface-container-highest: '#d5e3fc'
-  on-surface: '#0d1c2e'
-  on-surface-variant: '#3d494c'
-  inverse-surface: '#233144'
-  inverse-on-surface: '#eaf1ff'
-  outline: '#6d797d'
-  outline-variant: '#bcc9cd'
-  surface-tint: '#00687a'
-  primary: '#00687a'
-  on-primary: '#ffffff'
-  primary-container: '#06b6d4'
-  on-primary-container: '#00424f'
-  inverse-primary: '#4cd7f6'
-  secondary: '#006b5f'
-  on-secondary: '#ffffff'
-  secondary-container: '#62fae3'
-  on-secondary-container: '#007165'
-  tertiary: '#565e74'
-  on-tertiary: '#ffffff'
-  tertiary-container: '#9ea6bf'
-  on-tertiary-container: '#343c50'
-  error: '#ba1a1a'
-  on-error: '#ffffff'
-  error-container: '#ffdad6'
-  on-error-container: '#93000a'
-  primary-fixed: '#acedff'
-  primary-fixed-dim: '#4cd7f6'
-  on-primary-fixed: '#001f26'
-  on-primary-fixed-variant: '#004e5c'
-  secondary-fixed: '#62fae3'
-  secondary-fixed-dim: '#3cddc7'
-  on-secondary-fixed: '#00201c'
-  on-secondary-fixed-variant: '#005047'
-  tertiary-fixed: '#dae2fd'
-  tertiary-fixed-dim: '#bec6e0'
-  on-tertiary-fixed: '#131b2e'
-  on-tertiary-fixed-variant: '#3f465c'
-  background: '#f8f9ff'
-  on-background: '#0d1c2e'
-  surface-variant: '#d5e3fc'
+  # Primary Hot Core
+  primary: '#FF5A26'
+  primary-deep: '#FF2E00'
+  primary-amber: '#FF9F1C'
+  on-primary: '#0D0B0A'
+  # Ember Charcoal & Neutrals
+  background: '#0D0B0A'
+  surface: '#171311'
+  outline: '#261E1C'
+  cool-charcoal: '#9E928E'
+  white-smoke: '#F4EFEF'
+  cream-soft: '#FAF8F5'
+  on-surface: '#F4EFEF'
+  on-surface-variant: '#9E928E'
+  # Yield Semantics
+  profit: '#00E676'
+  loss: '#FF1744'
+  info: '#2979FF'
+  error: '#FF1744'
+  on-error: '#FFFFFF'
 typography:
-  display-lg:
-    fontFamily: Plus Jakarta Sans
+  h1:
+    fontFamily: Outfit
     fontSize: 48px
-    fontWeight: '700'
-    lineHeight: 60px
+    fontWeight: '800'
+    lineHeight: 110%
     letterSpacing: -0.02em
-  headline-lg:
-    fontFamily: Plus Jakarta Sans
+  h2:
+    fontFamily: Outfit
     fontSize: 32px
     fontWeight: '700'
-    lineHeight: 40px
+    lineHeight: 120%
     letterSpacing: -0.01em
-  headline-lg-mobile:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 24px
-    fontWeight: '700'
-    lineHeight: 32px
-  headline-md:
-    fontFamily: Plus Jakarta Sans
-    fontSize: 24px
+  h3:
+    fontFamily: Outfit
+    fontSize: 20px
     fontWeight: '600'
-    lineHeight: 32px
-  body-lg:
-    fontFamily: Inter
-    fontSize: 18px
+    lineHeight: 130%
+  body:
+    fontFamily: Outfit
+    fontSize: 15px
     fontWeight: '400'
-    lineHeight: 28px
-  body-md:
-    fontFamily: Inter
-    fontSize: 16px
-    fontWeight: '400'
-    lineHeight: 24px
-  body-sm:
-    fontFamily: Inter
-    fontSize: 14px
-    fontWeight: '400'
-    lineHeight: 20px
+    lineHeight: 150%
+  caption:
+    fontFamily: Outfit
+    fontSize: 11px
+    fontWeight: '600'
+    lineHeight: 140%
+  mono:
+    fontFamily: Geist Mono
+    fontSize: 28px
+    fontWeight: '700'
+    lineHeight: 110%
   label-md:
-    fontFamily: Inter
+    fontFamily: Outfit
     fontSize: 14px
     fontWeight: '600'
     lineHeight: 20px
   label-sm:
-    fontFamily: Inter
+    fontFamily: Outfit
     fontSize: 12px
     fontWeight: '500'
     lineHeight: 16px
@@ -118,68 +86,72 @@ spacing:
 
 ## Brand & Style
 
-The design system is engineered for a premium Korean fintech experience, emphasizing clarity, speed, and absolute trust. It targets a digitally-native audience that demands professional-grade financial tools delivered with an approachable, modern interface.
+Fireballing is a dark-themed portfolio valuation interface built around high-contrast fiery tones. The design system conveys intensity and momentum — a visual metaphor for compound growth and financial "fire." It targets dividend-focused investors who want to track their F.I.R.E. (Financial Independence, Retire Early) journey.
 
-The aesthetic blends **Minimalism** with **Modern Corporate** sensibilities. By utilizing expansive white space and high-contrast typography, the UI remains legible even when displaying complex data. The emotional response is one of calm confidence—reducing the cognitive load often associated with personal finance and investment.
+The aesthetic blends **Dark Mode** with **Hot Core** accents. The deep charcoal backgrounds (#0D0B0A, #171311) create a dramatic canvas where orange/red primary colors (#FF5A26, #FF2E00) and amber accents (#FF9F1C) represent energy, growth, and urgency.
 
 ## Colors
 
-The palette is anchored by a pristine `#ffffff` canvas, utilizing `#f8fafc` for container elevation and structural grouping. 
+The palette is anchored by a near-black canvas (Void Space #0D0B0A) with elevated surfaces in Ember Surface (#171311).
 
-- **Primary Accent:** A vibrant gradient from Ice Blue (#06b6d4) to Mint (#2dd4bf) is reserved for primary calls-to-action and positive growth momentum.
-- **Typography:** Dark Navy (#0f172a) ensures peak readability for headlines, while Slate Gray (#475569) softens body content.
-- **Financial Status:** Strictly follows Korean market conventions: **Red (#ef4444)** for profit, gains, and "up" indicators; **Blue (#3b82f6)** for loss, expenses, and "down" indicators.
+- **Primary Hot Core:** Magma Core (#FF5A26) is the main accent, with Molten Lava (#FF2E00) for deep tones and Amber Yield (#FF9F1C) for warm highlights. Gradients flow from #FF2E00 → #FF9F1C.
+- **Typography:** White Smoke (#F4EFEF) for primary text on dark backgrounds, Cool Charcoal (#9E928E) for secondary/muted text.
+- **Financial Status:** Yield Gain (#00E676, green) for profits and positive indicators; Ember Loss (#FF1744, red) for losses and negative indicators; System Info (#2979FF, blue) for neutral information.
+- **Borders:** Ashes Border (#261E1C) for all dividers and container outlines.
 
 ## Typography
 
-This design system uses **Plus Jakarta Sans** for headlines to provide a modern, friendly, and slightly geometric personality. **Inter** is used for all functional body and label text to ensure maximum legibility and a systematic, clean feel.
+This design system uses **Outfit** as the universal sans-serif for both headings and body text, providing a clean, modern, and highly legible interface. **Geist Mono** is used exclusively for financial figures, numbers, and technical labels to ensure tabular alignment and numerical clarity.
 
-Large display headings should use tighter letter spacing to maintain a cohesive look. Financial figures and labels should prioritize `Inter` to ensure numerical clarity.
+- H1: Outfit 48px, ExtraBold (800), 110% line-height — hero statements
+- H2: Outfit 32px, Bold (700), 120% — section headings
+- H3: Outfit 20px, SemiBold (600), 130% — subsection headings
+- Body: Outfit 15px, Regular (400), 150% — readable content
+- Caption: Outfit 11px, SemiBold (600), 140% — meta labels, uppercase
+- Numbers: Geist Mono 28px, Bold (700), 110% — financial figures
 
 ## Layout & Spacing
 
-The layout follows a **Fluid Grid** model based on a 4px baseline shift. 
+The layout follows a **Fluid Grid** model based on a 4px baseline shift.
 
 - **Mobile:** 4-column layout with 16px side margins and 16px gutters.
 - **Tablet/Desktop:** 12-column layout. Max-width for content is 1200px.
-- **Vertical Rhythm:** Use `16px` (md) for standard element spacing and `24px` (lg) for section spacing.
+- **Vertical Rhythm:** Use `16px` (md) for standard element spacing and `24px` (lg) for section spacing, `48px` (2xl) for major sections.
 
-Layouts should favor generous top/bottom padding to reinforce the airy, minimalist fintech aesthetic.
+Layouts should favor generous padding (56px on desktop) to let the dark backgrounds breathe.
 
 ## Elevation & Depth
 
-Hierarchy is achieved through **Tonal Layers** and extremely subtle **Ambient Shadows**.
+Hierarchy is achieved through **Tonal Layers** on the dark canvas and subtle **Fire Glow** shadows.
 
-1.  **Base:** `#ffffff` (Global background).
-2.  **Level 1 (Cards/Sections):** `#f8fafc` surface or a white card with a 1px border of `#f1f5f9`.
-3.  **Level 2 (Popovers/Modals):** White surface with a soft, diffused shadow: `0px 10px 25px -5px rgba(15, 23, 42, 0.08)`.
+1. **Base:** Void Space #0D0B0A (Global background).
+2. **Level 1 (Cards/Sections):** Ember Surface #171311 with a 1px border of Ashes Border #261E1C.
+3. **Level 2 (Popovers/Modals):** Ember Surface with a warm ambient glow: `0px 12px 16px rgba(255, 90, 38, 0.03)`.
 
-Avoid heavy shadows or dark overlays. Use 1px borders in very light gray to define boundaries without adding visual weight.
+Use Ashes Border (#261E1C) for all structural dividers. Avoid heavy shadows — prefer subtle orange-tinted ambient glow for elevated elements.
 
 ## Shapes
 
-The design system utilizes a **Rounded** (0.5rem / 8px) corner strategy to soften the professional tone and make the application feel accessible.
+The design system utilizes a **Rounded** corner strategy with the following conventions:
 
-- **Buttons & Small Inputs:** 8px (`0.5rem`).
-- **Cards & Modals:** 16px (`1rem`).
+- **Small elements (badges, indicators):** 6px (`0.375rem`).
+- **Buttons & Inputs:** 8px (`0.5rem`).
+- **Cards & Containers:** 16px (`1rem`).
 - **Feature Banners:** 24px (`1.5rem`).
-- **Search Bars:** Often use pill-shaped (100px) for a modern, mobile-first look.
 
 ## Components
 
 ### Buttons
-- **Primary:** Gradient background (#06b6d4 to #2dd4bf), white text, no border. Subtle scale-down effect on tap.
-- **Secondary:** Surface #f1f5f9 with #0f172a text.
-- **Ghost:** Transparent background with #475569 text.
+- **Primary:** Solid Magma Core (#FF5A26) background, Void Space (#0D0B0A) text, bold uppercase. 8px rounded, 44px height.
+- **Secondary:** Transparent with 1px Magma Core border, Magma Core text.
+- **Ghost:** Transparent background with Cool Charcoal (#9E928E) text.
 
 ### Cards
-Cards are the primary container. They should use a white background with a subtle border (#f1f5f9) or a very light tint (#f8fafc) to separate from the main background.
+Cards use Ember Surface (#171311) background with 1px Ashes Border (#261E1C), 16px rounding, and subtle warm glow shadow.
 
-### Input Fields
-Inputs use a white background, 1px border (#e2e8f0), and 8px rounding. On focus, the border transitions to the primary Ice Blue (#06b6d4) with a subtle outer glow.
+### Status Badges
+- **Positive:** 10% opacity Yield Gain background with solid Yield Gain text.
+- **Negative:** 10% opacity Ember Loss background with solid Ember Loss text.
 
-### Chips & Badges
-Small, high-radius (pill) shapes. Use light tints of the status colors for backgrounds (e.g., light red for negative trends) with high-contrast text.
-
-### Lists
-Clean, borderless lists with 16px vertical padding. Use horizontal dividers only when content is dense, using color #f1f5f9.
+### Progress Bars
+Dark track (Void Space #0D0B0A with Ashes Border), gradient fill from Molten Lava (#FF2E00) to Magma Core (#FF5A26).
