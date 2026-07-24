@@ -3,8 +3,6 @@ import NextAuth from 'next-auth'
 import type { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL
-
 /**
  * # authOptions
  * ---
@@ -28,7 +26,7 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, account }) {
       if (account?.id_token) {
         try {
-          const res = await fetch(`${API_BASE}/api/auth/oauth/google`, {
+          const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/auth/oauth/google`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ idToken: account.id_token }),
