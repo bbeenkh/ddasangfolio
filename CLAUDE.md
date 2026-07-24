@@ -166,3 +166,12 @@ fireballing/
 | **린트/포맷** | ESLint 9 (FlatConfig) + Prettier 3 |
 | **모노레포** | Turborepo 2.9 + pnpm 9.0 |
 | **공용 컴포넌트** | @fblg/core-ui (React 19) |
+
+
+### 타입정의 규칙
+- type, interface: xxx.types.ts에 정의
+- zod schema, infer 사용해 나온 타입: xxx.schema.ts 에 정의
+- 네이밍 규칙: 파스칼 케이스를 기본으로 한다
+  - interface: I{name} ex) IUserInfo
+  - type: {name} ex) FavoriteList
+  - schema from zod: {name}Schema ex) MyPageSchema
