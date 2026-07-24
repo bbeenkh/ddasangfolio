@@ -1,1 +1,1 @@
-export type { UserProfile } from './types/user.types.js'
+export type { UserProfile } from '@fblg/types'

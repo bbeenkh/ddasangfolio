@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@fblg/core-ui": "workspace:^",
+    "@fblg/types": "workspace:^",
     "@fblg/utils": "workspace:^",
     "@tanstack/react-query": "^5.22.2",
     "lucide-react": "^0.545.0",

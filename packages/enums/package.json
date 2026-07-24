@@ -1,0 +1,16 @@
+{
+  "name": "@fblg/enums",
+  "private": true,
+  "version": "0.1.0",
+  "description": "파이어볼링 공통 열거형 모듈",
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@fblg/typescript-config": "workspace:^",
+    "typescript": "^5.8.3"
+  },
+  "exports": {
+    ".": "./index.ts"
+  }
+}
