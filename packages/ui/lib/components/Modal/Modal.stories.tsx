@@ -42,7 +42,7 @@ export const Default: Story = {
             <Modal.Description>모달에 대한 부가 설명을 여기에 작성합니다.</Modal.Description>
           </Modal.Header>
           <Modal.Body>
-            <p className="text-sm text-gray-700">모달 본문 내용입니다.</p>
+            <p>모달 본문 내용입니다.</p>
           </Modal.Body>
           <Modal.Footer>
             <Button>취소</Button>
@@ -67,7 +67,7 @@ export const LargeSize: Story = {
             <Modal.Title>넓은 모달</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p className="text-sm text-gray-700">size=&quot;lg&quot;로 지정된 모달입니다 (900px).</p>
+            <p>size=&quot;lg&quot;로 지정된 모달입니다 (900px).</p>
           </Modal.Body>
         </Modal>
       </>
@@ -88,7 +88,7 @@ export const HideCloseButton: Story = {
             <Modal.Title>닫기 버튼 없음</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p className="text-sm text-gray-700">푸터의 버튼으로만 닫을 수 있습니다.</p>
+            <p>푸터의 버튼으로만 닫을 수 있습니다.</p>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={closeModal}>닫기</Button>
@@ -112,7 +112,7 @@ export const PreventOutsideClose: Story = {
             <Modal.Description>overlay 클릭 또는 Escape 키로 닫히지 않습니다.</Modal.Description>
           </Modal.Header>
           <Modal.Body>
-            <p className="text-sm text-gray-700">닫기 버튼(×)으로만 닫을 수 있습니다.</p>
+            <p>닫기 버튼(×)으로만 닫을 수 있습니다.</p>
           </Modal.Body>
         </Modal>
       </>
@@ -126,20 +126,20 @@ export const Controlled: Story = {
   render: () => {
     const { isOpen, openModal, closeModal, dialogProps } = useModalState();
     return (
-      <div className="flex flex-col gap-4">
+      <>
         <Button onClick={openModal}>외부에서 열기</Button>
         <Modal {...dialogProps}>
           <Modal.Header>
             <Modal.Title>제어 모드 모달</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p className="text-sm text-gray-700">open 상태: {String(isOpen)}</p>
+            <p>open 상태: {String(isOpen)}</p>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={closeModal}>닫기</Button>
           </Modal.Footer>
         </Modal>
-      </div>
+      </>
     );
   },
 };
@@ -169,26 +169,24 @@ export const TableEditModal: Story = {
       closeModalWithData();
     };
 
-    const cellStyle = 'border border-gray-200 px-4 py-2 text-sm';
-
     return (
       <>
-        <table className="w-full border-collapse">
+        <table>
           <thead>
-            <tr className="bg-gray-50">
-              <th className={cellStyle}>이름</th>
-              <th className={cellStyle}>이메일</th>
-              <th className={cellStyle}>역할</th>
-              <th className={cellStyle}>관리</th>
+            <tr>
+              <th>이름</th>
+              <th>이메일</th>
+              <th>역할</th>
+              <th>관리</th>
             </tr>
           </thead>
           <tbody>
             {rows.map((row) => (
               <tr key={row.id}>
-                <td className={cellStyle}>{row.name}</td>
-                <td className={cellStyle}>{row.email}</td>
-                <td className={cellStyle}>{row.role}</td>
-                <td className={cellStyle}>
+                <td>{row.name}</td>
+                <td>{row.email}</td>
+                <td>{row.role}</td>
+                <td>
                   <Button onClick={() => handleOpen(row)}>설정</Button>
                 </td>
               </tr>
@@ -201,29 +199,27 @@ export const TableEditModal: Story = {
             <Modal.Title>{initData?.name} 정보 수정</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className="flex flex-col gap-3 w-full">
-              <label className="flex flex-col gap-1 text-sm">
-                이름
-                <Input
-                  value={draft.name}
-                  onChange={(e) => setDraft((d) => ({ ...d, name: e.target.value }))}
-                />
-              </label>
-              <label className="flex flex-col gap-1 text-sm">
-                이메일
-                <Input
-                  value={draft.email}
-                  onChange={(e) => setDraft((d) => ({ ...d, email: e.target.value }))}
-                />
-              </label>
-              <label className="flex flex-col gap-1 text-sm">
-                역할
-                <Input
-                  value={draft.role}
-                  onChange={(e) => setDraft((d) => ({ ...d, role: e.target.value }))}
-                />
-              </label>
-            </div>
+            <label>
+              이름
+              <Input
+                value={draft.name}
+                onChange={(e) => setDraft((d) => ({ ...d, name: e.target.value }))}
+              />
+            </label>
+            <label>
+              이메일
+              <Input
+                value={draft.email}
+                onChange={(e) => setDraft((d) => ({ ...d, email: e.target.value }))}
+              />
+            </label>
+            <label>
+              역할
+              <Input
+                value={draft.role}
+                onChange={(e) => setDraft((d) => ({ ...d, role: e.target.value }))}
+              />
+            </label>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={closeModalWithData}>취소</Button>
@@ -241,7 +237,7 @@ export const WithInitData: Story = {
     const { initData, closeModalWithData, openModalWithData, dialogProps } =
       useModalState<{ name: string; id: number }>();
     return (
-      <div className="flex gap-2">
+      <>
         {[
           { name: '항목 A', id: 1 },
           { name: '항목 B', id: 2 },
@@ -255,7 +251,7 @@ export const WithInitData: Story = {
             <Modal.Title>데이터 전달 모달</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p className="text-sm text-gray-700">
+            <p>
               선택: {initData?.name} (id: {initData?.id})
             </p>
           </Modal.Body>
@@ -263,7 +259,7 @@ export const WithInitData: Story = {
             <Button onClick={closeModalWithData}>닫기</Button>
           </Modal.Footer>
         </Modal>
-      </div>
+      </>
     );
   },
 };
