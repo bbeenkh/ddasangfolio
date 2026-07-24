@@ -213,7 +213,7 @@ function Description({ children, className }: { children: React.ReactNode; class
 
 function ErrorFallback({ resetErrorBoundary }: FallbackProps) {
   return (
-    <div className="flex min-h-[300px] w-full flex-col items-center justify-center gap-6">
+    <div className="flex min-h-75 w-full flex-col items-center justify-center gap-6">
       <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-100">
         <svg
           width="24"
