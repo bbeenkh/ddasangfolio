@@ -3,7 +3,7 @@
 /**
  * # DevFab
  * ---
- * - 간단설명: 로컬 환경에서만 노출되는 디버그용 FAB 버튼, 클릭 시 빈 팝업 창 오픈
+ * - 간단설명: 로컬 환경에서만 노출되는 디버그용 FAB 버튼, 클릭 시 /dev-tools 팝업 오픈
  * - 제약사항 및 특이사항:
  *   - NEXT_PUBLIC_PROJECT_ENV가 "local"인 경우에만 렌더링
  *   - 우측 하단 고정 위치
@@ -15,7 +15,7 @@ export default function DevFab() {
   if (process.env.NEXT_PUBLIC_PROJECT_ENV !== 'local') return null
 
   const handleClick = () => {
-    window.open('', '_blank', 'width=600,height=400')
+    window.open('/dev-tools', '_blank', 'width=720,height=560')
   }
 
   return (

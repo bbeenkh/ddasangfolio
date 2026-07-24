@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
+import { Outfit, Geist_Mono } from 'next/font/google'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import './globals.css'
 import RootProvider from '@/features/providers/RootProvider'
 import { DevFab } from '@/shared/ui'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-plus-jakarta' })
+const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
+const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
 
 /**
  * # 사이트 메타데이터
@@ -36,7 +36,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body className={`${inter.variable} ${plusJakartaSans.variable}`}>
+      <body className={`${outfit.variable} ${geistMono.variable}`}>
         <RootProvider>
           <Header />
           {children}
