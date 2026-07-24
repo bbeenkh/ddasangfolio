@@ -1,6 +1,11 @@
-export { default } from 'next-auth/middleware';
+export { default } from 'next-auth/middleware'
 
 /**
- * Next Auth middleware
- * - 인증 필요 페이지 여기에 추가
+ * # middleware config
+ * ---
+ * - 간단설명: 인증이 필요한 페이지 경로 설정
+ * - 제약사항: matcher에 추가된 경로만 인증 미들웨어가 적용됨
  */
+export const config = {
+  matcher: ['/my'],
+}
