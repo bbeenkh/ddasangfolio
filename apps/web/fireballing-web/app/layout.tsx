@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import './globals.css'
 import RootProvider from '@/features/providers/RootProvider'
+import { DevFab } from '@/shared/ui'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-plus-jakarta' })
@@ -40,6 +41,7 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <DevFab />
         </RootProvider>
       </body>
     </html>
