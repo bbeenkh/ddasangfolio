@@ -2,18 +2,24 @@
   "name": "fblg",
   "description": "파이어볼링",
   "private": true,
+  "workspaces": [
+    "apps/web/*",
+    "apps/server/*",
+    "apps/mobile/*",
+    "packages/*"
+  ],
   "scripts": {
     "build": "turbo run build",
     "local": "turbo run local",
-    "local:a": "pnpm --filter fblg-mobile local:a",
-    "local:i": "pnpm --filter fblg-mobile local:i",
+    "local:a": "yarn workspace fblg-mobile local:a",
+    "local:i": "yarn workspace fblg-mobile local:i",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "check-types": "turbo run check-types",
-    "storybook": "pnpm --filter @fblg/core-ui storybook",
-    "build-storybook": "pnpm --filter @fblg/core-ui build-storybook",
+    "storybook": "yarn workspace @fblg/core-ui storybook",
+    "build-storybook": "yarn workspace @fblg/core-ui build-storybook",
     "prepare": "husky",
-    "test:e2e": "pnpm --filter fblg-web test:e2e"
+    "test:e2e": "yarn workspace fblg-web test:e2e"
   },
   "devDependencies": {
     "husky": "^9.1.7",
@@ -21,20 +27,48 @@
     "turbo": "^2.10.0",
     "typescript": "5.9.2"
   },
-  "packageManager": "pnpm@9.15.9+sha512.68046141893c66fad01c079231128e9afb89ef87e2691d69e4d40eee228988295fd4682181bae55b58418c3a253bde65a505ec7c5f9403ece5cc3cd37dcf2531",
+  "packageManager": "yarn@4.17.1",
   "engines": {
     "node": ">=18"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "esbuild",
-      "lightningcss"
-    ]
   },
   "volta": {
     "node": "24.18.0"
   },
   "dependencies": {
     "@changesets/cli": "^2.31.1"
+  },
+  "dependenciesMeta": {
+    "esbuild": {
+      "built": true
+    },
+    "lightningcss": {
+      "built": true
+    },
+    "sharp": {
+      "built": true
+    },
+    "unrs-resolver": {
+      "built": true
+    }
+  },
+  "resolutions": {
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "@types/react": "19.2.3",
+    "@types/react-dom": "19.2.3",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.1.18",
+    "@tailwindcss/vite": "^4.1.18",
+    "vite": "^8.0.0",
+    "@vitejs/plugin-react": "^6.0.1",
+    "vitest": "^4.1.5",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "jsdom": "^28.1.0",
+    "framer-motion": "^12.40.0",
+    "storybook": "^10.4.6",
+    "@storybook/react": "^10.4.6",
+    "@storybook/react-vite": "^10.4.6",
+    "@storybook/addon-links": "^10.4.6"
   }
 }

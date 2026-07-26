@@ -1,12 +1,9 @@
 // @ts-check
-import { createRequire } from 'module'
-
-const require = createRequire(import.meta.url)
-const nextConfig = require('eslint-config-next/core-web-vitals')
+import nextPlugin from '@next/eslint-plugin-next'
 
 /** @type {import('eslint').Linter.Config[]} */
 const eslintConfig = [
-  ...(Array.isArray(nextConfig) ? nextConfig : [nextConfig]),
+  nextPlugin.flatConfig.coreWebVitals,
   {
     ignores: ['eslint.config.js', 'prettier.config.js', '.next/**'],
   },
