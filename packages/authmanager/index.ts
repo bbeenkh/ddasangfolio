@@ -1,2 +1,2 @@
-export type { IAuthManager, Tokens } from './authManager.types.js'
-export { AuthManager } from './authManager.js'
+export type { IAuthManager, Tokens } from './authManager.types'
+export { AuthManager } from './authManager'

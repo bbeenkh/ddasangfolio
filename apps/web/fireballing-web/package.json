@@ -13,6 +13,7 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@fblg/authmanager": "workspace:^",
     "@fblg/core-ui": "workspace:^",
     "@fblg/types": "workspace:^",
     "@fblg/utils": "workspace:^",

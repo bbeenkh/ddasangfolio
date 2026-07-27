@@ -954,7 +954,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fblg/authmanager@workspace:packages/authmanager":
+"@fblg/authmanager@workspace:^, @fblg/authmanager@workspace:packages/authmanager":
   version: 0.0.0-use.local
   resolution: "@fblg/authmanager@workspace:packages/authmanager"
   dependencies:
@@ -6059,6 +6059,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "fblg-web@workspace:apps/web/fireballing-web"
   dependencies:
+    "@fblg/authmanager": "workspace:^"
     "@fblg/core-ui": "workspace:^"
     "@fblg/types": "workspace:^"
     "@fblg/utils": "workspace:^"
