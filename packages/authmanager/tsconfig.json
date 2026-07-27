@@ -1,0 +1,10 @@
+{
+  "extends": "@fblg/typescript-config/base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "module": "Preserve",
+    "moduleResolution": "Bundler"
+  },
+  "include": ["."],
+  "exclude": ["node_modules"]
+}
