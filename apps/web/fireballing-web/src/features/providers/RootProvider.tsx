@@ -1,5 +1,6 @@
 'use client'
 
+import { AuthManagerSync } from '@/entities/auth'
 import queryClient from '@/shared/lib/queryClient'
 import { QueryClientProvider } from '@tanstack/react-query'
 import { SessionProvider } from 'next-auth/react'
@@ -12,6 +13,7 @@ export default function RootProvider({ children }: { children: React.ReactNode }
   return (
     <>
       <SessionProvider refetchInterval={0} refetchOnWindowFocus={true}>
+        <AuthManagerSync />
         <QueryClientProvider client={queryClient}>
           {children}
         </QueryClientProvider>
