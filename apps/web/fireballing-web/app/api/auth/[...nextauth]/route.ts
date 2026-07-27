@@ -9,7 +9,7 @@ import GoogleProvider from 'next-auth/providers/google'
  * - 간단설명: NextAuth 설정 — Google OAuth + 백엔드 토큰 연동
  * - 제약사항: NEXT_PUBLIC_API_URL, GOOGLE_OAUTH 환경변수 필요
  */
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: process.env.NEXT_PUBLIC_GOOGLE_OAUTH_CLIENT_ID!,

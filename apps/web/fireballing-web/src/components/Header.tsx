@@ -16,7 +16,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80">
       <nav className="flex items-center justify-between px-5 py-4">
         <Link href="/" className="flex items-center gap-2 no-underline">
-          <Flame className="size-[25px] text-fb-primary" />
+          <Flame className="size-6.25 text-fb-primary" />
           <span className="text-xl font-medium tracking-[-1px] text-fb-on-primary">
             fireballing
           </span>
