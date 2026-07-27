@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "tsc --noEmit",
+    "check-types": "tsc --noEmit",
     "dev": "vite",
     "test": "vitest run",
     "test:watch": "vitest",

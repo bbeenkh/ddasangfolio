@@ -7,7 +7,7 @@ import { flushSync } from 'react-dom';
  * <Modal {...dialogProps}>
  * <Popover {...dialogProps}>
  */
-export default function useModalState<T>(defaultInitData: T = null) {
+export default function useModalState<T>(defaultInitData: T) {
   const [isOpen, setIsOpen] = React.useState(false);
   /**
    * 모달에 전달할 id

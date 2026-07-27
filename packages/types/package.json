@@ -2,6 +2,7 @@
   "name": "@fblg/types",
   "private": true,
   "version": "0.2.0",
+  "type": "module",
   "description": "파이어볼링 공통 타입 모듈",
   "scripts": {
     "check-types": "tsc --noEmit"

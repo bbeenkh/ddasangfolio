@@ -1,2 +1,2 @@
-export type { UserProfile } from './user'
-export type { AuthTokens } from './auth'
+export type { UserProfile } from './user.js'
+export type { AuthTokens } from './auth.js'

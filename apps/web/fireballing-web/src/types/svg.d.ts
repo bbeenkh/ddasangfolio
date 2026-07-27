@@ -15,3 +15,6 @@ declare module '*.svg?react' {
 declare module '*.png' {
   export default string
 }
+
+declare module '*.css' {}
+declare module '*.scss' {}
