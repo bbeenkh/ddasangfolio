@@ -1,7 +1,7 @@
-import React from "react";
-import { Slot } from "@radix-ui/react-slot";
-import { twMerge } from "tailwind-merge";
-import Spinner from "../Spinner";
+import React from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import { twMerge } from 'tailwind-merge';
+import Spinner from '../Spinner';
 
 interface StyleClass {
   root?: string;
@@ -9,7 +9,7 @@ interface StyleClass {
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
-  type?: "button" | "submit" | "reset";
+  type?: 'button' | 'submit' | 'reset';
   styleClass?: StyleClass;
   asChild?: boolean;
   isLoading?: boolean;
@@ -41,7 +41,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
  */
 function Button({
   children,
-  type = "button",
+  type = 'button',
   styleClass,
   asChild = false,
   disabled,
@@ -49,21 +49,21 @@ function Button({
   loadingUI,
   ...props
 }: Props) {
-  const Comp = asChild ? Slot : "button";
+  const Comp = asChild ? Slot : 'button';
   const _loadingUI = loadingUI || <Spinner size="sm" />;
   const _disabled = isLoading || disabled;
   return (
     <Comp
       type={asChild ? undefined : type}
       className={twMerge(
-        "relative",
-        disabled ? "cursor-not-allowed" : "cursor-pointer",
+        'relative',
+        disabled ? 'cursor-not-allowed' : 'cursor-pointer',
         styleClass?.root,
       )}
       disabled={_disabled}
       {...props}
     >
-      <div className={isLoading ? "opacity-0" : ""}>{children}</div>
+      <div className={isLoading ? 'opacity-0' : ''}>{children}</div>
       {isLoading && (
         <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
           {_loadingUI}
