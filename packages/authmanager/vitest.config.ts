@@ -1,7 +1,3 @@
-import { defineConfig } from 'vitest/config'
+import { defineNodeConfig } from '@fblg/testing-config'
 
-export default defineConfig({
-  test: {
-    globals: true,
-  },
-})
+export default defineNodeConfig()

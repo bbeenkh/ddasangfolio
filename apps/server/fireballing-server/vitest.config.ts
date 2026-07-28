@@ -1,9 +1,3 @@
-import { defineConfig } from 'vitest/config'
+import { defineNodeConfig } from '@fblg/testing-config'
 
-export default defineConfig({
-  test: {
-    globals: true,
-    environment: 'node',
-    include: ['src/**/*.test.ts'],
-  },
-})
+export default defineNodeConfig()

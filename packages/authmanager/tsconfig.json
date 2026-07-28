@@ -3,7 +3,8 @@
   "compilerOptions": {
     "noEmit": true,
     "module": "Preserve",
-    "moduleResolution": "Bundler"
+    "moduleResolution": "Bundler",
+    "allowImportingTsExtensions": true
   },
   "include": ["."],
   "exclude": ["node_modules"]
