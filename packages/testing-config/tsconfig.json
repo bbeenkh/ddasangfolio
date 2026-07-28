@@ -1,0 +1,9 @@
+{
+  "extends": "@fblg/typescript-config/base.json",
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "module": "ESNext"
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}

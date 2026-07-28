@@ -1,0 +1,24 @@
+{
+  "name": "@fblg/testing-config",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./presets/react": "./presets/react.ts",
+    "./presets/node": "./presets/node.ts",
+    "./setup/jest-dom": "./setup/jest-dom.ts",
+    "./setup/radix-polyfill": "./setup/radix-polyfill.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@fblg/typescript-config": "workspace:*",
+    "@testing-library/jest-dom": "*",
+    "@vitejs/plugin-react": "*",
+    "msw": "*",
+    "typescript": "*",
+    "vitest": "*"
+  }
+}
