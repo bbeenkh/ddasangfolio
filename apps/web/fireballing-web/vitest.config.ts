@@ -1,18 +1,18 @@
-import { defineConfig } from 'vitest/config'
-import viteReact from '@vitejs/plugin-react'
+import { defineReactConfig } from '@fblg/testing-config'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
-export default defineConfig({
-  plugins: [viteReact()],
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
+
+export default defineReactConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
   test: {
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: ['./src/test-setup.ts'],
+    setupFiles: ['./src/mocks/server.ts'],
+    passWithNoTests: true,
     exclude: ['**/node_modules/**', '**/dist/**', 'e2e/**'],
     env: {
       NEXT_PUBLIC_API_URL: 'http://localhost:8080',

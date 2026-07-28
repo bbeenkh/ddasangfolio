@@ -6414,6 +6414,7 @@ __metadata:
   dependencies:
     "@fblg/authmanager": "workspace:^"
     "@fblg/core-ui": "workspace:^"
+    "@fblg/testing-config": "workspace:*"
     "@fblg/types": "workspace:^"
     "@fblg/utils": "workspace:^"
     "@playwright/test": "npm:^1.61.1"
@@ -6432,6 +6433,7 @@ __metadata:
     eslint-config-next: "npm:^15"
     jsdom: "npm:^28.1.0"
     lucide-react: "npm:^0.545.0"
+    msw: "npm:^2.10.0"
     next: "npm:^15"
     next-auth: "npm:^4.24.15"
     prettier: "npm:^3.8.1"
