@@ -958,6 +958,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fblg/authmanager@workspace:packages/authmanager"
   dependencies:
+    "@fblg/testing-config": "workspace:*"
     "@fblg/typescript-config": "workspace:*"
     typescript: "npm:^5.8.3"
     vitest: "npm:^4.1.5"
@@ -969,6 +970,7 @@ __metadata:
   resolution: "@fblg/core-ui@workspace:packages/ui"
   dependencies:
     "@fblg/eslint-config": "workspace:*"
+    "@fblg/testing-config": "workspace:*"
     "@fblg/typescript-config": "workspace:*"
     "@lukemorales/query-key-factory": "npm:^1.3.4"
     "@radix-ui/react-accordion": "npm:^1.2.12"
@@ -1030,8 +1032,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fblg/enums@workspace:packages/enums"
   dependencies:
+    "@fblg/testing-config": "workspace:*"
     "@fblg/typescript-config": "workspace:^"
     typescript: "npm:^5.8.3"
+    vitest: "npm:*"
   languageName: unknown
   linkType: soft
 
@@ -1057,13 +1061,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fblg/schemas@workspace:packages/schemas"
   dependencies:
+    "@fblg/testing-config": "workspace:*"
     "@fblg/typescript-config": "workspace:^"
     typescript: "npm:^5.8.3"
+    vitest: "npm:*"
     zod: "npm:^4.4.3"
   languageName: unknown
   linkType: soft
 
-"@fblg/testing-config@workspace:packages/testing-config":
+"@fblg/testing-config@workspace:*, @fblg/testing-config@workspace:packages/testing-config":
   version: 0.0.0-use.local
   resolution: "@fblg/testing-config@workspace:packages/testing-config"
   dependencies:
@@ -1080,8 +1086,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fblg/types@workspace:packages/types"
   dependencies:
+    "@fblg/testing-config": "workspace:*"
     "@fblg/typescript-config": "workspace:^"
     typescript: "npm:^5.8.3"
+    vitest: "npm:*"
   languageName: unknown
   linkType: soft
 
@@ -1095,9 +1103,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@fblg/utils@workspace:packages/utils"
   dependencies:
+    "@fblg/testing-config": "workspace:*"
+    "@fblg/typescript-config": "workspace:*"
     "@types/lodash-es": "npm:^4.17.12"
     dayjs: "npm:^1.11.21"
     lodash-es: "npm:^4.17.21"
+    vitest: "npm:*"
   languageName: unknown
   linkType: soft
 
@@ -6384,6 +6395,7 @@ __metadata:
   resolution: "fblg-server@workspace:apps/server/fireballing-server"
   dependencies:
     "@fblg/schemas": "workspace:^"
+    "@fblg/testing-config": "workspace:*"
     "@fblg/types": "workspace:^"
     "@hono/node-server": "npm:^1.19.14"
     "@supabase/supabase-js": "npm:^2.108.2"
@@ -8409,7 +8421,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"msw@npm:*":
+"msw@npm:^2.10.0":
   version: 2.15.0
   resolution: "msw@npm:2.15.0"
   dependencies:

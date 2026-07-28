@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "@fblg/eslint-config": "workspace:*",
+    "@fblg/testing-config": "workspace:*",
     "@fblg/typescript-config": "workspace:*",
     "@storybook/addon-links": "^10.4.6",
     "@storybook/react": "^10.4.6",
