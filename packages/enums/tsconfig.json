@@ -4,7 +4,8 @@
     "noEmit": true,
     "module": "Preserve",
     "moduleResolution": "Bundler",
-    "moduleDetection": "force"
+    "moduleDetection": "force",
+    "allowImportingTsExtensions": true
   },
   "include": ["."]
 }

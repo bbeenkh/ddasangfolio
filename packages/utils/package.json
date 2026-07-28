@@ -5,6 +5,10 @@
   "description": "파이어볼링 유틸 모듈",
   "main": "index.js",
   "keywords": [],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
   "exports": {
     ".": "./index.ts"
   },
@@ -15,6 +19,9 @@
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@types/lodash-es": "^4.17.12"
+    "@fblg/testing-config": "workspace:*",
+    "@fblg/typescript-config": "workspace:*",
+    "@types/lodash-es": "^4.17.12",
+    "vitest": "*"
   }
 }
