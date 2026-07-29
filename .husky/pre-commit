@@ -1,2 +1,2 @@
-yarn check-types
-yarn lint
+pnpm check-types
+pnpm lint

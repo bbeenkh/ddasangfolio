@@ -1,5 +1,4 @@
 import { defineConfig } from 'vitest/config'
-import type { UserConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import type { Plugin } from 'vite'
 
@@ -44,11 +43,15 @@ const mockStaticAssetsPlugin: Plugin = {
  *   test: { setupFiles: ['@fblg/testing-config/setup/radix-polyfill'] }
  * })
  */
-export function defineReactConfig(overrides: UserConfig = {}): ReturnType<typeof defineConfig> {
+export function defineReactConfig(
+  overrides: {
+    test?: { setupFiles?: string | string[]; [key: string]: unknown }
+    plugins?: Plugin[]
+    [key: string]: unknown
+  } = {}
+): ReturnType<typeof defineConfig> {
   const { test: overrideTest, plugins: extraPlugins = [], ...restOverrides } = overrides
-  const { setupFiles: extraSetup, ...restTest } = (overrideTest ?? {}) as UserConfig['test'] & {
-    setupFiles?: string | string[]
-  }
+  const { setupFiles: extraSetup, ...restTest } = overrideTest ?? {}
 
   const extraSetupArray = extraSetup
     ? Array.isArray(extraSetup)

@@ -1,5 +1,4 @@
 import { defineConfig } from 'vitest/config'
-import type { UserConfig } from 'vite'
 
 /**
  * # defineNodeConfig
@@ -14,11 +13,11 @@ import type { UserConfig } from 'vite'
  * import { defineNodeConfig } from '@fblg/testing-config'
  * export default defineNodeConfig()
  */
-export function defineNodeConfig(overrides: UserConfig = {}): ReturnType<typeof defineConfig> {
+export function defineNodeConfig(
+  overrides: { test?: { setupFiles?: string | string[]; [key: string]: unknown }; [key: string]: unknown } = {}
+): ReturnType<typeof defineConfig> {
   const { test: overrideTest, ...restOverrides } = overrides
-  const { setupFiles: extraSetup, ...restTest } = (overrideTest ?? {}) as UserConfig['test'] & {
-    setupFiles?: string | string[]
-  }
+  const { setupFiles: extraSetup, ...restTest } = overrideTest ?? {}
 
   const extraSetupArray = extraSetup
     ? Array.isArray(extraSetup)

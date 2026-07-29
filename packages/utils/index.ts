@@ -6,7 +6,7 @@ import { isNil, isNaN } from 'lodash-es';
  * @returns 
  */
 export function getCurDate() {
-  return dayjs().toDate();
+  return '수정됨';
 }
 
 /**

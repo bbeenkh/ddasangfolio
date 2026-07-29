@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@fblg/core-ui'
+import { getCurDate } from '@fblg/utils'
 
 /**
  * # HomePage
@@ -10,7 +11,7 @@ import { Button } from '@fblg/core-ui'
 export default function HomePage() {
   return (
     <main>
-      <Button>버튼</Button>
+      <Button onClick={() => alert(getCurDate())}>버튼</Button>
     </main>
   )
 }
