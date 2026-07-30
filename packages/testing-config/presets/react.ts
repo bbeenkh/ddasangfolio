@@ -1,6 +1,5 @@
-import { defineConfig } from 'vitest/config'
+import { defineConfig, type Plugin } from 'vitest/config'
 import react from '@vitejs/plugin-react'
-import type { Plugin } from 'vite'
 
 /**
  * CSS와 SVG 파일을 테스트 환경에서 빈/모의 모듈로 처리하는 플러그인
