@@ -11,8 +11,7 @@
         "NEXTAUTH_SECRET"
       ],
       "inputs": [
-        "$TURBO_DEFAULT$",
-        ".env*"
+        "$TURBO_DEFAULT$"
       ],
       "outputs": [
         "dist/**",
