@@ -3,8 +3,13 @@
 import { AuthManagerSync } from '@/entities/auth'
 import queryClient from '@/shared/lib/queryClient'
 import { QueryClientProvider } from '@tanstack/react-query'
-import { SessionProvider } from 'next-auth/react'
+import dynamic from 'next/dynamic'
 import React from 'react'
+
+const SessionProvider = dynamic(
+  () => import('next-auth/react').then((m) => ({ default: m.SessionProvider })),
+  { ssr: false }
+)
 
 /**
  * 전역 Provider
