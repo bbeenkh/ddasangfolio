@@ -1,5 +1,7 @@
 'use client'
 
+export const dynamic = 'force-dynamic'
+
 import { Card, Typo } from '@/shared/ui'
 import GoogleLoginButton from '@/features/login/googleLogin/GoogleLoginButton'
 
