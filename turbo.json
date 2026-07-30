@@ -6,13 +6,19 @@
       "dependsOn": [
         "^build"
       ],
+      "env": [
+        "NEXTAUTH_URL",
+        "NEXTAUTH_SECRET"
+      ],
       "inputs": [
         "$TURBO_DEFAULT$",
         ".env*"
       ],
       "outputs": [
         "dist/**",
-        ".output/**"
+        ".output/**",
+        ".next/**",
+        "!.next/cache/**"
       ]
     },
     "lint": {
