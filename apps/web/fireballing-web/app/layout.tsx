@@ -4,7 +4,6 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import './globals.css'
 import RootProvider from '@/features/providers/RootProvider'
-import { DevFab } from '@/shared/ui'
 
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 const geistMono = Geist_Mono({ subsets: ['latin'], variable: '--font-geist-mono' })
@@ -43,7 +42,6 @@ export default function RootLayout({
             {children}
           </div>
           <Footer />
-          <DevFab />
         </RootProvider>
       </body>
     </html>
