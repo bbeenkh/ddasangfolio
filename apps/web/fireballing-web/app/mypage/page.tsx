@@ -1,7 +1,9 @@
 'use client'
 
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { ChevronRight } from 'lucide-react'
+import { Button } from '@/shared/ui'
 import LogoutButton from '@/features/logout/LogoutButton'
 
 /**
@@ -13,7 +15,17 @@ import LogoutButton from '@/features/logout/LogoutButton'
  * <MyPage />
  */
 export default function MyPage() {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
+  const router = useRouter()
+
+  if (status === 'unauthenticated') {
+    return (
+      <main className="px-5 pt-4 pb-8 flex flex-col gap-6 items-center justify-center min-h-[calc(100vh-57px)]">
+        <p className="text-base text-fb-cool-charcoal">로그인해주세요</p>
+        <Button onClick={() => router.push('/login')}>로그인</Button>
+      </main>
+    )
+  }
 
   const userName = session?.user?.name ?? '게스트'
   const userEmail = session?.user?.email ?? '-'

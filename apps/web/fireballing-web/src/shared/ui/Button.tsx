@@ -15,7 +15,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: [
-    'bg-gradient-to-r from-lf-primary-container to-lf-primary-gradient-end text-white font-semibold',
+    'bg-gradient-to-r from-lf-primary-container to-lf-primary-gradient-end text-black font-semibold',
     'rounded-lg px-6 py-3',
     'shadow-sm not-disabled:hover:shadow-md',
     'transition-all duration-150',
@@ -54,6 +54,7 @@ function Button({ variant = 'primary', styleClass, ...props }: Props) {
     variant ? variantStyles[variant] : '',
     styleClass?.root,
   )
+  console.log(merged);
   return <BaseButton styleClass={{ root: merged }} {...props} />
 }
 

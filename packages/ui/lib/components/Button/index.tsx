@@ -63,11 +63,15 @@ function Button({
       disabled={_disabled}
       {...props}
     >
-      <div className={isLoading ? 'opacity-0' : ''}>{children}</div>
-      {isLoading && (
-        <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center">
-          {_loadingUI}
-        </div>
+      {isLoading ? (
+        <>
+          <div className="absolute inset-0 flex justify-center items-center">
+            {_loadingUI}
+          </div>
+          <span aria-hidden className="invisible">{children}</span>
+        </>
+      ) : (
+        children
       )}
     </Comp>
   );
