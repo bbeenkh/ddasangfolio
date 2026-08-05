@@ -136,6 +136,9 @@ importers:
       '@fblg/core-ui':
         specifier: workspace:^
         version: link:../../../packages/ui
+      '@fblg/schemas':
+        specifier: workspace:^
+        version: link:../../../packages/schemas
       '@fblg/types':
         specifier: workspace:^
         version: link:../../../packages/types

@@ -15,6 +15,7 @@
   "dependencies": {
     "@fblg/authmanager": "workspace:^",
     "@fblg/core-ui": "workspace:^",
+    "@fblg/schemas": "workspace:^",
     "@fblg/types": "workspace:^",
     "@fblg/utils": "workspace:^",
     "@tanstack/react-query": "^5.22.2",

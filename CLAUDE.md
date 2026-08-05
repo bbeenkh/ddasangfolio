@@ -8,6 +8,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - compoent: PascalCase
 - others: camelCase
 
+# 특이사항
+- 서버, 프론트 통신 관련 타입/스키마는 별도 선언하지 말고 packages/types, packages/schemas 에서 공통 정의후 import하여 사용하는 방식으로 구현
+
 # 작업 순서: 신규 작업 시, 반드시 다음 플로우를 준수하여 작업 진행할 것
 1. 기획&요구사항 정리
 - atlassian mcp 사용해 Jira 접근하여 기획 확인

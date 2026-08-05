@@ -2,6 +2,7 @@ import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { errorHandler } from './middleware/error-handler.js'
 import { authRoutes } from '../features/auth/index.js'
+import { watchlistRoutes } from '../features/watchlist/index.js'
 
 /**
  * # app
@@ -24,6 +25,7 @@ app.use('/*', cors({
 
 // 기능 라우트 마운트
 app.route('/api/auth', authRoutes)
+app.route('/api/watchlist', watchlistRoutes)
 
 /**
  * # GET /

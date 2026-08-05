@@ -2,13 +2,15 @@
 
 export const dynamic = 'force-dynamic'
 
-import { Card, Typo } from '@/shared/ui'
+import Link from 'next/link'
+import { Card, Typo, Separator } from '@/shared/ui'
 import GoogleLoginButton from '@/features/login/googleLogin/GoogleLoginButton'
+import CredentialsLoginForm from '@/features/login/credentialsLogin/CredentialsLoginForm'
 
 /**
  * # LoginPage
  * ---
- * - 간단설명: 로그인 페이지 — Google OAuth 로그인 버튼 제공
+ * - 간단설명: 로그인 페이지 — 이메일/비밀번호 및 Google OAuth 로그인 제공
  * ---
  * @example
  * // /login 경로로 접근
@@ -23,12 +25,22 @@ export default function LoginPage() {
           </Card.Title>
         </Card.Header>
         <Card.Body className="flex-col gap-4">
+          <CredentialsLoginForm />
+          <div className="flex items-center gap-3">
+            <Separator className="flex-1" />
+            <span className="text-sm text-lf-on-surface-muted">또는</span>
+            <Separator className="flex-1" />
+          </div>
           <GoogleLoginButton />
+          <Link
+            href="/signup"
+            className="text-sm text-center text-lf-on-surface-muted hover:underline"
+          >
+            계정이 없으신가요? 회원가입
+          </Link>
         </Card.Body>
       </Card>
     </main>
   )
 }
-
-/** Google 로고 SVG 아이콘 */
 
