@@ -1,9 +1,9 @@
 import type { User } from '@supabase/supabase-js'
-import type { UserProfile } from '../../../entities/user/index.js'
-import type { SignupRequest, LoginRequest, AuthTokens } from '../types/auth.types.js'
-import { getSupabaseClient, createSupabaseClientWithToken } from '../../../shared/lib/supabase.js'
-import { HttpError } from '../../../shared/errors/http-error.js'
-import { SupabaseConnectionError } from '../../../shared/errors/supabase-connection-error.js'
+import type { UserProfile } from '../../../entities/user/index'
+import type { SignupRequest, LoginRequest, AuthTokens } from '../types/auth.types'
+import { getSupabaseClient, createSupabaseClientWithToken } from '../../../shared/lib/supabase'
+import { HttpError } from '../../../shared/errors/http-error'
+import { SupabaseConnectionError } from '../../../shared/errors/supabase-connection-error'
 
 /**
  * # signup

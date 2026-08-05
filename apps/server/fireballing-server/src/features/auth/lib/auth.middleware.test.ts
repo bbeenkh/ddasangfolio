@@ -3,13 +3,13 @@ import { Hono } from 'hono'
 
 const mockGetUser = vi.fn()
 
-vi.mock('../../../shared/lib/supabase.js', () => ({
+vi.mock('../../../shared/lib/supabase', () => ({
   createSupabaseClientWithToken: () => ({
     auth: { getUser: mockGetUser },
   }),
 }))
 
-vi.mock('../../../shared/config/env.js', () => ({
+vi.mock('../../../shared/config/env', () => ({
   loadEnv: () => ({
     SUPABASE_URL: 'https://test.supabase.co',
     SUPABASE_ANON_KEY: 'test-key',
@@ -18,7 +18,7 @@ vi.mock('../../../shared/config/env.js', () => ({
   }),
 }))
 
-import { authMiddleware } from './auth.middleware.js'
+import { authMiddleware } from './auth.middleware'
 
 function createTestApp() {
   const app = new Hono()

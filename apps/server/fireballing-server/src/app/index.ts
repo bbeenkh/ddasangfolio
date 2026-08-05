@@ -1,8 +1,8 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
-import { errorHandler } from './middleware/error-handler.js'
-import { authRoutes } from '../features/auth/index.js'
-import { watchlistRoutes } from '../features/watchlist/index.js'
+import { errorHandler } from './middleware/error-handler'
+import { authRoutes } from '../features/auth/index'
+import { watchlistRoutes } from '../features/watchlist/index'
 
 /**
  * # app
@@ -11,7 +11,7 @@ import { watchlistRoutes } from '../features/watchlist/index.js'
  * - 제약사항: 이 파일에서는 serve()를 호출하지 않음 (엔트리포인트에서 분리)
  * ---
  * @example
- * import { app } from './app/index.js'
+ * import { app } from './app/index'
  * serve({ fetch: app.fetch, port: 3001 })
  */
 export const app = new Hono()

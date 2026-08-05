@@ -8,13 +8,13 @@ const { mockGetUser, mockGetWatchlist, mockAddWatchlistItem, mockRemoveWatchlist
   mockRemoveWatchlistItem: vi.fn(),
 }))
 
-vi.mock('../../../shared/lib/supabase.js', () => ({
+vi.mock('../../../shared/lib/supabase', () => ({
   createSupabaseClientWithToken: () => ({
     auth: { getUser: mockGetUser },
   }),
 }))
 
-vi.mock('../../../shared/config/env.js', () => ({
+vi.mock('../../../shared/config/env', () => ({
   loadEnv: () => ({
     SUPABASE_URL: 'https://test.supabase.co',
     SUPABASE_ANON_KEY: 'test-key',
@@ -22,13 +22,13 @@ vi.mock('../../../shared/config/env.js', () => ({
   }),
 }))
 
-vi.mock('../model/watchlist.service.js', () => ({
+vi.mock('../model/watchlist.service', () => ({
   getWatchlist: mockGetWatchlist,
   addWatchlistItem: mockAddWatchlistItem,
   removeWatchlistItem: mockRemoveWatchlistItem,
 }))
 
-import { watchlistRoutes } from './watchlist.routes.js'
+import { watchlistRoutes } from './watchlist.routes'
 
 function createTestApp() {
   const app = new Hono()

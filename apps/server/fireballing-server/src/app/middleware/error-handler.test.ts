@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { Hono } from 'hono'
-import { errorHandler } from './error-handler.js'
-import { HttpError } from '../../shared/errors/http-error.js'
+import { errorHandler } from './error-handler'
+import { HttpError } from '../../shared/errors/http-error'
 
 function createTestApp() {
   const app = new Hono()

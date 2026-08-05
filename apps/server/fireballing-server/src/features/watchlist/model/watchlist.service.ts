@@ -1,8 +1,8 @@
 import type { IWatchlistItem } from '@fblg/types'
 import type { AddWatchlistRequest } from '@fblg/schemas'
-import { createSupabaseClientWithToken } from '../../../shared/lib/supabase.js'
-import { HttpError } from '../../../shared/errors/http-error.js'
-import { SupabaseConnectionError } from '../../../shared/errors/supabase-connection-error.js'
+import { createSupabaseClientWithToken } from '../../../shared/lib/supabase'
+import { HttpError } from '../../../shared/errors/http-error'
+import { SupabaseConnectionError } from '../../../shared/errors/supabase-connection-error'
 
 /**
  * # getWatchlist

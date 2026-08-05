@@ -4,7 +4,7 @@ vi.mock('@supabase/supabase-js', () => ({
   createClient: vi.fn(() => ({ auth: {} })),
 }))
 
-vi.mock('../config/env.js', () => ({
+vi.mock('../config/env', () => ({
   loadEnv: () => ({
     SUPABASE_URL: 'https://test.supabase.co',
     SUPABASE_ANON_KEY: 'test-anon-key',
@@ -20,7 +20,7 @@ describe('Supabase 클라이언트', () => {
 
   it('getSupabaseClient는 anon key로 생성된 클라이언트를 반환한다', async () => {
     const { createClient } = await import('@supabase/supabase-js')
-    const { getSupabaseClient } = await import('./supabase.js')
+    const { getSupabaseClient } = await import('./supabase')
 
     const client = getSupabaseClient()
 
@@ -33,7 +33,7 @@ describe('Supabase 클라이언트', () => {
 
   it('createSupabaseClientWithToken은 사용자 토큰으로 클라이언트를 생성한다', async () => {
     const { createClient } = await import('@supabase/supabase-js')
-    const { createSupabaseClientWithToken } = await import('./supabase.js')
+    const { createSupabaseClientWithToken } = await import('./supabase')
 
     const client = createSupabaseClientWithToken('user-access-token')
 

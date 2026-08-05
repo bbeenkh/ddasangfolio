@@ -1,5 +1,5 @@
 import type { ErrorHandler } from 'hono'
-import { HttpError } from '../../shared/errors/http-error.js'
+import { HttpError } from '../../shared/errors/http-error'
 
 /**
  * # errorHandler

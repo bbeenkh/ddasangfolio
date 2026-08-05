@@ -1,2 +1,2 @@
-export { authRoutes } from './api/auth.routes.js'
-export { authMiddleware } from './lib/auth.middleware.js'
+export { authRoutes } from './api/auth.routes'
+export { authMiddleware } from './lib/auth.middleware'

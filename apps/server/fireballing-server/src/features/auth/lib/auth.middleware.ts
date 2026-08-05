@@ -1,5 +1,5 @@
 import { createMiddleware } from 'hono/factory'
-import { createSupabaseClientWithToken } from '../../../shared/lib/supabase.js'
+import { createSupabaseClientWithToken } from '../../../shared/lib/supabase'
 
 /**
  * # authMiddleware

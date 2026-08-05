@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { signupSchema, loginSchema, refreshSchema } from './auth.types.js'
+import { signupSchema, loginSchema, refreshSchema } from './auth.types'
 
 describe('signupSchema', () => {
   it('유효한 이메일, 비밀번호, 이름이면 파싱에 성공한다', () => {

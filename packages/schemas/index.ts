@@ -5,8 +5,8 @@ export {
   type SignupRequest,
   type LoginRequest,
   type RefreshRequest,
-} from './auth.js'
+} from './auth'
 export {
   addWatchlistSchema,
   type AddWatchlistRequest,
-} from './watchlist.js'
+} from './watchlist'

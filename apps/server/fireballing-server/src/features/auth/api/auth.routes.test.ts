@@ -8,7 +8,7 @@ const mockSignOut = vi.fn()
 const mockGetUser = vi.fn()
 const mockRefreshSession = vi.fn()
 
-vi.mock('../../../shared/lib/supabase.js', () => ({
+vi.mock('../../../shared/lib/supabase', () => ({
   getSupabaseClient: () => ({
     auth: {
       signUp: mockSignUp,
@@ -25,7 +25,7 @@ vi.mock('../../../shared/lib/supabase.js', () => ({
   }),
 }))
 
-vi.mock('../../../shared/config/env.js', () => ({
+vi.mock('../../../shared/config/env', () => ({
   loadEnv: () => ({
     SUPABASE_URL: 'https://test.supabase.co',
     SUPABASE_ANON_KEY: 'test-key',
@@ -34,7 +34,7 @@ vi.mock('../../../shared/config/env.js', () => ({
   }),
 }))
 
-import { authRoutes } from './auth.routes.js'
+import { authRoutes } from './auth.routes'
 
 function createTestApp() {
   const app = new Hono()

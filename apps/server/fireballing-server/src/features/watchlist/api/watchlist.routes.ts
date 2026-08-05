@@ -1,9 +1,9 @@
 import { Hono } from 'hono'
 import { addWatchlistSchema } from '@fblg/schemas'
-import { authMiddleware } from '../../auth/index.js'
-import * as watchlistService from '../model/watchlist.service.js'
-import { HttpError } from '../../../shared/errors/http-error.js'
-import { SupabaseConnectionError } from '../../../shared/errors/supabase-connection-error.js'
+import { authMiddleware } from '../../auth/index'
+import * as watchlistService from '../model/watchlist.service'
+import { HttpError } from '../../../shared/errors/http-error'
+import { SupabaseConnectionError } from '../../../shared/errors/supabase-connection-error'
 
 /**
  * # watchlistRoutes

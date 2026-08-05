@@ -1,9 +1,9 @@
 import { Hono } from 'hono'
-import { signupSchema, loginSchema, refreshSchema } from '../types/auth.types.js'
-import * as authService from '../model/auth.service.js'
-import { authMiddleware } from '../lib/auth.middleware.js'
-import { HttpError } from '../../../shared/errors/http-error.js'
-import { SupabaseConnectionError } from '../../../shared/errors/supabase-connection-error.js'
+import { signupSchema, loginSchema, refreshSchema } from '../types/auth.types'
+import * as authService from '../model/auth.service'
+import { authMiddleware } from '../lib/auth.middleware'
+import { HttpError } from '../../../shared/errors/http-error'
+import { SupabaseConnectionError } from '../../../shared/errors/supabase-connection-error'
 
 /**
  * # authRoutes

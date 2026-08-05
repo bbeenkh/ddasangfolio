@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { HttpError } from './http-error.js'
+import { HttpError } from './http-error'
 
 describe('HttpError', () => {
   it('상태코드와 메시지를 포함한 에러를 생성한다', () => {

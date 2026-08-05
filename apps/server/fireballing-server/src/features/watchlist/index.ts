@@ -1,1 +1,1 @@
-export { watchlistRoutes } from './api/watchlist.routes.js'
+export { watchlistRoutes } from './api/watchlist.routes'

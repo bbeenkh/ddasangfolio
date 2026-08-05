@@ -1,6 +1,6 @@
 import { serve } from '@hono/node-server'
-import { app } from './app/index.js'
-import { loadEnv } from './shared/config/env.js'
+import { app } from './app/index'
+import { loadEnv } from './shared/config/env'
 
 const env = loadEnv()
 

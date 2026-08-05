@@ -15,13 +15,13 @@ const mockFrom = vi.fn().mockReturnValue({
   delete: vi.fn().mockReturnValue({ eq: mockEq }),
 })
 
-vi.mock('../../../shared/lib/supabase.js', () => ({
+vi.mock('../../../shared/lib/supabase', () => ({
   createSupabaseClientWithToken: () => ({
     from: mockFrom,
   }),
 }))
 
-import { getWatchlist, addWatchlistItem, removeWatchlistItem } from './watchlist.service.js'
+import { getWatchlist, addWatchlistItem, removeWatchlistItem } from './watchlist.service'
 
 const mockItem = {
   id: 'item-1',

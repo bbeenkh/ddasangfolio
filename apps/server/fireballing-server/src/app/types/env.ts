@@ -1,4 +1,4 @@
-import type { UserProfile } from '../../entities/user/index.js'
+import type { UserProfile } from '../../entities/user/index'
 
 /**
  * # AppEnv

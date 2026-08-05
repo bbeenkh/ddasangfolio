@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import type { UserProfile } from '../../../entities/user/index.js'
+import type { UserProfile } from '../../../entities/user/index'
 
 const mockSignUp = vi.fn()
 const mockSignInWithPassword = vi.fn()
@@ -8,7 +8,7 @@ const mockSignOut = vi.fn()
 const mockGetUser = vi.fn()
 const mockRefreshSession = vi.fn()
 
-vi.mock('../../../shared/lib/supabase.js', () => ({
+vi.mock('../../../shared/lib/supabase', () => ({
   getSupabaseClient: () => ({
     auth: {
       signUp: mockSignUp,
@@ -33,7 +33,7 @@ import {
   getCurrentUser,
   refreshToken,
   mapToUserProfile,
-} from './auth.service.js'
+} from './auth.service'
 
 describe('auth.service', () => {
   beforeEach(() => {
