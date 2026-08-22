@@ -15,6 +15,7 @@
   "dependencies": {
     "@fblg/authmanager": "workspace:^",
     "@fblg/core-ui": "workspace:^",
+    "@fblg/enums": "workspace:^",
     "@fblg/schemas": "workspace:^",
     "@fblg/types": "workspace:^",
     "@fblg/utils": "workspace:^",

@@ -10,3 +10,7 @@ export {
   addWatchlistSchema,
   type AddWatchlistRequest,
 } from './watchlist'
+export {
+  addHoldingSchema,
+  type AddHoldingRequest,
+} from './portfolio'

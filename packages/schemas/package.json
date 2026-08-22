@@ -19,6 +19,7 @@
     ".": "./index.ts"
   },
   "dependencies": {
+    "@fblg/enums": "workspace:*",
     "zod": "^4.4.3"
   }
 }
