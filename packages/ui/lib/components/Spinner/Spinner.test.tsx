@@ -1,4 +1,10 @@
+import React from 'react';
 import { render } from '@testing-library/react';
+
+vi.mock('../../assets/svgs/spinner-icon.svg?react', () => ({
+  default: (props: React.SVGProps<SVGSVGElement>) => React.createElement('svg', props),
+}));
+
 import Spinner from '.';
 
 describe('Spinner', () => {

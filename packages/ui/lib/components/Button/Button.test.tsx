@@ -56,9 +56,10 @@ describe('Button', () => {
       expect(screen.getByRole('button')).toBeInTheDocument();
     });
 
-    it('기본 스타일이 없다 — styleClass 없이 렌더링 시 className이 비어있다', () => {
+    it('기본 스타일이 적용된다 — relative, cursor-pointer가 포함된다', () => {
       render(<Button>Button</Button>);
-      expect(screen.getByRole('button').className.trim()).toBe('');
+      const button = screen.getByRole('button');
+      expect(button).toHaveClass('relative', 'cursor-pointer');
     });
   });
 

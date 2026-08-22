@@ -178,3 +178,15 @@ fireballing/
   - interface: I{name} ex) IUserInfo
   - type: {name} ex) FavoriteList
   - schema from zod: {name}Schema ex) MyPageSchema
+
+
+### backend-error-report 작성법
+- 마크다운 등 불필요한 요소 제거 후 다음 정보만을 리턴
+  - [method][status code] requested api url
+  - req body 형식
+  - response body 형식
+ex
+[POST][400] /api/auth/signup
+  URL: http://localhost:8080/api/auth/signup
+  Request Body: { "email": "testuser@example.com", "password": "test1234", "name": "테스트유저" }
+  Response Body: { "success": false, "error": "Unexpected token '<', \"<!DOCTYPE \"... is not valid JSON" }

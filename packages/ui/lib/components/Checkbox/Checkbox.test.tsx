@@ -22,11 +22,11 @@ describe('Checkbox', () => {
     expect(screen.getByRole('checkbox')).not.toBeChecked();
   });
 
-  it('onChange가 호출된다', () => {
-    const onChange = vi.fn();
-    render(<Checkbox id="cb1" onChange={onChange} />);
+  it('onCheckedChange가 호출된다', () => {
+    const onCheckedChange = vi.fn();
+    render(<Checkbox id="cb1" onCheckedChange={onCheckedChange} />);
     fireEvent.click(screen.getByRole('checkbox'));
-    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onCheckedChange).toHaveBeenCalledTimes(1);
   });
 
   it('disabled 상태가 적용된다', () => {

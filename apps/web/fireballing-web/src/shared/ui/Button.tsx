@@ -54,7 +54,6 @@ function Button({ variant = 'primary', styleClass, ...props }: Props) {
     variant ? variantStyles[variant] : '',
     styleClass?.root,
   )
-  console.log(merged);
   return <BaseButton styleClass={{ root: merged }} {...props} />
 }
 
